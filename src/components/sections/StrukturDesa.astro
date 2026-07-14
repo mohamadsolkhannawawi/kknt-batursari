@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { navigation } from "../../data/navigation";
+import structureImg from "../../assets/images/struktur-organisasi.png";
+
+const isEnabled = navigation.some(
+  (item) =>
+    (item.href === "#struktur-desa" && item.enabled) ||
+    (item.children && item.children.some((c) => c.href === "#struktur-desa" && c.enabled))
+);
+---
+
+{isEnabled && (
+  <section id="struktur-desa" class="bg-white">
+    <div class="container-site section-spacing">
+      <SectionHeading
+        title="Struktur Pemerintahan Desa Batursari"
+        subtitle="Perangkat desa, kelompok ternak, dan kelompok tani yang menjadi mitra & narasumber program."
+        align="center"
+        class="mx-auto"
+      />
+      <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-neutral-100 shadow-sm bg-white p-4 md:p-6" data-reveal>
+        <Image
+          src={structureImg}
+          alt="Bagan Struktur Organisasi Pemerintah Desa Batursari"
+          class="w-full h-auto object-contain rounded-xl"
+          quality={95}
+        />
+      </div>
+    </div>
+  </section>
+)}
