@@ -1,0 +1,49 @@
+---
+interface OrgNode {
+  id: string;
+  nama: string;
+  jabatan: string;
+  level: number;
+  parentId?: string;
+  foto?: string;
+}
+
+interface Props {
+  nodes: OrgNode[];
+  class?: string;
+}
+
+const { nodes, class: className = "" } = Astro.props;
+
+const levels = Array.from<number>(new Set(nodes.map((n) => n.level))).sort((a: number, b: number) => a - b);
+const nodesByLevel = (level: number) => nodes.filter((n) => n.level === level);
+---
+
+<div class={`flex flex-col items-center gap-2 ${className}`}>
+  {levels.map((level, levelIndex) => (
+    <div class="flex flex-col items-center w-full">
+      {levelIndex > 0 && (
+        <div class="w-px h-6 bg-primary-300" aria-hidden="true"></div>
+      )}
+      <div class="flex flex-wrap justify-center gap-4">
+        {nodesByLevel(level).map((node) => (
+          <div
+            class="flex flex-col items-center text-center rounded-xl border border-neutral-100 bg-white shadow-sm px-5 py-4 min-w-[160px]"
+            data-reveal
+          >
+            <div class="w-12 h-12 rounded-full bg-primary-100 text-primary-700 font-heading font-semibold flex items-center justify-center mb-2">
+              {node.nama
+                .split(" ")
+                .map((w) => w[0])
+                .slice(0, 2)
+                .join("")
+                .toUpperCase()}
+            </div>
+            <p class="font-heading font-semibold text-sm text-primary-900">{node.nama}</p>
+            <p class="text-xs text-neutral-500 mt-0.5">{node.jabatan}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
