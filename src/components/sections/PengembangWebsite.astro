@@ -1,0 +1,40 @@
+---
+import { timList } from "../../data/tim";
+
+const pengembangWebsite = timList.filter((a) => a.isPengembangWebsite);
+---
+
+<section class="bg-neutral-50 py-12 border-t border-neutral-100">
+  <div class="container-site text-center">
+    <p class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-6">
+      Website ini dikembangkan oleh:
+    </p>
+    <div
+      class="flex flex-wrap justify-center gap-8 md:gap-12"
+    >
+      {pengembangWebsite.map((anggota) => (
+        <div class="flex items-center gap-3 text-left">
+          {anggota.foto ? (
+            <img
+              src={anggota.foto}
+              alt={anggota.nama}
+              class="w-12 h-12 rounded-full object-cover border border-neutral-200 shadow-sm"
+            />
+          ) : (
+            <div class="w-12 h-12 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-bold text-sm border border-neutral-200">
+              {anggota.nama.split(" ").map(w => w[0]).slice(0, 2).join("").toUpperCase()}
+            </div>
+          )}
+          <div>
+            <p class="font-heading font-semibold text-sm text-primary-950 leading-tight">
+              {anggota.nama}
+            </p>
+            <p class="text-[11px] text-neutral-500 mt-0.5">
+              {anggota.prodi} · {anggota.output}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
