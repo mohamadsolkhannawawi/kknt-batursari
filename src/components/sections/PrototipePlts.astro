@@ -1,0 +1,75 @@
+---
+import Badge from "../ui/Badge.astro";
+import Card from "../ui/Card.astro";
+import FlowDiagram from "../ui/FlowDiagram.astro";
+import {
+  pltsStatus,
+  pltsFlow,
+  pltsManfaat,
+  pltsSpesifikasi,
+  pltsCatatanMekanisme,
+  pltsVisual,
+} from "../../data/prototipePlts";
+---
+
+<section id="plts" class="bg-primary-100">
+  <div class="container-site section-spacing">
+    <div class="max-w-2xl mb-10 md:mb-14" data-reveal>
+      <div class="flex items-center gap-3 mb-3">
+        <Badge variant="solid">{pltsStatus.badge}</Badge>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-semibold text-primary-900">{pltsStatus.title}</h2>
+      <p class="text-base leading-relaxed text-neutral-900/80 mt-3">{pltsStatus.deskripsi}</p>
+      <p class="text-sm text-primary-700 mt-3 italic">{pltsStatus.catatanNada}</p>
+    </div>
+
+    <!-- Diagram alur bercabang -->
+    <div class="bg-white rounded-xl border border-neutral-100 p-6 md:p-8 mb-10" data-reveal>
+      <FlowDiagram source={pltsFlow.source} pathA={pltsFlow.pathA} pathB={pltsFlow.pathB} />
+    </div>
+
+    <!-- Placeholder gambar/diagram teknis -->
+    <!-- TODO: ganti dengan skema hasil desain prototipe tim -->
+    <div class="rounded-xl overflow-hidden border border-neutral-100 max-w-3xl mx-auto mb-12" data-reveal>
+      <img
+        src={pltsVisual.src}
+        alt={pltsVisual.alt}
+        width="800"
+        height="500"
+        loading="lazy"
+        class="w-full h-auto"
+      />
+    </div>
+
+    <!-- Kartu manfaat ganda -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+      {pltsManfaat.map((manfaat) => (
+        <Card hoverable data-reveal>
+          <div class="w-12 h-12 rounded-full bg-accent-cream text-primary-700 flex items-center justify-center mb-4">
+            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d={manfaat.iconSvgPath} stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-primary-900">{manfaat.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-neutral-500">{manfaat.description}</p>
+        </Card>
+      ))}
+    </div>
+
+    <!-- Spesifikasi teknis ringkas -->
+    <div class="bg-white rounded-xl border border-neutral-100 p-6 md:p-8" data-reveal>
+      <h3 class="font-heading font-semibold text-primary-900 mb-4">Spesifikasi Teknis Ringkas</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        {pltsSpesifikasi.map((spek) => (
+          <div class="rounded-lg bg-neutral-100 px-4 py-3">
+            <p class="text-xs text-neutral-500">{spek.label}</p>
+            <p class="font-medium text-neutral-900 mt-0.5">{spek.value}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-sm leading-relaxed text-neutral-500 border-t border-neutral-100 pt-4">
+        {pltsCatatanMekanisme}
+      </p>
+    </div>
+  </div>
+</section>
