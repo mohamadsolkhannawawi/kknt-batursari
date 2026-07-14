@@ -1,0 +1,71 @@
+---
+import Card from "../ui/Card.astro";
+import Badge from "../ui/Badge.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { potensiBiogasList, petaPotensi, deskripsiPotensi } from "../../data/potensiBiogas";
+---
+
+<section id="potensi" class="bg-white">
+  <div class="container-site section-spacing">
+    <SectionHeading
+      eyebrow="Output 1.2 — Pemetaan EBT"
+      title="Peta Potensi Biogas Desa Batursari"
+      subtitle={deskripsiPotensi}
+    />
+
+    <!-- Placeholder peta -->
+    <!-- TODO: ganti dengan peta hasil survei Teknik Geologi -->
+    <div class="rounded-xl overflow-hidden border border-neutral-100 mb-10" data-reveal>
+      <img
+        src={petaPotensi.src}
+        alt={petaPotensi.alt}
+        width="800"
+        height="500"
+        loading="lazy"
+        class="w-full h-auto"
+      />
+    </div>
+
+    <!-- Grid kartu titik potensi -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      {potensiBiogasList.map((titik) => (
+        <Card hoverable data-reveal>
+          <h3 class="text-lg font-semibold text-primary-900">{titik.lokasi}</h3>
+          <Badge variant="soft" class="mt-2">{titik.jenisTernak}</Badge>
+
+          <dl class="mt-4 space-y-2 text-sm">
+            <div class="flex justify-between gap-4">
+              <dt class="text-neutral-500">Estimasi limbah</dt>
+              <dd class="font-medium text-neutral-900 text-right">{titik.estimasiLimbah}</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt class="text-neutral-500">Potensi gas</dt>
+              <dd class="font-medium text-primary-700 text-right">{titik.potensiGas}</dd>
+            </div>
+          </dl>
+
+          <p class="mt-4 text-sm leading-relaxed text-neutral-500 border-t border-neutral-100 pt-3">
+            {titik.keteranganLahan}
+          </p>
+        </Card>
+      ))}
+    </div>
+
+    <!-- Kartu kelayakan teknis (ringkasan kajian geologi) -->
+    <Card class="bg-primary-100 border-primary-300" data-reveal>
+      <div class="flex items-start gap-3">
+        <svg viewBox="0 0 24 24" class="w-6 h-6 shrink-0 text-primary-700" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        <div>
+          <h3 class="text-lg font-semibold text-primary-900">Ringkasan Kelayakan Teknis</h3>
+          <p class="mt-2 text-sm leading-relaxed text-primary-900/80">
+            TODO: ringkasan kajian geologi Tim Teknik Geologi mengenai kesesuaian lahan
+            di titik-titik potensi biogas Desa Batursari — akan diisi setelah data
+            Output 1.2 final.
+          </p>
+        </div>
+      </div>
+    </Card>
+  </div>
+</section>
