@@ -1,0 +1,23 @@
+---
+interface Props {
+  variant?: "solid" | "soft" | "outline";
+  class?: string;
+}
+
+const { variant = "soft", class: className = "" } = Astro.props;
+
+const base =
+  "inline-flex items-center gap-1.5 rounded-full text-xs font-medium px-3 py-1 font-body";
+
+const variants = {
+  solid: "bg-primary-700 text-white",
+  soft: "bg-primary-100 text-primary-900",
+  outline: "border border-primary-300 text-primary-700 bg-white",
+};
+
+const classes = `${base} ${variants[variant]} ${className}`;
+---
+
+<span class={classes}>
+  <slot />
+</span>
