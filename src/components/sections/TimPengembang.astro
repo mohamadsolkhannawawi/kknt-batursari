@@ -1,0 +1,66 @@
+---
+import TeamCard from "../ui/TeamCard.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { timList } from "../../data/tim";
+
+const multi1 = timList.filter((a) => a.multiGroup === "multi-1" && !a.isPengembangWebsite);
+const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
+---
+
+<section id="tim" class="bg-white">
+  <div class="container-site section-spacing">
+    <SectionHeading
+      title="Tim Penyusun Program"
+      subtitle="Website ini adalah hasil kerja kolektif seluruh 15 mahasiswa KKN-T 141 Desa Batursari, dikelompokkan sesuai peran Multi 1 & Multi 2."
+    />
+
+    <!-- Sub-section: Tim Multi 1 -->
+    <div class="mb-16">
+      <h3 class="text-lg font-semibold text-primary-900 mb-1" data-reveal>
+        Tim Multi 1 — Audit Energi & Pemetaan EBT
+      </h3>
+      <p class="text-sm text-neutral-500 mb-6" data-reveal>
+        {multi1.length} anggota
+      </p>
+      <div
+        class="flex flex-wrap justify-center gap-6"
+      >
+        {multi1.map((anggota) => (
+          <TeamCard
+            nama={anggota.nama}
+            nimOrNidn={anggota.nim}
+            prodi={anggota.prodi}
+            fakultas={anggota.fakultas}
+            badge={anggota.output}
+            class="w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.25rem)] max-w-[260px]"
+            data-reveal
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Sub-section: Tim Multi 2 -->
+    <div class="mb-20">
+      <h3 class="text-lg font-semibold text-primary-900 mb-1" data-reveal>
+        Tim Multi 2 — Sosialisasi & Kelembagaan
+      </h3>
+      <p class="text-sm text-neutral-500 mb-6" data-reveal>
+        {multi2.length} anggota
+      </p>
+      <div class="flex flex-wrap justify-center gap-6">
+        {multi2.map((anggota) => (
+          <TeamCard
+            nama={anggota.nama}
+            nimOrNidn={anggota.nim}
+            prodi={anggota.prodi}
+            fakultas={anggota.fakultas}
+            badge={anggota.output}
+            class="w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.25rem)] max-w-[260px]"
+            data-reveal
+          />
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
