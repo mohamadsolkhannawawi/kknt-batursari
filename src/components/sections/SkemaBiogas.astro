@@ -1,0 +1,31 @@
+---
+import Stepper from "../ui/Stepper.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { skemaBiogasSteps, skemaBiogasVisual } from "../../data/skemaBiogas";
+---
+
+<section id="skema" class="bg-white">
+  <div class="container-site section-spacing">
+    <SectionHeading
+      title="Bagaimana Biogas Bekerja?"
+      subtitle="Empat langkah sederhana mengubah limbah ternak menjadi energi yang bisa langsung dipakai di rumah."
+      align="center"
+      class="mx-auto"
+    />
+
+    <Stepper steps={skemaBiogasSteps} class="mb-12" />
+
+    <!-- Placeholder visual skema 2D/3D -->
+    <!-- TODO: ganti dengan aset visual dari Output 2.3 -->
+    <div class="rounded-xl overflow-hidden border border-neutral-100 max-w-3xl mx-auto" data-reveal>
+      <img
+        src={skemaBiogasVisual.src}
+        alt={skemaBiogasVisual.alt}
+        width="800"
+        height="500"
+        loading="lazy"
+        class="w-full h-auto"
+      />
+    </div>
+  </div>
+</section>
