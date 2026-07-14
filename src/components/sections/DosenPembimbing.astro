@@ -1,0 +1,37 @@
+---
+import TeamCard from "../ui/TeamCard.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { navigation } from "../../data/navigation";
+import { dosenPembimbingList } from "../../data/dosenPembimbing";
+
+const isEnabled = navigation.some(
+  (item) =>
+    (item.href === "#dpl" && item.enabled) ||
+    (item.children && item.children.some((c) => c.href === "#dpl" && c.enabled))
+);
+---
+
+{isEnabled && (
+  <section id="dpl" class="bg-neutral-100">
+    <div class="container-site section-spacing">
+      <SectionHeading
+        title="Dosen Pembimbing Lapangan (DPL)"
+        subtitle="Pembina dan penanggung jawab akademik program KKN-Tematik ESDM KKNT-141 Desa Batursari."
+      />
+      <div class="flex flex-wrap justify-center gap-8 max-w-3xl mx-auto">
+        {dosenPembimbingList.map((dpl) => (
+          <TeamCard
+            nama={`${dpl.nama}, ${dpl.gelar}`}
+            nimOrNidn={dpl.nidn}
+            prodi={dpl.prodi}
+            fakultas={dpl.fakultas}
+            badge={dpl.peran}
+            variant="dosen"
+            class="w-full sm:w-[calc(50%-1rem)] max-w-sm"
+            data-reveal
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+)}
