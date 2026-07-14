@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import { footerNavigation } from "../../data/navigation";
+import { partners } from "../../data/partners";
+import { siteConfig } from "../../data/site.config";
+
+import logoUndip from "../../assets/images/logo-undip.png";
+import logoKemendiktisaintek from "../../assets/images/logo-kemendiktisaintek.png";
+import logoKkn from "../../assets/images/logo-kkn.png";
+
+const logoMap: Record<string, ImageMetadata> = {
+  undip: logoUndip,
+  kemendiktisaintek: logoKemendiktisaintek,
+  "kkn-t-141": logoKkn,
+};
+
+const activeFooterNav = footerNavigation.filter((item) => item.enabled);
+---
+
+<footer class="bg-primary-900 text-primary-100">
+  <div class="container-site py-12 md:py-16">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+      <!-- Identitas & Penjelasan -->
+      <div class="flex flex-col gap-5 max-w-sm">
+        <div
+          class="flex items-center gap-4 flex-wrap"
+        >
+          {partners.map((partner) => (
+            <Image
+              src={logoMap[partner.id]}
+              alt={partner.alt}
+              width={44}
+              height={44}
+              class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-white object-contain p-1"
+            />
+          ))}
+        </div>
+        <p class="text-sm text-primary-100/80 leading-relaxed">
+          Program Kuliah Kerja Nyata Tematik (KKN-T) Universitas Diponegoro di Desa Batursari. Bertujuan untuk mendorong kemandirian energi desa melalui eksplorasi, pemetaan, dan pemanfaatan Energi Baru Terbarukan (EBT) secara berkelanjutan.
+        </p>
+      </div>
+
+      <!-- Menu ringkas -->
+      <nav aria-label="Menu footer" class="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-8">
+        {activeFooterNav.map((item) => (
+          <div class="flex flex-col gap-3">
+            <h3 class="text-sm font-semibold text-white uppercase tracking-wider">{item.label}</h3>
+            {item.children ? (
+              <div class="flex flex-col gap-2">
+                {item.children.filter(child => child.enabled).map((child) => (
+                  <a href={child.href} class="text-sm text-primary-100/80 hover:text-white transition-colors duration-200">
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            ) : (
+              item.href && (
+                <a href={item.href} class="text-sm text-primary-100/80 hover:text-white transition-colors duration-200 mt-1">
+                  Kunjungi {item.label}
+                </a>
+              )
+            )}
+          </div>
+        ))}
+      </nav>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-primary-700/50">
+      <p class="text-xs text-primary-100/70">
+        © {siteConfig.copyrightYear} KKN-Tematik ESDM KKNT-141 Desa Batursari Universitas Diponegoro
+      </p>
+    </div>
+  </div>
+</footer>
