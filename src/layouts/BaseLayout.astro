@@ -1,0 +1,68 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import { siteConfig } from "../data/site.config";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = siteConfig.title, description = siteConfig.description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={siteConfig.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(siteConfig.ogImage, Astro.site)} />
+    <meta property="og:locale" content={siteConfig.locale} />
+    <meta property="og:url" content={canonicalURL} />
+
+    <!-- Preconnect Google Fonts untuk performa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="bg-white text-neutral-900 antialiased">
+    <a
+      href="#konten-utama"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:bg-primary-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-full"
+    >
+      Lompat ke konten utama
+    </a>
+
+    <Navbar />
+
+    <main id="konten-utama">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      // @ts-ignore
+      import Alpine from "alpinejs";
+      // @ts-ignore
+      window.Alpine = Alpine;
+      Alpine.start();
+    </script>
+    <script src="../scripts/reveal.js"></script>
+  </body>
+</html>
