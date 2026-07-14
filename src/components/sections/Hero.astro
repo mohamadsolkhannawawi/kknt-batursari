@@ -1,0 +1,70 @@
+---
+import { hero } from "../../data/hero";
+import { Image } from "astro:assets";
+import ebtImg from "../../assets/images/ebt-illustration.png";
+---
+
+<section id="beranda" class="relative overflow-hidden bg-[#e9f2ee] pt-24 pb-20 lg:pt-28 lg:pb-32">
+  <!-- Background dekoratif grid -->
+  <div class="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true">
+    <svg
+      class="absolute inset-0 w-full h-full text-primary-400"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <pattern id="hero-grid" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" stroke-width="0.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hero-grid)" />
+    </svg>
+    <!-- Soft glows -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white opacity-50 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary-300 opacity-20 blur-[100px] rounded-full -translate-x-1/2 translate-y-1/2"></div>
+  </div>
+
+  <div class="container-site relative z-10">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      
+      <!-- Teks & CTA -->
+      <div class="flex-1 max-w-xl">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-950 leading-[1.2] tracking-tight">
+          {hero.headline}
+        </h1>
+        <p class="mt-5 text-base md:text-lg leading-relaxed text-neutral-700">
+          {hero.subheadline}
+        </p>
+        
+        <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <a
+            href={hero.ctaPrimary.href}
+            class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-white bg-neutral-900 rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-neutral-900/20"
+          >
+            {hero.ctaPrimary.label}
+          </a>
+          <a
+            href={hero.ctaSecondary.href}
+            class="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-neutral-800 hover:text-primary-700 transition-colors underline underline-offset-4 decoration-neutral-300 hover:decoration-primary-700"
+          >
+            {hero.ctaSecondary.label}
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual kanan: Ilustrasi -->
+      <div class="flex-1 w-full animate-fade-in-up">
+        <div class="relative w-full max-w-md mx-auto lg:ml-auto lg:translate-x-8">
+          <!-- Gambar Mockup -->
+          <Image
+            src={ebtImg}
+            alt="Ilustrasi Energi Baru Terbarukan"
+            class="w-full h-auto object-contain drop-shadow-2xl"
+            quality={90}
+            format="webp"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
