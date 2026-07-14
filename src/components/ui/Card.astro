@@ -1,0 +1,28 @@
+---
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  class?: string;
+  hoverable?: boolean;
+}
+
+const { class: className = "", hoverable = false, ...rest } = Astro.props;
+
+const base =
+  "rounded-xl border border-neutral-100 bg-white shadow-sm p-6";
+const hoverClasses = hoverable
+  ? "transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
+  : "";
+---
+
+<div class={`${base} ${hoverClasses} ${className}`} {...rest}>
+  {Astro.slots.has("header") && (
+    <div class="mb-4">
+      <slot name="header" />
+    </div>
+  )}
+  <slot />
+  {Astro.slots.has("footer") && (
+    <div class="mt-4 pt-4 border-t border-neutral-100">
+      <slot name="footer" />
+    </div>
+  )}
+</div>
