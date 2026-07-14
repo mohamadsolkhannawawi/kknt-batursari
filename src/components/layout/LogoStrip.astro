@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import { partners, logoStripCaption } from "../../data/partners";
+
+import logoUndip from "../../assets/images/logo-undip.png";
+import logoKemendiktisaintek from "../../assets/images/logo-kemendiktisaintek.png";
+import logoKkn from "../../assets/images/logo-kkn.png";
+
+const logoMap: Record<string, ImageMetadata> = {
+  undip: logoUndip,
+  kemendiktisaintek: logoKemendiktisaintek,
+  "kkn-t-141": logoKkn,
+};
+---
+
+<section class="bg-white" aria-label="Instansi pendukung program">
+  <div class="container-site py-10 md:py-14">
+    <p class="text-center text-sm text-neutral-500 mb-6" data-reveal>
+      {logoStripCaption}
+    </p>
+    <div 
+      class="grid grid-cols-2 sm:flex sm:items-center sm:justify-center gap-8 md:gap-14 place-items-center" data-reveal
+    >
+      {partners.map((partner) => (
+        <Image
+          src={logoMap[partner.id]}
+          alt={partner.alt}
+          width={56}
+          height={56}
+          class="w-12 h-12 md:w-14 md:h-14 object-contain grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+        />
+      ))}
+    </div>
+  </div>
+</section>
