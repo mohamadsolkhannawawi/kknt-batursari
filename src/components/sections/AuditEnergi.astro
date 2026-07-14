@@ -1,0 +1,53 @@
+---
+import Tabs from "../ui/Tabs.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import AuditPanel from "./partials/AuditPanel.astro";
+import {
+  auditRumahTangga,
+  auditUmkm,
+  statRumahTangga,
+  statUmkm,
+  rekomendasiUmum,
+} from "../../data/auditEnergi";
+
+const tabs = [
+  { id: "rumah-tangga", label: "Rumah Tangga & Fasilitas Umum" },
+  { id: "umkm", label: "UMKM & Industri Rumahan" },
+];
+---
+
+<section id="audit" class="bg-neutral-100">
+  <div class="container-site section-spacing">
+    <SectionHeading
+      eyebrow="Output 1.1 — Audit Energi"
+      title="Hasil Audit Energi Rumah Tangga & UMKM"
+      subtitle="Ringkasan konsumsi energi dan rekomendasi efisiensi dari hasil audit lapangan Tim Multi 1."
+    />
+
+    <Tabs tabs={tabs}>
+      <Fragment slot="panel-rumah-tangga">
+        <AuditPanel stats={statRumahTangga} entries={auditRumahTangga} />
+      </Fragment>
+      <Fragment slot="panel-umkm">
+        <AuditPanel stats={statUmkm} entries={auditUmkm} />
+      </Fragment>
+    </Tabs>
+
+    <!-- Highlight rekomendasi efisiensi -->
+    <div class="mt-10 rounded-xl bg-primary-100 border border-primary-300 p-6" data-reveal>
+      <h3 class="font-heading font-semibold text-primary-900 mb-4">
+        Rekomendasi Hemat Energi
+      </h3>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+        {rekomendasiUmum.map((poin) => (
+          <li class="flex items-start gap-2 text-sm leading-relaxed text-primary-900/90">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 shrink-0 text-primary-700 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+            </svg>
+            <span>{poin}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
