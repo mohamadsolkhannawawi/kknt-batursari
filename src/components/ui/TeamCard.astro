@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  nama: string;
+  nimOrNidn?: string;
+  prodi?: string;
+  fakultas?: string;
+  badge?: string;
+  foto?: ImageMetadata | string;
+  variant?: "mahasiswa" | "dosen";
+  highlight?: boolean;
+  class?: string;
+}
+
+const {
+  nama,
+  nimOrNidn,
+  prodi,
+  fakultas,
+  badge,
+  foto,
+  variant = "mahasiswa",
+  highlight = false,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const initials = nama
+  .split(" ")
+  .filter((w) => !w.toUpperCase().startsWith("TODO"))
+  .map((w) => w[0])
+  .slice(0, 2)
+  .join("")
+  .toUpperCase() || "?";
+
+const borderClasses = "border-neutral-100 border";
+
+const paddingClasses = highlight ? "p-6" : "p-5";
+const avatarSize = "w-20 h-20";
+---
+
+<div
+  class={`rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300 ${borderClasses} ${paddingClasses} flex flex-col items-center text-center ${className}`}
+  {...rest}
+>
+  {variant !== "dosen" && highlight && (
+    <span class="mb-3.5 inline-flex items-center rounded-full bg-primary-50 text-primary-800 text-xs font-semibold px-3 py-1 border border-primary-200">
+      Pengembang Website
+    </span>
+  )}
+
+  {foto ? (
+    typeof foto === "string" ? (
+      <img
+        src={foto}
+        alt={`Foto ${nama}`}
+        loading="lazy"
+        class={`${avatarSize} rounded-full object-cover mb-4 shadow-inner border-2 border-white ring-4 ring-neutral-50`}
+      />
+    ) : (
+      <Image
+        src={foto}
+        alt={`Foto ${nama}`}
+        width={120}
+        height={120}
+        class={`${avatarSize} rounded-full object-cover mb-4 shadow-inner border-2 border-white ring-4 ring-neutral-50`}
+      />
+    )
+  ) : (
+    <div
+      class={`${avatarSize} rounded-full bg-primary-100 text-primary-700 font-heading font-bold flex items-center justify-center mb-4 text-xl border-2 border-white ring-4 ring-primary-50`}
+    >
+      {initials}
+    </div>
+  )}
+
+  <h3 class="font-heading font-bold text-primary-950 text-base leading-snug">{nama}</h3>
+  
+  <div class="mt-2.5 space-y-0.5 text-xs text-neutral-500">
+    {nimOrNidn && (
+      <p class="font-medium text-neutral-700">
+        {variant === "dosen" ? "NIP/NIDN: " : "NIM: "}{nimOrNidn}
+      </p>
+    )}
+    {prodi && <p>{prodi}</p>}
+    {fakultas && <p class="text-neutral-400">{fakultas}</p>}
+  </div>
+
+  {badge && (
+    <span class="mt-4 inline-flex items-center rounded-lg bg-neutral-50 text-neutral-700 text-xs font-medium px-3 py-1.5 border border-neutral-100">
+      {badge}
+    </span>
+  )}
+</div>
