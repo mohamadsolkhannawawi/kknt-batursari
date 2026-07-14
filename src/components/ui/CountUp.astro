@@ -1,0 +1,79 @@
+---
+interface Props {
+  value: string | number;
+  duration?: number; // ms
+  class?: string;
+}
+
+const { value, duration = 1200, class: className = "" } = Astro.props;
+const raw = String(value);
+const match = raw.match(/-?\d[\d.,]*/);
+const numericPart = match ? match[0] : null;
+const target = numericPart ? parseFloat(numericPart.replace(/,/g, "")) : null;
+const prefix = numericPart ? raw.slice(0, raw.indexOf(numericPart)) : "";
+const suffix = numericPart
+  ? raw.slice(raw.indexOf(numericPart) + numericPart.length)
+  : "";
+---
+
+{target !== null ? (
+  <span
+    class={`count-up ${className}`}
+    data-count-target={target}
+    data-count-prefix={prefix}
+    data-count-suffix={suffix}
+    data-count-duration={duration}
+  >{prefix}0{suffix}</span>
+) : (
+  <span class={className}>{raw}</span>
+)}
+
+<script>
+  function animateCountUp(el: HTMLElement) {
+    const target = parseFloat(el.dataset.countTarget || "0");
+    const prefix = el.dataset.countPrefix || "";
+    const suffix = el.dataset.countSuffix || "";
+    const duration = parseFloat(el.dataset.countDuration || "1200");
+    const isDecimal = (el.dataset.countTarget || "").includes(".");
+    const start = performance.now();
+
+    function tick(now: number) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
+      const current = target * eased;
+      el.textContent = `${prefix}${isDecimal ? current.toFixed(1) : Math.round(current)}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function initCountUps() {
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const elements = document.querySelectorAll<HTMLElement>(".count-up");
+
+    if (prefersReduced) {
+      elements.forEach((el) => {
+        const target = el.dataset.countTarget || "0";
+        el.textContent = `${el.dataset.countPrefix || ""}${target}${el.dataset.countSuffix || ""}`;
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCountUp(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    elements.forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initCountUps);
+</script>
