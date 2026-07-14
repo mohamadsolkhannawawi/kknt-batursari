@@ -1,0 +1,59 @@
+---
+import SectionHeading from "../ui/SectionHeading.astro";
+import { socialLinks } from "../../data/links";
+import { siteConfig } from "../../data/site.config";
+
+const { lokasi } = siteConfig.contact;
+const { whatsapp, email, instagram } = socialLinks;
+---
+
+<section id="kontak" class="bg-white">
+  <div class="container-site section-spacing">
+    <SectionHeading
+      title="Hubungi Kami"
+      subtitle="Ada pertanyaan seputar program atau ingin berkolaborasi? Silakan hubungi tim KKN-T 141 Desa Batursari."
+      align="center"
+      class="mx-auto"
+    />
+
+    <div class="max-w-xl mx-auto rounded-2xl bg-primary-900 text-primary-100 p-8 md:p-10 text-center" data-reveal>
+      <p class="text-sm text-primary-100/90 mb-8 leading-relaxed"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>{lokasi}</p>
+
+      <div class="flex flex-wrap items-center justify-center gap-5">
+        {whatsapp && (
+          <a
+            href={whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full font-heading font-semibold text-sm md:text-base px-6 py-3 bg-[#25D366] text-white hover:bg-white hover:text-neutral-900 transition-all duration-200 shadow-md group"
+          >
+            <i class="fab fa-whatsapp text-white group-hover:text-neutral-900 transition-colors text-lg"></i>
+            Chat via WhatsApp
+          </a>
+        )}
+        
+        {email && (
+          <a
+            href={email}
+            class="inline-flex items-center gap-2 rounded-full font-heading font-semibold text-sm md:text-base px-6 py-3 border border-white text-white hover:bg-white hover:text-neutral-900 transition-all duration-200 group"
+          >
+            <i class="fas fa-at text-white group-hover:text-neutral-900 transition-colors"></i>
+            Kirim Email
+          </a>
+        )}
+
+        {instagram && (
+          <a
+            href={instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full font-heading font-semibold text-sm md:text-base px-6 py-3 border border-white text-white hover:bg-white hover:text-neutral-900 transition-all duration-200 group"
+          >
+            <i class="fab fa-instagram text-white group-hover:text-neutral-900 transition-colors"></i>
+            Instagram
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
