@@ -25,9 +25,9 @@ export const siteConfig: SiteConfig = {
   contact: {
     lokasi:
       "Kelurahan Batursari, Kecamatan Mranggen, Kabupaten Demak, Jawa Tengah, 59567",
-    email: "kknt141.undip@gmail.com",
+    email: "kkntbatursari.141@gmail.com",
     whatsapp: "6281234567890",
-    instagram: "kknt141_batursari",
+    instagram: "kknt141.batursari",
   },
   copyrightYear: 2026,
 };
