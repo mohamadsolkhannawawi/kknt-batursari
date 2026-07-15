@@ -28,6 +28,6 @@ export const dosenPembimbingList: DosenPembimbing[] = [
     prodi: "Biologi",
     fakultas: "Fakultas Sains dan Matematika",
     peran: "Dosen Pembimbing Lapangan",
-    foto: "/images/Luqman.jpg",
+    foto: "/images/Luqman.png",
   },
 ];
