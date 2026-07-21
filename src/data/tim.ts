@@ -13,40 +13,6 @@ export interface AnggotaTim {
 }
 
 export const timList: AnggotaTim[] = [
-  {
-    id: "solkhan",
-    nama: "Mohamad Solkhan Nawawi",
-    nim: "24060123120020",
-    prodi: "Informatika S1",
-    fakultas: "Sains dan Matematika, UNDIP",
-    multiGroup: "multi-1",
-    output: "Pengembangan Website",
-    isPengembangWebsite: true,
-    foto: "/images/Solkhan.jpg",
-  },
-  {
-    id: "ardan",
-    nama: "Muhammad Ardan Fadli",
-    nim: "21120123140157",
-    prodi: "Teknik Komputer S1",
-    fakultas: "Teknik, UNDIP",
-    multiGroup: "multi-1",
-    output: "Infrastruktur Teknis",
-    isPengembangWebsite: true,
-    foto: "/images/Ardan.jpg",
-  },
-  {
-    id: "nadia",
-    nama: "Nadia Syifa Khairunnisa",
-    nim: "24060123120023",
-    prodi: "Informatika S1",
-    fakultas: "Sains dan Matematika, UNDIP",
-    multiGroup: "multi-1",
-    output: "Konten & Panduan Penggunaan",
-    isPengembangWebsite: true,
-    foto: "/images/Nadia.png",
-  },
-
   // --- Tim Multi 1 — Audit Energi & Pemetaan EBT ---
   {
     id: "syahmi",
@@ -125,7 +91,40 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Andin.jpg",
   },
-
+  {
+    id: "solkhan",
+    nama: "Mohamad Solkhan Nawawi",
+    nim: "24060123120020",
+    prodi: "Informatika S1",
+    fakultas: "Sains dan Matematika, UNDIP",
+    multiGroup: "multi-1",
+    output: "Pengembangan Website",
+    isPengembangWebsite: true,
+    foto: "/images/Solkhan.jpg",
+  },
+  {
+    id: "ardan",
+    nama: "Muhammad Ardan Fadli",
+    nim: "21120123140157",
+    prodi: "Teknik Komputer S1",
+    fakultas: "Teknik, UNDIP",
+    multiGroup: "multi-1",
+    output: "Infrastruktur Teknis",
+    isPengembangWebsite: true,
+    foto: "/images/Ardan.jpg",
+  },
+  {
+    id: "nadia",
+    nama: "Nadia Syifa Khairunnisa",
+    nim: "24060123120023",
+    prodi: "Informatika S1",
+    fakultas: "Sains dan Matematika, UNDIP",
+    multiGroup: "multi-1",
+    output: "Konten & Panduan Penggunaan",
+    isPengembangWebsite: true,
+    foto: "/images/Nadia.png",
+  },
+  
   // --- Tim Multi 2 — Sosialisasi & Kelembagaan ---
   {
     id: "esther",

@@ -3,7 +3,8 @@ import TeamCard from "../ui/TeamCard.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 import { timList } from "../../data/tim";
 
-const multi1 = timList.filter((a) => a.multiGroup === "multi-1" && !a.isPengembangWebsite);
+// Menampilkan semua anggota Multi 1 tanpa mengecualikan pengembang website
+const multi1 = timList.filter((a) => a.multiGroup === "multi-1");
 const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
 ---
 
