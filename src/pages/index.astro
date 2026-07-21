@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/Hero.astro";
 import LogoStrip from "../components/layout/LogoStrip.astro";
+import StrukturDesa from "../components/sections/StrukturDesa.astro";
 import TentangProgram from "../components/sections/TentangProgram.astro";
 import PotensiBiogas from "../components/sections/PotensiBiogas.astro";
 import AuditEnergi from "../components/sections/AuditEnergi.astro";
@@ -9,14 +10,18 @@ import SkemaBiogas from "../components/sections/SkemaBiogas.astro";
 import PrototipePlts from "../components/sections/PrototipePlts.astro";
 import DosenPembimbing from "../components/sections/DosenPembimbing.astro";
 import TimPengembang from "../components/sections/TimPengembang.astro";
-import StrukturDesa from "../components/sections/StrukturDesa.astro";
 import Galeri from "../components/sections/Galeri.astro";
 import Kontak from "../components/sections/Kontak.astro";
 import PengembangWebsite from "../components/sections/PengembangWebsite.astro";
 ---
+
 <BaseLayout>
   <Hero />
   <LogoStrip />
+  
+  <!-- Profil & Struktur Desa Batursari diletakkan di sini -->
+  <StrukturDesa />
+
   <TentangProgram />
   <PotensiBiogas />
   <AuditEnergi />
@@ -24,7 +29,6 @@ import PengembangWebsite from "../components/sections/PengembangWebsite.astro";
   <PrototipePlts />
   <DosenPembimbing />
   <TimPengembang />
-  <StrukturDesa />
   <Galeri />
   <Kontak />
   <PengembangWebsite />

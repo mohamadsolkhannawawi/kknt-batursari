@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import SectionHeading from "../ui/SectionHeading.astro";
 import { navigation } from "../../data/navigation";
+import { profilBatursariData } from "../../data/strukturDesa";
 import structureImg from "../../assets/images/struktur-organisasi2.png";
 
 const isEnabled = navigation.some(
@@ -12,52 +13,234 @@ const isEnabled = navigation.some(
 ---
 
 {isEnabled && (
-  <section id="struktur-desa" class="bg-white">
-    <div class="container-site section-spacing">
+  <section id="struktur-desa" class="bg-neutral-50 py-16">
+    <div class="container-site space-y-16">
+      
+      <!-- HEADER UTAMA -->
       <SectionHeading
-        title="BAGAN STRUKTUR ORGANISASI DAN TATA KERJA PEMERINTAH DESA BATURSARI KECAMATAN MRANGGEN KABUPATEN DEMAK"
+        title="Pemerintahan & Profil Desa Batursari"
+        subtitle="Bagan Struktur Organisasi, Informasi Monografi, Potensi Lokal, dan Layanan Masyarakat."
         align="center"
         class="mx-auto"
       />
-      
-      <!-- Container Gambar yang Bisa Diklik -->
-      <div 
-        id="open-structure-modal"
-        class="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-neutral-100 shadow-sm bg-white p-4 md:p-6 cursor-pointer group transition-all duration-300 hover:shadow-md hover:border-emerald-200" 
-        data-reveal
-      >
-        <div class="relative overflow-hidden rounded-xl">
-          <Image
-            src={structureImg}
-            alt="Bagan Struktur Organisasi Pemerintah Desa Batursari"
-            class="w-full h-auto object-contain rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
-            quality={95}
-          />
-          <!-- Badge overlay petunjuk klik -->
-          <div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm opacity-90 group-hover:bg-emerald-600 transition">
-            Klik untuk memperbesar
+
+      <!-- KARTU IDENTITAS MONOGRAFI DESA -->
+      <div class="max-w-5xl mx-auto bg-emerald-800 text-white p-6 md:p-8 rounded-2xl shadow-md space-y-5">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-emerald-600/60 pb-5">
+          <div>
+            <span class="text-xs uppercase font-bold tracking-widest text-emerald-200">Profil Monografi Resmi</span>
+            <h3 class="text-2xl md:text-3xl font-extrabold mt-0.5">Desa {profilBatursariData.identitas.namaDesa}</h3>
+            <p class="text-sm md:text-base text-emerald-100 font-medium mt-1">
+              Kecamatan {profilBatursariData.identitas.kecamatan}, Kabupaten {profilBatursariData.identitas.kabupaten}, Provinsi {profilBatursariData.identitas.provinsi}
+            </p>
+          </div>
+          <div class="bg-emerald-900/60 border border-emerald-500/40 px-5 py-2.5 rounded-xl text-left md:text-right shrink-0">
+            <span class="block text-xs text-emerald-300 font-medium">Tahun Pembentukan</span>
+            <span class="text-2xl md:text-3xl font-black text-white">{profilBatursariData.identitas.tahunPembentukan}</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-1 text-sm md:text-base">
+          <div>
+            <span class="block text-xs text-emerald-300 font-medium">Kode Wilayah:</span>
+            <strong class="text-white text-base md:text-lg font-bold">{profilBatursariData.identitas.kodeWilayah}</strong>
+          </div>
+          <div>
+            <span class="block text-xs text-emerald-300 font-medium">Kode Pos:</span>
+            <strong class="text-white text-base md:text-lg font-bold">{profilBatursariData.identitas.kodePos}</strong>
+          </div>
+          <div>
+            <span class="block text-xs text-emerald-300 font-medium">Cakupan Wilayah:</span>
+            <strong class="text-white text-base md:text-lg font-bold">{profilBatursariData.ringkasan.jumlahRw} RW / {profilBatursariData.ringkasan.jumlahRt} RT</strong>
+          </div>
+          <div>
+            <span class="block text-xs text-emerald-300 font-medium">Kedusunan:</span>
+            <strong class="text-white text-base md:text-lg font-bold">{profilBatursariData.ringkasan.jumlahDusun} Dusun Wilayah</strong>
           </div>
         </div>
       </div>
+
+      <!-- 1. KARTU STATISTIK RINGKAS DESA -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-5xl mx-auto">
+        <div class="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm text-center">
+          <span class="block text-3xl md:text-4xl font-extrabold text-emerald-600">{profilBatursariData.ringkasan.luas}</span>
+          <span class="text-sm md:text-base font-bold text-neutral-700 mt-1.5 block">Luas Wilayah</span>
+        </div>
+        <div class="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm text-center">
+          <span class="block text-3xl md:text-4xl font-extrabold text-emerald-600">{profilBatursariData.ringkasan.jumlahDusun} Dusun</span>
+          <span class="text-sm md:text-base font-bold text-neutral-700 mt-1.5 block">{profilBatursariData.ringkasan.jumlahRw} RW / {profilBatursariData.ringkasan.jumlahRt} RT</span>
+        </div>
+        <div class="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm text-center">
+          <span class="block text-3xl md:text-4xl font-extrabold text-emerald-600">{profilBatursariData.ringkasan.totalRumahIbadah}</span>
+          <span class="text-sm md:text-base font-bold text-neutral-700 mt-1.5 block">Rumah Ibadah</span>
+        </div>
+        <div class="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm text-center">
+          <span class="block text-3xl md:text-4xl font-extrabold text-emerald-600">{profilBatursariData.ringkasan.layananKesehatan}</span>
+          <span class="text-sm md:text-base font-bold text-neutral-700 mt-1.5 block">Fasilitas Kesehatan</span>
+        </div>
+      </div>
+
+      <!-- 2. BAGAN STRUKTUR ORGANISASI (Gambar Pop-up Modal) -->
+      <div class="max-w-5xl mx-auto space-y-4">
+        <h3 class="text-2xl md:text-3xl font-bold text-neutral-800 text-center flex items-center justify-center gap-3">
+          <i class="fas fa-sitemap text-emerald-600"></i> Bagan Struktur Organisasi & Tata Kerja
+        </h3>
+        
+        <div 
+          id="open-structure-modal"
+          class="rounded-2xl overflow-hidden border border-neutral-200 shadow-sm bg-white p-4 md:p-6 cursor-pointer group transition-all duration-300 hover:shadow-md hover:border-emerald-300" 
+          data-reveal
+        >
+          <div class="relative overflow-hidden rounded-xl">
+            <Image
+              src={structureImg}
+              alt="Bagan Struktur Organisasi Pemerintah Desa Batursari"
+              class="w-full h-auto object-contain rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
+              quality={95}
+            />
+            <div class="absolute bottom-4 right-4 bg-black/75 text-white text-sm font-semibold px-4 py-2 rounded-full backdrop-blur-sm opacity-90 group-hover:bg-emerald-600 transition">
+              <i class="fas fa-search-plus mr-1.5"></i> Klik untuk memperbesar
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. POTENSI SEJARAH & WISATA LOKAL -->
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="text-center">
+          <h3 class="text-2xl md:text-3xl font-bold text-neutral-800">Potensi Lokal & Cagar Budaya</h3>
+          <p class="text-sm md:text-base text-neutral-600 mt-1.5 font-medium">Situs bersejarah dan potensi pengembangan kawasan di Desa Batursari</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {profilBatursariData.potensiLokal.map((item) => (
+            <div class="p-6 rounded-2xl border border-neutral-200 bg-white shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 text-xl">
+                  <i class={item.ikon}></i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
+                  {item.kategori}
+                </span>
+                <h4 class="font-bold text-lg text-neutral-800 mt-3">{item.nama}</h4>
+                <p class="text-sm text-neutral-600 mt-2 leading-relaxed">{item.deskripsi}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 4. RUMAH IBADAH, DUSUN & LAYANAN ADUAN -->
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+        <!-- Info Kedusunan, Batas Wilayah & Sarana -->
+        <div class="p-6 md:p-8 rounded-2xl border border-neutral-200 bg-white shadow-sm space-y-6">
+          <h4 class="font-bold text-xl md:text-2xl text-neutral-800 flex items-center gap-2.5">
+            <i class="fas fa-map-marked-alt text-emerald-600"></i> Wilayah & Fasilitas Publik
+          </h4>
+
+          <div class="space-y-4 text-sm md:text-base text-neutral-800">
+            <!-- Informasi Dusun & RT/RW -->
+            <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200">
+              <strong class="block text-neutral-900 text-base md:text-lg font-bold mb-1.5">Informasi Kedusunan:</strong>
+              <p class="leading-relaxed text-sm md:text-base text-neutral-700">{profilBatursariData.informasiDusun.catatan}</p>
+            </div>
+
+            <!-- Batas Wilayah Desa -->
+            <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200">
+              <strong class="block text-neutral-900 text-base md:text-lg font-bold mb-2">Batas Wilayah Desa:</strong>
+              <div class="grid grid-cols-2 gap-2 text-sm md:text-base text-neutral-700">
+                <div><span class="font-bold text-neutral-900">Utara:</span> {profilBatursariData.batasWilayah.utara}</div>
+                <div><span class="font-bold text-neutral-900">Selatan:</span> {profilBatursariData.batasWilayah.selatan}</div>
+                <div><span class="font-bold text-neutral-900">Barat:</span> {profilBatursariData.batasWilayah.barat}</div>
+                <div><span class="font-bold text-neutral-900">Timur:</span> {profilBatursariData.batasWilayah.timur}</div>
+              </div>
+            </div>
+
+            <!-- Sarana Ibadah -->
+            <div class="grid grid-cols-3 gap-3 text-center pt-1">
+              <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200">
+                <span class="block font-extrabold text-2xl md:text-3xl text-emerald-800">{profilBatursariData.saranaIbadah.masjid}</span>
+                <span class="text-xs md:text-sm font-bold text-neutral-700 mt-1 block">Masjid</span>
+              </div>
+              <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200">
+                <span class="block font-extrabold text-2xl md:text-3xl text-emerald-800">{profilBatursariData.saranaIbadah.musholla}</span>
+                <span class="text-xs md:text-sm font-bold text-neutral-700 mt-1 block">Musholla</span>
+              </div>
+              <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200">
+                <span class="block font-extrabold text-2xl md:text-3xl text-emerald-800">{profilBatursariData.saranaIbadah.gereja}</span>
+                <span class="text-xs md:text-sm font-bold text-neutral-700 mt-1 block">Gereja</span>
+              </div>
+            </div>
+
+            <!-- Fasilitas Kesehatan -->
+            <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200 flex justify-between items-center text-sm md:text-base font-semibold">
+              <span class="text-neutral-800">Fasilitas Kesehatan (Puskesdes & Posyandu)</span>
+              <span class="font-bold text-neutral-900 text-base md:text-lg">{profilBatursariData.saranaKesehatan.ukbmPosyandu + profilBatursariData.saranaKesehatan.puskesdes} Titik</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layanan Aduan -->
+        <div class="p-6 md:p-8 rounded-2xl bg-neutral-900 text-white shadow-md flex flex-col justify-between space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Layanan Masyarakat</span>
+            <h4 class="font-bold text-2xl md:text-3xl mt-1.5 text-white">Layanan Pengaduan Warga</h4>
+            <p class="text-sm md:text-base text-neutral-300 mt-2.5 leading-relaxed">
+              Pengaduan tingkat dusun/desa dapat disampaikan langsung ke kantor Balai Desa Batursari. Untuk keadaan darurat dan pengaduan resmi lainnya:
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-2">
+            <a
+              href={`tel:${profilBatursariData.layananAduan.polresHotline}`}
+              class="flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-lg">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="overflow-hidden">
+                <span class="block text-xs font-medium text-neutral-400">Call Center 1x24 Jam Kapolres</span>
+                <span class="font-bold text-sm md:text-base text-white truncate block">{profilBatursariData.layananAduan.polresLabel}</span>
+              </div>
+            </a>
+
+            <a
+              href={profilBatursariData.layananAduan.laporGubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <div class="w-11 h-11 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 text-lg">
+                <i class="fas fa-globe"></i>
+              </div>
+              <div>
+                <span class="block text-xs font-medium text-neutral-400">Aduan Tingkat Provinsi</span>
+                <span class="font-bold text-sm md:text-base text-white flex items-center gap-1.5">
+                  Website LaporGub Jawa Tengah <i class="fas fa-external-link-alt text-xs"></i>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Pop-up Modal Lightbox -->
+    <!-- POP-UP LIGHTBOX MODAL UNTUK GAMBAR BAGAN -->
     <dialog 
       id="structure-modal" 
       class="p-0 rounded-2xl backdrop:bg-black/80 max-w-5xl w-[92vw] overflow-hidden bg-transparent border-0 outline-none m-auto"
     >
       <div class="relative bg-white p-3 md:p-5 rounded-2xl shadow-2xl flex flex-col items-center">
-        <!-- Tombol Close (X) -->
         <button 
           id="close-structure-modal"
           type="button"
-          class="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-neutral-900/70 text-white font-bold transition hover:bg-neutral-900 hover:scale-110"
+          class="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/70 text-white font-bold transition hover:bg-neutral-900 hover:scale-110 text-lg"
           aria-label="Tutup modal"
         >
           ✕
         </button>
         
-        <!-- Gambar Full Size di Pop-up -->
         <Image
           src={structureImg}
           alt="Bagan Struktur Organisasi Pemerintah Desa Batursari (Diperbesar)"
@@ -70,7 +253,6 @@ const isEnabled = navigation.some(
 )}
 
 <script>
-  // Script Interaktif untuk Membuka & Menutup Pop-Up Modal
   const openBtn = document.getElementById('open-structure-modal');
   const closeBtn = document.getElementById('close-structure-modal');
   const modal = document.getElementById('structure-modal') as HTMLDialogElement;
