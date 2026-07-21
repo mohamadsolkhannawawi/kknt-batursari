@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import SectionHeading from "../ui/SectionHeading.astro";
 import { navigation } from "../../data/navigation";
-import structureImg from "../../assets/images/struktur-organisasi.png";
+import structureImg from "../../assets/images/struktur-organisasi2.png";
 
 const isEnabled = navigation.some(
   (item) =>
@@ -15,19 +15,85 @@ const isEnabled = navigation.some(
   <section id="struktur-desa" class="bg-white">
     <div class="container-site section-spacing">
       <SectionHeading
-        title="Struktur Pemerintahan Desa Batursari"
-        subtitle="Perangkat desa, kelompok ternak, dan kelompok tani yang menjadi mitra & narasumber program."
+        title="BAGAN STRUKTUR ORGANISASI DAN TATA KERJA PEMERINTAH DESA BATURSARI KECAMATAN MRANGGEN KABUPATEN DEMAK"
         align="center"
         class="mx-auto"
       />
-      <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-neutral-100 shadow-sm bg-white p-4 md:p-6" data-reveal>
-        <Image
-          src={structureImg}
-          alt="Bagan Struktur Organisasi Pemerintah Desa Batursari"
-          class="w-full h-auto object-contain rounded-xl"
-          quality={95}
-        />
+      
+      <!-- Container Gambar yang Bisa Diklik -->
+      <div 
+        id="open-structure-modal"
+        class="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-neutral-100 shadow-sm bg-white p-4 md:p-6 cursor-pointer group transition-all duration-300 hover:shadow-md hover:border-emerald-200" 
+        data-reveal
+      >
+        <div class="relative overflow-hidden rounded-xl">
+          <Image
+            src={structureImg}
+            alt="Bagan Struktur Organisasi Pemerintah Desa Batursari"
+            class="w-full h-auto object-contain rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
+            quality={95}
+          />
+          <!-- Badge overlay petunjuk klik -->
+          <div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm opacity-90 group-hover:bg-emerald-600 transition">
+            Klik untuk memperbesar
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Pop-up Modal Lightbox -->
+    <dialog 
+      id="structure-modal" 
+      class="p-0 rounded-2xl backdrop:bg-black/80 max-w-5xl w-[92vw] overflow-hidden bg-transparent border-0 outline-none m-auto"
+    >
+      <div class="relative bg-white p-3 md:p-5 rounded-2xl shadow-2xl flex flex-col items-center">
+        <!-- Tombol Close (X) -->
+        <button 
+          id="close-structure-modal"
+          type="button"
+          class="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-neutral-900/70 text-white font-bold transition hover:bg-neutral-900 hover:scale-110"
+          aria-label="Tutup modal"
+        >
+          ✕
+        </button>
+        
+        <!-- Gambar Full Size di Pop-up -->
+        <Image
+          src={structureImg}
+          alt="Bagan Struktur Organisasi Pemerintah Desa Batursari (Diperbesar)"
+          class="w-full h-auto max-h-[82vh] object-contain rounded-lg"
+          quality={100}
+        />
+      </div>
+    </dialog>
   </section>
 )}
+
+<script>
+  // Script Interaktif untuk Membuka & Menutup Pop-Up Modal
+  const openBtn = document.getElementById('open-structure-modal');
+  const closeBtn = document.getElementById('close-structure-modal');
+  const modal = document.getElementById('structure-modal') as HTMLDialogElement;
+
+  if (openBtn && closeBtn && modal) {
+    openBtn.addEventListener('click', () => {
+      modal.showModal();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.close();
+    });
+
+    modal.addEventListener('click', (e) => {
+      const dialogDimensions = modal.getBoundingClientRect();
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        modal.close();
+      }
+    });
+  }
+</script>
