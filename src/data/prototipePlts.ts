@@ -12,75 +12,68 @@ export interface SpekTeknis {
 }
 
 export const pltsStatus = {
-  badge: "Rencana Prototipe",
-  title: "Prototipe PLTS Atap (PLTS A): Energi Surya untuk Fasilitas Publik",
+  badge: "Prototipe Edukasi EBT",
+  title: "Prototipe Pembangkit Listrik Tenaga Sampah (PLTSa)",
   deskripsi:
-    "Panel surya yang dipasang di atap bangunan (PLTS Atap) menyerap energi matahari dan menyimpannya ke baterai. Energi bersih ini dimanfaatkan untuk mendukung kebutuhan daya penerangan dan operasional peralatan listrik fasilitas publik secara ramah lingkungan serta efisien.",
+    "Rancangan dan peragaan prototipe Pembangkit Listrik Tenaga Sampah (PLTSa) untuk memberikan edukasi interaktif kepada siswa mengenai proses konversi sampah menjadi energi listrik terbarukan.",
   catatanNada:
-    "Ini masih tahap rencana/prototipe yang sedang dirintis tim, bukan instalasi permanen yang sudah terpasang dan terbukti berjalan di lapangan.",
+    "Program Sosial Kemasyarakatan Saintek KKN-T 141 yang diintegrasikan dengan edukasi pengelolaan sampah dan prinsip 3R di sekolah.",
 };
 
-// Data untuk komponen FlowDiagram.astro
+// Data Alur Konversi untuk FlowDiagram.astro
 export const pltsFlow = {
-  source: ["Panel Surya Atap", "Solar Charge Controller", "Baterai (Aki / Baterai Lithium)"],
+  source: ["Sampah / Limbah Organik", "Proses Konversi Termal", "Generator Listrik PLTSa"],
   pathA: {
-    label: "Siang",
-    steps: ["Pengisian Baterai", "Inverter", "Beban Operasional Siang"],
+    label: "Proses Konversi",
+    steps: ["Pemilahan Sampah", "Proses Konversi Termal", "Pembangkitan Daya"],
   },
   pathB: {
-    label: "Malam",
-    steps: ["Saklar / Sensor Otomatis", "Inverter", "Penerangan Fasilitas Publik"],
+    label: "Luaran & Edukasi",
+    steps: ["Energi Listrik Alternatif", "Demonstrasi Kebersihan & 3R"],
   },
 };
 
+// Kartu Manfaat Poin Utama
 export const pltsManfaat: ManfaatPlts[] = [
   {
-    id: "hemat-energi",
-    title: "Efisiensi Energi & Biaya",
+    id: "solusi-sampah",
+    title: "Pengelolaan Sampah",
     description:
-      "Memanfaatkan sumber energi terbarukan gratis dari sinar matahari untuk mengurangi konsumsi listrik jaringan PLN pada fasilitas publik.",
+      "Mengenalkan pemanfaatan sampah agar tidak menumpuk dan mencemari lingkungan sekolah.",
+    iconSvgPath:
+      "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16",
+  },
+  {
+    id: "energi-terbarukan",
+    title: "Konversi Energi Listrik",
+    description:
+      "Demonstrasi langsung cara kerja perubahan potensi limbah menjadi sumber energi listrik terbarukan.",
     iconSvgPath: "M13 2 3 14h7l-1 8 11-14h-7l1-6Z",
   },
   {
-    id: "ebt-ramah-lingkungan",
-    title: "Energi Bersih Terbarukan",
+    id: "edukasi-siswa",
+    title: "Edukasi Interaktif Siswa",
     description:
-      "Mendukung pengurangan emisi karbon melalui pemanfaatan ruang atap bangunan yang optimal sebagai sumber energi hijau mandiri.",
-    iconSvgPath: "M12 2v6M12 22c4-2 6-6 6-10a6 6 0 1 0-12 0c0 4 2 8 6 10Z",
-  },
-  {
-    id: "penerangan-mandiri",
-    title: "Keandalan Sistem Penerangan",
-    description:
-      "Menyediakan cadangan daya listrik untuk penerangan area publik sehingga fasilitas tetap terang dan aman digunakan pada malam hari.",
+      "Menumbuhkan ketertarikan siswa terhadap inovasi Energi Baru Terbarukan (EBT) sejak dini.",
     iconSvgPath:
       "M9 18h6M10 22h4M15 8a3 3 0 1 1-6 0c0-2 1.5-3 1.5-5h3c0 2 1.5 3 1.5 5Z",
   },
 ];
 
-// Spesifikasi teknis ringkas — ditandai TODO sampai data prototipe final
+// Ringkasan Spesifikasi & Informasi Program (Sesuai LRK)
 export const pltsSpesifikasi: SpekTeknis[] = [
-  { id: "kapasitas-panel", label: "Kapasitas Panel Surya (Wp)", value: "TODO: 100 Wp" },
-  { id: "kapasitas-baterai", label: "Kapasitas Baterai (Ah)", value: "TODO: 50 Ah" },
-  { id: "daya-beban", label: "Daya Beban Penerangan (Watt)", value: "TODO: 20 Watt" },
-  { id: "kapasitas-inverter", label: "Kapasitas Inverter (Watt)", value: "TODO: 300 Watt" },
-  {
-    id: "jam-siang",
-    label: "Estimasi Operasional / Pengisian (Siang)",
-    value: "TODO: ±6-8 Jam",
-  },
-  {
-    id: "jam-malam",
-    label: "Estimasi Jam Operasional Penerangan (Malam)",
-    value: "TODO: ±12 Jam",
-  },
+  { id: "kategori", label: "Kategori Program", value: "Sosial Kemasyarakatan Saintek" },
+  { id: "sasaran", label: "Kelompok Sasaran", value: "Siswa & Warga Sekolah" },
+  { id: "pelaksana", label: "Tim Pelaksana", value: "Syahmi Al Qalby & Bagas Ariyanto" },
+  { id: "metode", label: "Metode Pelaksanaan", value: "Demonstrasi & Peragaan Alat" },
+  { id: "luaran", label: "Bentuk Luaran", value: "Prototipe Alat & Edukasi EBT" },
+  { id: "fokus", label: "Fokus Inovasi", value: "Konversi Sampah ke Energi Listrik" },
 ];
 
 export const pltsCatatanMekanisme =
-  "Sistem PLTS Atap bekerja secara otomatis dengan menyalurkan energi surya untuk mengisi baterai di siang hari dan mendistribusikannya melalui inverter/relai otomatis ke lampu penerangan atau beban listrik publik di malam hari.";
+  "Demonstrasi prototipe PLTSa ini dirancang sebagai media pembelajaran praktis guna meningkatkan pemahaman siswa mengenai pengelolaan lingkungan dan energi bersih.";
 
-// Placeholder gambar/diagram teknis PLTS Atap
 export const pltsVisual = {
-  src: "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  alt: "Instalasi Panel Surya Atap (PLTS A) untuk fasilitas umum",
+  src: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  alt: "Dokumentasi Peragaan Prototipe Pembangkit Listrik Tenaga Sampah (PLTSa)",
 };
