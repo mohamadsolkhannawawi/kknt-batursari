@@ -1,60 +1,55 @@
-export interface AuditEntry {
+export interface AuditHasilDetail {
   id: string;
-  lokasiKategori: string;
-  estimasiKonsumsi: string;
-  rekomendasiEfisiensi: string;
+  areaPemeriksaan: string;
+  peralatanUtama: string;
+  kondisiLampu: string;
+  potensiPenghematan: string;
+  rekomendasi: string;
 }
 
-export interface AuditStat {
-  id: string;
-  label: string;
-  value: string;
-}
+export const lokasiAudit = {
+  namaFasilitas: "SMP Negeri 3 Mranggen",
+  lokasi: "Desa Batursari, Kec. Mranggen",
+  timPelaksana: "Tim KKN-T ESDM Undip",
+  deskripsi:
+    "Kegiatan audit dan konservasi energi yang berfokus pada fasilitas sekolah di SMP Negeri 3 Mranggen Desa Batursari. Penilaian mencakup pengukuran efisiensi penggunaan beban listrik, kelayakan tingkat pencahayaan (Lux), serta analisis potensi konservasi energi untuk mendukung efisiensi operasional sekolah.",
+};
 
-export const auditRumahTangga: AuditEntry[] = [
+// Data Tabel Pengukuran (Siap Diisi Angka Final)
+export const hasilAuditList: AuditHasilDetail[] = [
   {
-    id: "rt-1",
-    lokasiKategori: "Rumah Tangga Krajan (Contoh)",
-    estimasiKonsumsi: "±90 kWh/bulan",
-    rekomendasiEfisiensi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam risus lectus.",
+    id: "audit-1",
+    areaPemeriksaan: "Ruang Kelas & Lab",
+    peralatanUtama: "Lampu Penerangan & Kipas Angin / AC",
+    kondisiLampu: "Perlu Optimalisasi LED",
+    potensiPenghematan: "Efisien 20-25%",
+    rekomendasi:
+      "Pengantian ke lampu LED hemat energi dan pemanfaatan pencahayaan alami jendela di siang hari.",
   },
   {
-    id: "rt-2",
-    lokasiKategori: "Fasilitas Umum (Masjid)",
-    estimasiKonsumsi: "±150 kWh/bulan",
-    rekomendasiEfisiensi: "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.",
-  },
-];
-
-export const auditUmkm: AuditEntry[] = [
-  {
-    id: "umkm-1",
-    lokasiKategori: "Industri Tahu (Contoh)",
-    estimasiKonsumsi: "±400 kWh/bulan",
-    rekomendasiEfisiensi: "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.",
+    id: "audit-2",
+    areaPemeriksaan: "Ruang Guru & Tata Usaha",
+    peralatanUtama: "Komputer, Printer & Perangkat Elektronik",
+    kondisiLampu: "Cukup Memadai",
+    potensiPenghematan: "Efisien 10-15%",
+    rekomendasi:
+      "Penerapan SOP pemutusan daya perangkat komputer/printer saat jam pulang kantor/istirahat.",
   },
   {
-    id: "umkm-2",
-    lokasiKategori: "Warung Kelontong (Contoh)",
-    estimasiKonsumsi: "±120 kWh/bulan",
-    rekomendasiEfisiensi: "Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit.",
+    id: "audit-3",
+    areaPemeriksaan: "Fasilitas Umum & Koridor Sekolah",
+    peralatanUtama: "Lampu Penerangan Luar & Selasar",
+    kondisiLampu: "Pengoperasian Lampu Manual",
+    potensiPenghematan: "Efisien 15%",
+    rekomendasi:
+      "Pemasangan sensor cahaya (photocell) atau timer otomatis untuk pencahayaan luar area sekolah.",
   },
-];
-
-export const statRumahTangga: AuditStat[] = [
-  { id: "rt-total", label: "Rumah Tangga Diaudit", value: "25+" },
-  { id: "rt-rata2", label: "Rata-rata Konsumsi/Bulan", value: "±85 kWh" },
-];
-
-export const statUmkm: AuditStat[] = [
-  { id: "umkm-total", label: "UMKM Diaudit", value: "5" },
-  { id: "umkm-rata2", label: "Rata-rata Konsumsi/Bulan", value: "±250 kWh" },
 ];
 
 export const rekomendasiUmum: string[] = [
-  "Matikan lampu dan peralatan elektronik saat tidak digunakan.",
-  "Gunakan lampu LED yang lebih hemat listrik dibanding lampu pijar biasa.",
-  "Cabut charger dari stopkontak setelah selesai digunakan.",
-  "Manfaatkan cahaya matahari alami di siang hari untuk mengurangi pemakaian lampu.",
-  "Rawat peralatan listrik secara berkala agar tetap bekerja efisien.",
+  "Penggunaan lampu LED secara menyeluruh di setiap ruang kelas dan fasilitas pendukung.",
+  "Pemanfaatan pencahayaan alami (sinar matahari) secara maksimal pada jam kegiatan belajar mengajar.",
+  "Edukasi budaya hemat energi dan penerapan SOP pematikan listrik saat ruangan tidak digunakan.",
+  "Penataan skema pencahayaan dan ventilasi udara untuk mengurangi beban penggunaan kipas/pendingin ruangan.",
+  "Pemasangan stiker imbauan konservasi energi di setiap titik saklar listrik sekolah.",
 ];
