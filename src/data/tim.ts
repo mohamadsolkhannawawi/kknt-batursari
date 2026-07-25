@@ -45,7 +45,7 @@ export const timList: AnggotaTim[] = [
     multiGroup: "multi-1",
     output: "Pemetaan rekomendasi potensi biogas dan pengembangan energi biogas dari limbah peternakan",
     isPengembangWebsite: false,
-    foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
+    foto: "/images/Dafa.jpeg",
   },
   {
     id: "iqbal",
