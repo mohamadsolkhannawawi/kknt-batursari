@@ -5,6 +5,7 @@ import LogoStrip from "../components/layout/LogoStrip.astro";
 import StrukturDesa from "../components/sections/StrukturDesa.astro";
 import TentangProgram from "../components/sections/TentangProgram.astro";
 import PotensiBiogas from "../components/sections/PotensiBiogas.astro";
+import MonitoringBiogas from "../components/sections/MonitoringBiogas.astro";
 import AuditEnergi from "../components/sections/AuditEnergi.astro";
 import SkemaBiogas from "../components/sections/SkemaBiogas.astro";
 import PrototipePlts from "../components/sections/PrototipePlts.astro";
@@ -19,13 +20,17 @@ import PengembangWebsite from "../components/sections/PengembangWebsite.astro";
   <Hero />
   <LogoStrip />
   
-  <!-- Profil & Struktur Desa Batursari diletakkan di sini -->
+  <!-- Profil & Struktur Desa Batursari -->
   <StrukturDesa />
 
   <TentangProgram />
+  
+  <!-- Sub-Program Biogas Ndaleman -->
   <PotensiBiogas />
-  <AuditEnergi />
+  <MonitoringBiogas />
   <SkemaBiogas />
+
+  <AuditEnergi />
   <PrototipePlts />
   <DosenPembimbing />
   <TimPengembang />

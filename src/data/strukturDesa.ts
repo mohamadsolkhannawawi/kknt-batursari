@@ -166,7 +166,7 @@ export const profilBatursariData = {
   },
   informasiDusun: {
     total: 5,
-    catatan: "Terdiri dari 5 wilayah kedusunan (40 RW & 332 RT). Dusun Karang Jati dan Karang Malang dipimpin oleh 1 Kepala Dusun meskipun wilayahnya terpisah secara geografis.",
+    catatan: "Terdiri dari 5 wilayah kedusunan (40 RW & 332 RT).",
   },
   batasWilayah: {
     utara: "Desa Bandungrejo",
