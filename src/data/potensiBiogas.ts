@@ -1,43 +1,14 @@
-export interface TitikPotensiBiogas {
-  id: string;
-  lokasi: string;
-  jenisTernak: string;
-  estimasiLimbah: string;
-  potensiGas: string;
-  keteranganLahan: string;
-}
-
-export const potensiBiogasList: TitikPotensiBiogas[] = [
-  {
-    id: "titik-1",
-    lokasi: "Dusun Krajan (Contoh)",
-    jenisTernak: "Sapi & Kambing",
-    estimasiLimbah: "150 kg/hari",
-    potensiGas: "±5.5 m³/hari",
-    keteranganLahan: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: "titik-2",
-    lokasi: "Dusun Pandean (Contoh)",
-    jenisTernak: "Ayam Petelur",
-    estimasiLimbah: "80 kg/hari",
-    potensiGas: "±3.2 m³/hari",
-    keteranganLahan: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    id: "titik-3",
-    lokasi: "Dusun Ngablak (Contoh)",
-    jenisTernak: "Kambing Etawa",
-    estimasiLimbah: "100 kg/hari",
-    potensiGas: "±4.0 m³/hari",
-    keteranganLahan: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-  },
-];
-
 export const petaPotensi = {
   src: "https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  alt: "Peta Potensi Biogas Desa",
+  alt: "Peta Potensi & Persebaran Biogas Desa Batursari",
 };
 
 export const deskripsiPotensi =
-  "Berdasarkan hasil survei lapangan dan pemetaan sebaran hewan ternak oleh Tim KKN-T ESDM 141 Undip, Desa Batursari memiliki potensi besar dalam pengembangan energi terbarukan berbasis biogas. Melalui analisis estimasi limbah kotoran ternak harian, wilayah ini diproyeksikan mampu menghasilkan suplai gas alternatif yang berkelanjutan guna mendukung kemandirian energi skala rumah tangga bagi masyarakat desa.";
+  "Pemetaan wilayah potensi energi terbarukan berbasis kotoran ternak serta perancangan desain instalasi biogas skala rumah tangga oleh Tim KKN-T ESDM Undip di Desa Batursari.";
+
+export const penjelasanPeta = [
+  "Berdasarkan survei geologi dan analisis sebaran hewan ternak di Desa Batursari, wilayah ini memiliki ketersediaan limbah kotoran yang sangat potensial untuk dikembangkan menjadi sumber energi biogas berkelanjutan. Hasil kajian menunjukkan bahwa titik lokasi kandang komunal memiliki aksesibilitas serta kontur tanah yang stabil untuk penempatan unit digester.",
+  "Melalui program ini, dirancang pula skema instalasi dan desain teknis digester skala rumah tangga yang aman, efisien, dan mudah dirawat oleh warga local. Integrasi antara pemetaan wilayah potensi dan desain instalasi ini diharapkan dapat menjadi panduan pengembangan EBT mandiri bagi Desa Batursari.",
+];
+
+export const linkReportase = "#"; // TODO: Tempelkan link artikel reportase jika sudah rilis
