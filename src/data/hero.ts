@@ -8,7 +8,7 @@ export interface HeroContent {
 export const hero: HeroContent = {
   headline: "Wujudkan Desa Batursari Mandiri Energi Melalui Biogas",
   subheadline:
-    "Eksplorasi hasil pemetaan potensi biogas, audit konsumsi energi masyarakat, serta rencana implementasi prototipe PLTS kolam lele oleh Tim KKN-Tematik ESDM KKNT-141 Universitas Diponegoro untuk mendorong kemandirian energi dan keberlanjutan lingkungan di Desa Batursari.",
+    "Langkah nyata Tim KKN-Tematik ESDM KKNT-141 Universitas Diponegoro untuk mewujudkan Desa Batursari Mandiri Energi melalui pemetaan potensi biogas limbah peternakan, audit energi sekolah, pembentukan Tim Hemat Energi, serta digitalisasi data potensi EBT desa",
   ctaPrimary: { label: "Mulai Eksplorasi", href: "#potensi" },
   ctaSecondary: { label: "Pelajari Lebih Lanjut >", href: "#tentang" },
 };

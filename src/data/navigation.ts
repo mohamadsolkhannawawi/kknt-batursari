@@ -14,14 +14,14 @@ export const navigation: NavItem[] = [
       { label: "Tentang Program", href: "#tentang", enabled: true },
       { label: "Potensi Biogas", href: "#potensi", enabled: true },
       { label: "Audit Energi", href: "#audit", enabled: true },
-      { label: "PLTS Kolam Lele", href: "#plts", enabled: true },
+      { label: "Prototipe PLTSa", href: "#pltsa", enabled: true },
     ]
   },
   { 
     label: "Edukasi", 
     enabled: true,
     children: [
-      { label: "Bagaimana Biogas Bekerja", href: "#skema", enabled: true }
+      { label: "Edukasi & Pembuatan POC", href: "#poc", enabled: true },
     ]
   },
   { 
