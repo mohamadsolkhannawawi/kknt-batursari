@@ -24,7 +24,7 @@ export const siteConfig: SiteConfig = {
   locale: "id_ID",
   contact: {
     lokasi:
-      "Kelurahan Batursari, Kecamatan Mranggen, Kabupaten Demak, Jawa Tengah, 59567",
+      "Desa Batursari, Kecamatan Mranggen, Kabupaten Demak, Jawa Tengah, 59567",
     email: "kkntbatursari.141@gmail.com",
     whatsapp: "6281234567890",
     instagram: "kknt141.batursari",
