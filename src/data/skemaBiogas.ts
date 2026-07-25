@@ -1,44 +1,53 @@
-export interface LangkahBiogas {
+export interface LangkahPOC {
   id: string;
-  title: string;
-  description: string;
-  iconSvgPath: string;
+  nomor: string;
+  judul: string;
+  deskripsi: string;
 }
 
-export const skemaBiogasSteps: LangkahBiogas[] = [
+export const langkahPocList: LangkahPOC[] = [
   {
-    id: "limbah-ternak",
-    title: "Limbah Ternak",
-    description:
-      "Kotoran sapi, kambing, atau unggas dikumpulkan dari kandang warga.",
-    iconSvgPath:
-      "M4 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM16 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM4 14v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3",
+    id: "step-1",
+    nomor: "01",
+    judul: "Pengumpulan Bahan Baku",
+    deskripsi:
+      "Mengumpulkan limbah peternakan, bioaktivator, dan sumber karbon sebagai bahan utama POC.",
   },
   {
-    id: "digester",
-    title: "Digester Biogas",
-    description:
-      "Limbah difermentasi tanpa oksigen di dalam tangki digester tertutup.",
-    iconSvgPath: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM12 6v6l4 2",
+    id: "step-2",
+    nomor: "02",
+    judul: "Formulasi & Fermentasi",
+    deskripsi:
+      "Merancang komposisi serta mengontrol kondisi fermentasi bakteri pengurai.",
   },
   {
-    id: "gas-metana",
-    title: "Gas Metana",
-    description:
-      "Proses fermentasi menghasilkan gas metana yang bisa langsung dialirkan.",
-    iconSvgPath: "M12 2c-2 4-6 6-6 11a6 6 0 0 0 12 0c0-5-4-7-6-11Z",
+    id: "step-3",
+    nomor: "03",
+    judul: "Penyaringan & Modul 3R",
+    deskripsi:
+      "Penyaringan pupuk cair serta penyusunan panduan praktis dan infografis pembuatan POC.",
   },
   {
-    id: "energi-rumah-tangga",
-    title: "Energi Rumah Tangga",
-    description:
-      "Gas disalurkan ke kompor rumah warga sebagai pengganti LPG/kayu bakar.",
-    iconSvgPath: "M3 12h18M12 3v18",
+    id: "step-4",
+    nomor: "04",
+    judul: "Pemanfaatan Sektor Pertanian",
+    deskripsi:
+      "Implementasi prinsip Recycle (3R) untuk meningkatkan kesuburan tanah dan tanaman.",
   },
 ];
 
-// Placeholder visual skema 2D/3D dari tim Arsitektur (Multi 2, Output 2.3)
-export const skemaBiogasVisual = {
-  src: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  alt: "Skema instalasi biogas sederhana untuk pedesaan",
+export const pocSummary = {
+  title: "Edukasi & Pembuatan Pupuk Organik Cair (POC)",
+  deskripsi:
+    "Program Sosial Kemasyarakatan dalam mengolah limbah peternakan dengan prinsip 3R (Recycle) menjadi Pupuk Organik Cair guna mendukung sektor pertanian dan lingkungan Desa Batursari.",
 };
+
+export const dokumentasiPoc = {
+  src: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  alt: "Dokumentasi Pelaksanaan Program dan Hasil Produk POC Desa Batursari",
+};
+
+export const penjelasanKegiatanPoc = [
+  "Program Sosial Kemasyarakatan ini dilaksanakan oleh Tim KKN-T Undip untuk mengedukasi masyarakat mengenai pemanfaatan limbah peternakan sebagai bahan baku Pupuk Organik Cair (POC). Kegiatan mencakup perancangan formula bahan, pengontrolan fermentasi, hingga penyusunan modul panduan praktis 3R.",
+  "Melalui pendekatan edukatif yang mudah dipahami, warga diajak untuk menerapkan prinsip Recycle dalam mengolah limbah organik, sehingga mampu menghasilkan pupuk ramah lingkungan yang bermanfaat langsung bagi sektor pertanian desa.",
+];

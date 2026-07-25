@@ -1,31 +1,73 @@
 ---
-import Stepper from "../ui/Stepper.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
-import { skemaBiogasSteps, skemaBiogasVisual } from "../../data/skemaBiogas";
+import {
+  langkahPocList,
+  pocSummary,
+  dokumentasiPoc,
+  penjelasanKegiatanPoc,
+} from "../../data/skemaBiogas";
 ---
 
-<section id="skema" class="bg-white">
-  <div class="container-site section-spacing">
+<section id="poc" class="bg-white py-16 md:py-20 border-t border-neutral-100">
+  <div class="container-site max-w-6xl mx-auto px-4">
+    <!-- HEADER SEKSI -->
     <SectionHeading
-      title="Bagaimana Biogas Bekerja?"
-      subtitle="Empat langkah sederhana mengubah limbah ternak menjadi energi yang bisa langsung dipakai di rumah."
-      align="center"
-      class="mx-auto"
+      eyebrow="Program Sosial Kemasyarakatan"
+      title={pocSummary.title}
+      subtitle={pocSummary.deskripsi}
     />
 
-    <Stepper steps={skemaBiogasSteps} class="mb-12" />
+    <!-- 1. DOKUMENTASI KEGIATAN & PENJELASAN PELAKSANAAN (DI ATAS) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 mt-10 mb-8" data-reveal>
+      <!-- Foto Hasil / Pas Kegiatan POC -->
+      <div class="lg:col-span-5 rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+        <img
+          src={dokumentasiPoc.src}
+          alt={dokumentasiPoc.alt}
+          width="600"
+          height="400"
+          loading="lazy"
+          class="w-full h-64 lg:h-full object-cover"
+        />
+      </div>
 
-    <!-- Placeholder visual skema 2D/3D -->
-    <!-- TODO: ganti dengan aset visual dari Output 2.3 -->
-    <div class="rounded-xl overflow-hidden border border-neutral-100 max-w-3xl mx-auto" data-reveal>
-      <img
-        src={skemaBiogasVisual.src}
-        alt={skemaBiogasVisual.alt}
-        width="800"
-        height="500"
-        loading="lazy"
-        class="w-full h-auto"
-      />
+      <!-- Paragraf Penjelasan Kegiatan -->
+      <div class="lg:col-span-7 space-y-4">
+        <h3 class="text-lg font-bold text-primary-900">
+          Pelaksanaan Program & Edukasi Pemanfaatan
+        </h3>
+
+        {penjelasanKegiatanPoc.map((paragraf) => (
+          <p class="text-sm md:text-base text-neutral-700 leading-relaxed">
+            {paragraf}
+          </p>
+        ))}
+      </div>
     </div>
+
+    <!-- 2. LANGKAH-LANGKAH PEMBUATAN POC (DI BAWAH) -->
+    <div class="space-y-4" data-reveal>
+      <h3 class="text-base font-bold text-primary-900 px-1">
+        Tahapan & Formulasi Pembuatan POC
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {langkahPocList.map((item) => (
+          <div class="p-6 bg-neutral-50 rounded-2xl border border-neutral-200/80 hover:border-primary-200 transition-all flex flex-col justify-between">
+            <div>
+              <span class="text-2xl font-extrabold text-primary-700/40 block mb-2">
+                {item.nomor}
+              </span>
+              <h4 class="text-base font-bold text-primary-900 mb-2">
+                {item.judul}
+              </h4>
+              <p class="text-xs text-neutral-600 leading-relaxed">
+                {item.deskripsi}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
   </div>
 </section>
