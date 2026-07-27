@@ -24,6 +24,7 @@ export const navigation: NavItem[] = [
     label: "Edukasi", 
     enabled: true,
     children: [
+      { label: "Monograf Biogas", href: "#monograf", enabled: true },
       { label: "Edukasi & Pembuatan POC", href: "#poc", enabled: true },
     ]
   },
