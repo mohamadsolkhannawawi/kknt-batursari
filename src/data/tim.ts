@@ -120,7 +120,7 @@ export const timList: AnggotaTim[] = [
     prodi: "Informatika S1",
     fakultas: "Sains dan Matematika, UNDIP",
     multiGroup: "multi-1",
-    output: "Konten & Panduan Penggunaan",
+    output: "Manajemen Konten & Integrasi Tampilan Website",
     isPengembangWebsite: true,
     foto: "/images/Nadia.png",
   },

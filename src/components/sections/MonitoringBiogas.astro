@@ -7,7 +7,7 @@ const sharepointUrl = "https://undipmail-my.sharepoint.com/:x:/g/personal/muhard
 const fotoDokumentasi = {
   src: "/images/biogasmonitoring.jpeg", 
   alt: "Dokumentasi Pemantauan Digester Biogas Desa Batursari",
-  caption: "Dokumentasi inlet biogas di lokasi kandang Desa Batursari"
+  caption: "Dokumentasi inlet biogas di lokasi kandang Desa Batursari."
 };
 ---
 
@@ -20,64 +20,69 @@ const fotoDokumentasi = {
       subtitle="Kegiatan pemantauan berkala pengisian digester di lokasi kandang serta pendampingan pemanfaatan kompor biogas pada 4 Rumah Tangga penerima manfaat di Desa Batursari."
     />
 
-    <!-- WADAH DUA KOLOM (KIRI: GAMBAR, KANAN: PENJELASAN) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch" data-reveal>
-      
-      <!-- KOLOM KIRI: FOTO DOKUMENTASI PORTRAIT -->
-      <div class="lg:col-span-5 flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200/80 bg-neutral-50 p-2 shadow-sm">
-        <div class="w-full flex-1 flex items-center justify-center overflow-hidden rounded-xl bg-neutral-900/5">
-          <img
-            src={fotoDokumentasi.src}
-            alt={fotoDokumentasi.alt}
-            loading="lazy"
-            class="w-full h-auto max-h-[520px] object-contain mx-auto rounded-lg"
-          />
-        </div>
-        <div class="p-3 bg-white rounded-xl mt-2 border border-neutral-100 text-center">
-          <p class="text-xs md:text-sm text-neutral-600 font-medium">
-            📸 {fotoDokumentasi.caption}
-          </p>
-        </div>
-      </div>
-
-      <!-- KOLOM KANAN: PENJELASAN & DIRECT LINK SHAREPOINT -->
-      <div class="lg:col-span-7 bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 flex flex-col justify-between space-y-6">
-        <!-- PARAGRAF NARASI -->
-        <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
-          <h3 class="text-lg font-bold text-primary-900">
-            Detail Monitoring & Pendampingan
-          </h3>
-          <p>
-            Pelaksanaan pendampingan dan pemantauan pengoperasian biogas di Desa Batursari berlangsung mulai tanggal <strong class="text-neutral-900 font-semibold">24 Juli hingga 6 Agustus 2026</strong>. Pemantauan ini mencakup pengawasan rutin proses pengisian digester di lokasi kandang komunal desa serta evaluasi berkala terhadap saluran dan efisiensi nyala api kompor biogas.
-          </p>
-          <p>
-            Program pendampingan ini difokuskan pada <strong class="text-neutral-900 font-semibold">4 Rumah Tangga Penerima Manfaat</strong> (Ibu Watik, Ibu Juwariyah, Bapak Faidul Hakim, dan Siti Anisah) guna memastikan keberlanjutan pemanfaatan kompor biogas harian untuk kebutuhan memasak secara aman dan optimal.
-          </p>
+    <!-- WADAH UTAMA 2 KOLOM (KIRI: FOTO+CAPTION CARD, KANAN: PENJELASAN+CTA) -->
+    <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 shadow-sm" data-reveal>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- KOLOM KIRI: CARD GAMBAR & CAPTION (PRESISI SESUAI REFERENSI) -->
+        <div class="lg:col-span-5 flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-200/80 bg-white p-2 shadow-sm">
+          <!-- AREA GAMBAR DENGAN BACKGROUND SOFT -->
+          <div class="w-full flex-1 flex items-center justify-center overflow-hidden rounded-lg bg-neutral-100/80 p-2">
+            <img
+              src={fotoDokumentasi.src}
+              alt={fotoDokumentasi.alt}
+              loading="lazy"
+              class="w-full h-auto max-h-[350px] object-cover mx-auto rounded-md"
+            />
+          </div>
+          <!-- KOTAK CAPTION PUTIH TERPISAH DI BAWAH GAMBAR -->
+          <div class="p-3 bg-white rounded-lg mt-2 border border-neutral-100 text-center">
+            <p class="text-xs md:text-sm text-neutral-600 font-medium leading-relaxed">
+              {fotoDokumentasi.caption}
+            </p>
+          </div>
         </div>
 
-        <!-- TOMBOL DIRECT LINK SHAREPOINT -->
-        <div class="pt-6 border-t border-neutral-200/60 space-y-3">
-          <div class="flex items-start gap-2 text-xs md:text-sm text-neutral-600 font-medium">
-            <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span>Akses dokumen rekapitulasi data pendampingan selengkapnya melalui spreadsheet online:</span>
+        <!-- KOLOM KANAN: PENJELASAN & DIRECT LINK SHAREPOINT -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <!-- PARAGRAF NARASI -->
+          <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+            <h3 class="text-lg font-bold text-primary-900">
+              Detail Monitoring & Pendampingan
+            </h3>
+            <p>
+              Pelaksanaan pendampingan dan pemantauan pengoperasian biogas di Desa Batursari berlangsung mulai tanggal <strong class="text-neutral-900 font-semibold">24 Juli hingga 6 Agustus 2026</strong>. Pemantauan ini mencakup pengawasan rutin proses pengisian digester di lokasi kandang komunal desa serta evaluasi berkala terhadap saluran dan efisiensi nyala api kompor biogas.
+            </p>
+            <p>
+              Program pendampingan ini difokuskan pada <strong class="text-neutral-900 font-semibold">4 Rumah Tangga Penerima Manfaat</strong> (Ibu Watik, Ibu Juwariyah, Bapak Faidul Hakim, dan Siti Anisah) guna memastikan keberlanjutan pemanfaatan kompor biogas harian untuk kebutuhan memasak secara aman dan optimal.
+            </p>
           </div>
 
-          <a
-            href={sharepointUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex w-full sm:w-auto items-center justify-center gap-2 text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800 px-5 py-3 rounded-xl shadow-sm transition-all duration-200 cursor-pointer"
-          >
-            <span>Buka Data Pendampingan (Excel)</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        </div>
-      </div>
+          <!-- BOTTOM CTA LINK SHAREPOINT -->
+          <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-600 font-medium">
+              <svg class="w-5 h-5 text-primary-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+              </svg>
+              <span>Ingin melihat rekapitulasi data pendampingan lengkap?</span>
+            </div>
 
+            <a
+              href={sharepointUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-primary-800 hover:text-primary-950 bg-primary-100/80 hover:bg-primary-200/80 px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer shrink-0"
+            >
+              <span>Buka Data Pendampingan (Excel)</span>
+              <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </div>
 </section>

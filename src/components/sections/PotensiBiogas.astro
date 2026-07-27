@@ -18,27 +18,35 @@ import {
     />
 
     <!-- PETA HASIL SURVEI & PEMETAAN -->
-    <div class="rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm mb-8 bg-neutral-50 p-2 md:p-4 relative" data-reveal>
-      <img
-        src={petaPotensi.src}
-        alt={petaPotensi.alt}
-        width="1000"
-        height="1400"
-        loading="lazy"
-        class="w-full h-auto object-contain mx-auto max-h-[850px] bg-white rounded-xl shadow-inner cursor-pointer"
-        id="triggerMapImg"
-      />
-      <!-- TOMBOL POPUP MODAL -->
-      <div class="mt-3 flex justify-end px-2">
+    <div 
+      class="group relative rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm mb-8 bg-neutral-50 p-2 md:p-4 cursor-pointer" 
+      id="mapContainer"
+      data-reveal
+    >
+      <!-- WADAH GAMBAR DENGAN OVERFLOW HIDDEN BIAR ZOOM TIDAK OFF-BOUNDS -->
+      <div class="overflow-hidden rounded-xl bg-white shadow-inner">
+        <img
+          src={petaPotensi.src}
+          alt={petaPotensi.alt}
+          width="1000"
+          height="1400"
+          loading="lazy"
+          class="w-full h-auto object-contain mx-auto max-h-[850px] bg-white transition-transform duration-500 ease-out group-hover:scale-105"
+          id="triggerMapImg"
+        />
+      </div>
+
+      <!-- TOMBOL PERBESAR FLOATING: AWALNYA PUTIH/ABU, PAS HOVER JADI HIJAU -->
+      <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-10">
         <button
           type="button"
           id="openMapModal"
-          class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 hover:text-primary-800 bg-white border border-neutral-300 hover:border-primary-400 px-3 py-2 rounded-xl shadow-sm transition-all cursor-pointer"
+          class="inline-flex items-center gap-2 text-xs md:text-sm font-semibold text-neutral-700 bg-white border border-neutral-300 px-4 py-2.5 rounded-full shadow-md transition-all duration-300 cursor-pointer group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 group-hover:shadow-xl group-hover:scale-105"
         >
-          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" class="w-4 h-4 text-neutral-600 transition-colors duration-300 group-hover:text-white group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="2.2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
           </svg>
-          <span>Perbesar Peta</span>
+          <span>Klik untuk memperbesar</span>
         </button>
       </div>
     </div>
@@ -57,14 +65,18 @@ import {
 
       <!-- CTA LINK REPORTASE -->
       <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
-        <span class="text-xs text-neutral-500 font-medium">
-          📄 Ingin membaca pembahasan lengkap program ini?
-        </span>
+        <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-600 font-medium">
+          <svg class="w-5 h-5 text-primary-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+          </svg>
+          <span>Ingin membaca pembahasan lengkap program ini?</span>
+        </div>
+
         <a
           href={linkReportase}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm font-semibold text-primary-800 hover:text-primary-950 bg-primary-100/80 hover:bg-primary-200/80 px-4 py-2 rounded-xl transition-all"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-primary-800 hover:text-primary-950 bg-primary-100/80 hover:bg-primary-200/80 px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer shrink-0"
         >
           <span>Baca Artikel Reportase Lengkap</span>
           <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
@@ -76,12 +88,11 @@ import {
   </div>
 </section>
 
-<!-- LIGHTBOX MODAL (CLEAN & MAXIMUM SIZE WITHOUT WHITE BOX) -->
+<!-- LIGHTBOX MODAL -->
 <div
   id="mapModal"
   class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300"
 >
-  <!-- TOMBOL SILANG FLOATING DI POJOK KANAN ATAS -->
   <button
     type="button"
     id="closeMapModal"
@@ -93,7 +104,6 @@ import {
     </svg>
   </button>
 
-  <!-- WADAH GAMBAR LEGA TANPA BORDER PUTIH -->
   <div class="relative w-full h-full max-w-6xl max-h-[92vh] flex items-center justify-center overflow-auto p-2">
     <img
       src={petaPotensi.src}
@@ -105,33 +115,34 @@ import {
 
 <!-- SCRIPT UNTUK BUKA/TUTUP MODAL -->
 <script>
+  const mapContainer = document.getElementById("mapContainer");
   const openBtn = document.getElementById("openMapModal");
-  const triggerImg = document.getElementById("triggerMapImg");
   const closeBtn = document.getElementById("closeMapModal");
   const modal = document.getElementById("mapModal");
 
   function openModal() {
     modal?.classList.remove("hidden");
-    document.body.style.overflow = "hidden"; // Cegah scroll latar belakang
+    document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
     modal?.classList.add("hidden");
-    document.body.style.overflow = ""; // Kembalikan scroll
+    document.body.style.overflow = "";
   }
 
-  openBtn?.addEventListener("click", openModal);
-  triggerImg?.addEventListener("click", openModal);
+  mapContainer?.addEventListener("click", openModal);
+  openBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openModal();
+  });
   closeBtn?.addEventListener("click", closeModal);
 
-  // Klik area hitam di luar gambar untuk menutup modal
   modal?.addEventListener("click", (e) => {
     if (e.target === modal) {
       closeModal();
     }
   });
 
-  // Tekan tombol ESC untuk menutup
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal?.classList.contains("hidden")) {
       closeModal();

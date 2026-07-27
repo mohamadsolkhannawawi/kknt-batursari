@@ -9,45 +9,49 @@ export const langkahPocList: LangkahPOC[] = [
   {
     id: "step-1",
     nomor: "01",
-    judul: "Pengumpulan Bahan Baku",
+    judul: "Pengenalan Bahan Baku",
     deskripsi:
-      "Mengumpulkan limbah peternakan, bioaktivator, dan sumber karbon sebagai bahan utama POC.",
+      "Penyampaian materi mengenai jenis limbah organik, fungsi bioaktivator, dan sumber karbon pembuatan POC.",
   },
   {
     id: "step-2",
     nomor: "02",
-    judul: "Formulasi & Fermentasi",
+    judul: "Edukasi Formulasi & Fermentasi",
     deskripsi:
-      "Merancang komposisi serta mengontrol kondisi fermentasi bakteri pengurai.",
+      "Penjelasan takaran kompoisi ideal serta prinsip kerja proses fermentasi mikroorganisme pengurai.",
   },
   {
     id: "step-3",
     nomor: "03",
-    judul: "Penyaringan & Modul 3R",
+    judul: "Penyusunan Modul & Panduan 3R",
     deskripsi:
-      "Penyaringan pupuk cair serta penyusunan panduan praktis dan infografis pembuatan POC.",
+      "Penyusunan serta pembagikan modul panduan praktis dan infografis edukatif pembuatan POC bagi siswa.",
   },
   {
     id: "step-4",
     nomor: "04",
-    judul: "Pemanfaatan Sektor Pertanian",
+    judul: "Pemanfaatan & Aksi Lingkungan",
     deskripsi:
-      "Implementasi prinsip Recycle (3R) untuk meningkatkan kesuburan tanah dan tanaman.",
+      "Mendorong kesadaran siswa dalam menerapkan prinsip Recycle (3R) untuk mendukung kelestarian lingkungan sekolah.",
   },
 ];
 
 export const pocSummary = {
-  title: "Edukasi & Pembuatan Pupuk Organik Cair (POC)",
+  title: "Sosialisasi & Edukasi Pupuk Organik Cair (POC)",
   deskripsi:
-    "Program Sosial Kemasyarakatan dalam mengolah limbah peternakan dengan prinsip 3R (Recycle) menjadi Pupuk Organik Cair guna mendukung sektor pertanian dan lingkungan Desa Batursari.",
+    "Program edukasi pengolahan limbah organik berbasis prinsip 3R (Recycle) menjadi Pupuk Organik Cair yang dilaksanakan bagi para siswa di SMP Negeri 3 Mranggen.",
 };
 
 export const dokumentasiPoc = {
   src: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  alt: "Dokumentasi Pelaksanaan Program dan Hasil Produk POC Desa Batursari",
+  alt: "Dokumentasi Sosialisasi Pupuk Organik Cair di SMP Negeri 3 Mranggen",
+  caption: "Sosialisasi pemanfaatan Pupuk Organik Cair (POC) dan penerapan prinsip 3R bersama siswa SMP Negeri 3 Mranggen.",
 };
 
 export const penjelasanKegiatanPoc = [
-  "Program Sosial Kemasyarakatan ini dilaksanakan oleh Tim KKN-T Undip untuk mengedukasi masyarakat mengenai pemanfaatan limbah peternakan sebagai bahan baku Pupuk Organik Cair (POC). Kegiatan mencakup perancangan formula bahan, pengontrolan fermentasi, hingga penyusunan modul panduan praktis 3R.",
-  "Melalui pendekatan edukatif yang mudah dipahami, warga diajak untuk menerapkan prinsip Recycle dalam mengolah limbah organik, sehingga mampu menghasilkan pupuk ramah lingkungan yang bermanfaat langsung bagi sektor pertanian desa.",
+  "Program Edukasi Lingkungan ini dilaksanakan oleh Tim KKN-T Undip di SMP Negeri 3 Mranggen untuk mengedukasi para siswa mengenai potensi pemanfaatan limbah organik menjadi Pupuk Organik Cair (POC). Kegiatan difokuskan pada penyampaian materi interaktif, pemahaman konsep fermentasi, hingga pembagian modul panduan praktis berbasis prinsip 3R.",
+  "Melalui sosialisasi ini, para siswa diajak untuk lebih peduli terhadap lingkungan sekitar dengan menerapkan prinsip Recycle dalam mengolah sampah organik, sehingga dapat menumbuhkan kesadaran menjaga kebersihan dan kelestarian lingkungan sekolah sejak dini.",
 ];
+
+// Link artikel reportase (sesuaikan dengan link asli jika artikel sudah rilis)
+export const linkReportasePoc = "https://link-reportase-poc-kamu.com";

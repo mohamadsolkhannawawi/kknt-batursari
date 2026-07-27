@@ -1,103 +1,213 @@
 ---
-import Badge from "../ui/Badge.astro";
-import FlowDiagram from "../ui/FlowDiagram.astro";
-import {
-  pltsStatus,
-  pltsFlow,
-  pltsSpesifikasi,
-  pltsCatatanMekanisme,
-  pltsVisual,
-} from "../../data/prototipePlts";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+// Data Gambar Utama Prototipe PLTSa
+const fotoPltsa = {
+  src: "/images/prototipe-pltsa.jpg", // Sesuaikan nama file di public/images/
+  alt: "Sosialisasi Prototipe Pembangkit Listrik Tenaga Sampah (PLTSa)",
+  caption: "Sosialisasi dan pemaparan prototipe PLTSa bersama siswa SMP Negeri 3 Mranggen."
+};
+
+// Data Gambar Diagram Skematik PLTSa
+const diagramPltsa = {
+  src: "/images/PLTSa.jpg", // Taruh file PLTSa.jpg di public/images/
+  alt: "Diagram Skematik Alur Kerja Pembangkit Listrik Tenaga Sampah (PLTSa)",
+};
+
+// Tahapan Alur Konversi Berdasarkan Nomor di Diagram (1-7)
+const langkahKonversi = [
+  { nomor: "1 & 2", judul: "Penerimaan & Penampungan Sampah", deskripsi: "Truk menimbang dan membuang sampah ke penampungan (Refuse Storage Pit) untuk diangkat pengeruk (Crane) ke ruang pembakaran." },
+  { nomor: "3", judul: "Insinerasi (Pembakaran)", deskripsi: "Proses pembakaran sampah suhu tinggi di dalam Furnace untuk menghasilkan gas panas bertemperatur tinggi." },
+  { nomor: "4", judul: "Ketel Uap (Boiler)", deskripsi: "Panas pembakaran digunakan untuk mendidihkan air pada Boiler hingga menghasilkan uap air (Steam) bertekanan tinggi." },
+  { nomor: "5", judul: "Turbin Uap & Generator", deskripsi: "Uap bertekanan menggerakkan Steam Turbine yang terhubung ke Generator untuk menghasilkan energi listrik terbarukan." },
+  { nomor: "6 & 7", judul: "Pengolahan Residu & Abu", deskripsi: "Abu sisa pembakaran (Ash) diolah bersama campuran semen/air untuk dimanfaatkan kembali sebagai material beton/landfill." },
+  { nomor: "Stack", judul: "Pembersihan Gas Buang", deskripsi: "Gas buang disaring menggunakan Bag House & sistem filter emisi sebelum dilepas secara aman melalui cerobong (Stack)." },
+];
+
+const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
 ---
 
-<section id="pltsa" class="bg-primary-100/60 py-16 md:py-24">
+<section id="pltsa" class="bg-white py-16 md:py-20 border-t border-neutral-100">
   <div class="container-site max-w-6xl mx-auto px-4">
     
-    <!-- HEADER -->
-    <div class="max-w-3xl mb-12" data-reveal>
-      <div class="flex items-center gap-3 mb-3">
-        <Badge variant="solid">{pltsStatus.badge}</Badge>
+    <!-- HEADER SEKSI -->
+    <SectionHeading
+      eyebrow="Sosialisasi Edukasi EBT"
+      title="Sosialisasi Prototipe Pembangkit Listrik Tenaga Sampah (PLTSa)"
+      subtitle="Program edukasi dan pengenalan konsep kerja Pembangkit Listrik Tenaga Sampah (PLTSa) untuk memberikan pemahaman kepada siswa mengenai proses konversi sampah menjadi energi listrik terbarukan."
+    />
+
+    <!-- 1. DOKUMENTASI KEGIATAN & PENJELASAN SOSIALISASI (ATAS) -->
+    <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 mt-10 mb-8 shadow-sm" data-reveal>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- KOLOM KIRI: CARD GAMBAR & CAPTION -->
+        <div class="lg:col-span-5 flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-200/80 bg-white p-2 shadow-sm">
+          <div class="w-full flex-1 flex items-center justify-center overflow-hidden rounded-lg bg-neutral-100/80 p-2">
+            <img
+              src={fotoPltsa.src}
+              alt={fotoPltsa.alt}
+              loading="lazy"
+              class="w-full h-auto max-h-[350px] object-cover mx-auto rounded-md"
+            />
+          </div>
+          <div class="p-3 bg-white rounded-lg mt-2 border border-neutral-100 text-center">
+            <p class="text-xs md:text-sm text-neutral-600 font-medium leading-relaxed">
+              {fotoPltsa.caption}
+            </p>
+          </div>
+        </div>
+
+        <!-- KOLOM KANAN: PENJELASAN SOSIALISASI & LINK REPORTASE -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+            <h3 class="text-lg font-bold text-primary-900">
+              Pelaksanaan Sosialisasi & Pengenalan Alat
+            </h3>
+            <p>
+              Melalui kegiatan sosialisasi prototipe PLTSa ini, para siswa diajak untuk memahami pentingnya <strong class="text-neutral-900 font-semibold">pengelolaan sampah berbasis 3R</strong> serta prinsip kelestarian lingkungan di sekolah.
+            </p>
+            <p>
+              Program ini memberikan edukasi serta penjelasan mengenai mekanisme teknis bagaimana limbah sampah dapat dikonversi menjadi <strong class="text-neutral-900 font-semibold">sumber energi listrik terbarukan</strong>, sekaligus memantik kepedulian lingkungan dan minat inovasi teknologi sejak dini.
+            </p>
+          </div>
+
+          <!-- BOTTOM CTA LINK REPORTASE -->
+          <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-600 font-medium">
+              <svg class="w-5 h-5 text-primary-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+              </svg>
+              <span>Ingin membaca pembahasan lengkap program ini?</span>
+            </div>
+
+            <a
+              href={linkReportasePltsa}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-primary-800 hover:text-primary-950 bg-primary-100/80 hover:bg-primary-200/80 px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer shrink-0"
+            >
+              <span>Baca Artikel Reportase Lengkap</span>
+              <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-primary-900 leading-tight">
-        {pltsStatus.title}
-      </h2>
-      <p class="text-base md:text-lg text-neutral-700 mt-3 leading-relaxed">
-        {pltsStatus.deskripsi}
-      </p>
     </div>
 
-    <!-- MAIN GRID: FOTO (KIRI) + PENJELASAN & HIGHLIGHTS (KANAN) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16" data-reveal>
-      <!-- Gambar di Kiri (5 / 12) -->
-      <div class="lg:col-span-5">
-        <div class="rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md bg-white">
-          <img
-            src={pltsVisual.src}
-            alt={pltsVisual.alt}
-            width="800"
-            height="600"
-            loading="lazy"
-            class="w-full h-72 md:h-96 object-cover"
-          />
+    <!-- 2. DIAGRAM SKEMATIK KONVERSI PLTSa -->
+    <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 space-y-6 shadow-sm mb-8" data-reveal>
+      <div class="border-b border-neutral-200/60 pb-4">
+        <h3 class="text-lg font-bold text-primary-900">
+          Skema & Alur Kerja Konversi Termal PLTSa
+        </h3>
+        <p class="text-xs md:text-sm text-neutral-600">
+          Diagram teknis proses pengolahan sampah hingga menjadi energi listrik yang dijelaskan kepada siswa.
+        </p>
+      </div>
+
+      <!-- CONTAINER GAMBAR SKEMA DENGAN TOMBOL FLOATING IN-IMAGE -->
+      <div class="rounded-xl overflow-hidden border border-neutral-200 bg-white p-2 md:p-4 shadow-xs relative">
+        <img
+          src={diagramPltsa.src}
+          alt={diagramPltsa.alt}
+          loading="lazy"
+          class="w-full h-auto object-contain mx-auto max-h-[500px] cursor-pointer"
+          id="triggerPltsaImg"
+        />
+
+        <!-- TOMBOL PERBESAR SKEMA DI POJOK KANAN BAWAH GAMBAR -->
+        <div class="mt-3 md:mt-0 md:absolute md:bottom-4 md:right-4 flex justify-end">
+          <button
+            type="button"
+            id="openPltsaModal"
+            class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 hover:text-primary-800 bg-white border border-neutral-300 hover:border-primary-400 px-3.5 py-2 rounded-xl shadow-md transition-all cursor-pointer hover:shadow-lg"
+          >
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+            </svg>
+            <span>Perbesar Skema</span>
+          </button>
         </div>
       </div>
 
-      <!-- Penjelasan Naratif di Kanan (7 / 12) -->
-      <div class="lg:col-span-7 space-y-5">
-        <div class="bg-white p-6 md:p-8 rounded-2xl border border-neutral-200/80 shadow-sm">
-          <p class="text-base md:text-lg text-neutral-800 leading-relaxed">
-            Melalui peragaan prototipe PLTSa ini, siswa diajak untuk memahami pentingnya <strong class="text-primary-900 font-semibold">pengelolaan sampah berbasis 3R</strong> di lingkungan sekolah. 
-          </p>
-          <p class="text-base text-neutral-600 leading-relaxed mt-3">
-            Program ini memberikan demonstrasi visual langsung bagaimana limbah sampah dapat dikonversi menjadi <strong class="text-primary-900 font-semibold">sumber energi listrik terbarukan</strong>, sekaligus memantik kepedulian lingkungan dan minat inovasi teknologi sejak dini.
-          </p>
-
-          <!-- Poin Ringkas Pendukung -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 pt-6 border-t border-neutral-100">
-            <div class="flex items-start gap-3">
-              <span class="p-2 rounded-lg bg-emerald-50 text-emerald-700 shrink-0">
-                <i class="fas fa-recycle text-base"></i>
+      <!-- GRID RANGKUMAN PENJELASAN NOMOR SKEMA (1-7) -->
+      <div class="pt-4 space-y-3">
+        <h4 class="text-sm font-bold text-neutral-800">
+          Penjelasan Tahapan Konversi Energi:
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {langkahKonversi.map((item) => (
+            <div class="p-4 bg-white rounded-xl border border-neutral-200/70 shadow-2xs space-y-1">
+              <span class="inline-block px-2 py-0.5 bg-primary-100 text-primary-900 text-xs font-bold rounded-md">
+                Tahap {item.nomor}
               </span>
-              <div>
-                <h4 class="text-sm font-semibold text-neutral-900">Edukasi 3R</h4>
-                <p class="text-xs text-neutral-500 mt-0.5">Pengolahan & pemilahan limbah sekolah</p>
-              </div>
+              <h5 class="text-sm font-bold text-neutral-900">{item.judul}</h5>
+              <p class="text-xs text-neutral-600 leading-relaxed">{item.deskripsi}</p>
             </div>
-            <div class="flex items-start gap-3">
-              <span class="p-2 rounded-lg bg-emerald-50 text-emerald-700 shrink-0">
-                <i class="fas fa-bolt text-base"></i>
-              </span>
-              <div>
-                <h4 class="text-sm font-semibold text-neutral-900">Konversi Listrik</h4>
-                <p class="text-xs text-neutral-500 mt-0.5">Demonstrasi EBT interaktif</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
-
-    <!-- ALUR KERJA (FLOW DIAGRAM) -->
-    <div class="bg-white rounded-2xl border border-neutral-200/80 p-6 md:p-8 mb-8 shadow-sm" data-reveal>
-      <h3 class="font-heading font-semibold text-lg text-primary-900 mb-6">Alur Kerja & Konversi Prototipe</h3>
-      <FlowDiagram source={pltsFlow.source} pathA={pltsFlow.pathA} pathB={pltsFlow.pathB} />
-    </div>
-
-    <!-- SPESIFIKASI PROGRAM -->
-    <div class="bg-white rounded-2xl border border-neutral-200/80 p-6 md:p-8 shadow-sm" data-reveal>
-      <h3 class="font-heading font-semibold text-lg text-primary-900 mb-4">Informasi & Spesifikasi Program</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        {pltsSpesifikasi.map((spek) => (
-          <div class="rounded-xl bg-neutral-50 border border-neutral-100 px-4 py-3">
-            <p class="text-xs text-neutral-500 font-medium">{spek.label}</p>
-            <p class="font-semibold text-neutral-900 mt-0.5 text-sm">{spek.value}</p>
-          </div>
-        ))}
-      </div>
-      <p class="text-xs md:text-sm text-neutral-500 border-t border-neutral-100 pt-4 italic">
-        {pltsCatatanMekanisme}
-      </p>
     </div>
 
   </div>
 </section>
+
+<!-- LIGHTBOX MODAL UNTUK PERBESAR SKEMA PLTSa -->
+<div
+  id="pltsaModal"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300"
+>
+  <button
+    type="button"
+    id="closePltsaModal"
+    class="fixed top-4 right-4 md:top-6 md:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+    aria-label="Tutup Skema"
+  >
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <div class="relative w-full h-full max-w-6xl max-h-[92vh] flex items-center justify-center overflow-auto p-2">
+    <img
+      src={diagramPltsa.src}
+      alt={diagramPltsa.alt}
+      class="max-w-full max-h-full object-contain mx-auto rounded-lg shadow-2xl bg-white p-2"
+    />
+  </div>
+</div>
+
+<!-- SCRIPT LIGHTBOX MODAL -->
+<script>
+  const openPltsaBtn = document.getElementById("openPltsaModal");
+  const triggerPltsaImg = document.getElementById("triggerPltsaImg");
+  const closePltsaBtn = document.getElementById("closePltsaModal");
+  const pltsaModal = document.getElementById("pltsaModal");
+
+  function openModal() {
+    pltsaModal?.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    pltsaModal?.classList.add("hidden");
+    document.body.style.overflow = "";
+  }
+
+  openPltsaBtn?.addEventListener("click", openModal);
+  triggerPltsaImg?.addEventListener("click", openModal);
+  closePltsaBtn?.addEventListener("click", closeModal);
+
+  pltsaModal?.addEventListener("click", (e) => {
+    if (e.target === pltsaModal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !pltsaModal?.classList.contains("hidden")) closeModal();
+  });
+</script>
