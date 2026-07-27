@@ -15,7 +15,7 @@ export interface DigesterMonitoring {
 export const digesterStatus: DigesterMonitoring = {
   lokasi: "Kandang Desa Batursari",
   petugas: "Tim KKN-T & Pengelola Kandang",
-  periodeMonitoring: "24 Juli – 10 Agustus 2026",
+  periodeMonitoring: "24 Juli – 6 Agustus 2026",
   statusSistem: "Pengisian & Pemantauan Rutin",
 };
 
