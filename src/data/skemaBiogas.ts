@@ -51,7 +51,7 @@ export const pocSummary = {
 // GALERI GAMBAR SLIDER (SLIDE 1: HASIL POC, SLIDE 2: SOSIALISASI SMPN 3 MRANGGEN)
 export const galeriGambarPoc: GambarPOC[] = [
   {
-    src: "/images/hasil-poc.jpg", // Simpan gambar produk POC di folder public/images/
+    src: "/images/hasil-poc.jpeg", // Simpan gambar produk POC di folder public/images/
     alt: "Hasil Produk Pupuk Organik Cair (POC)",
     caption: "Produk Pupuk Organik Cair (POC) Hasil Olahan Limbah Organik.",
   },
