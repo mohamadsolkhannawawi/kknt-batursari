@@ -3,7 +3,8 @@ import SectionHeading from "../ui/SectionHeading.astro";
 import { arsitekturSampahData } from "../../data/arsitekturSampah";
 ---
 
-<section id="arsitektur-sampah" class="bg-white py-16 md:py-20 border-t border-neutral-100">
+<!-- ID DISESUAIKAN SAMA NAVBAR (#sampah) -->
+<section id="sampah" class="bg-white py-16 md:py-20 border-t border-neutral-100">
   <div class="container-site max-w-6xl mx-auto px-4 space-y-10">
     
     <!-- HEADER SEKSI -->
@@ -94,7 +95,7 @@ import { arsitekturSampahData } from "../../data/arsitekturSampah";
             >
               <span>Baca Artikel Reportase Lengkap</span>
               <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
               </svg>
             </a>
           </div>
@@ -106,10 +107,10 @@ import { arsitekturSampahData } from "../../data/arsitekturSampah";
   </div>
 </section>
 
-<!-- LIGHTBOX MODAL -->
+<!-- LIGHTBOX MODAL (TANPA BINGKAI PUTIH & DENGAN CAPTION) -->
 <div
   id="sampahModal"
-  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
 >
   <button
     type="button"
@@ -122,12 +123,18 @@ import { arsitekturSampahData } from "../../data/arsitekturSampah";
     </svg>
   </button>
 
-  <div class="relative w-full h-full max-w-6xl max-h-[92vh] flex items-center justify-center overflow-auto p-2">
+  <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">
+    <!-- GAMBAR MODAL TANPA BINGKAI PUTIH -->
     <img
       src={arsitekturSampahData.gambarUtama.src}
       alt={arsitekturSampahData.gambarUtama.alt}
-      class="max-w-full max-h-full object-contain mx-auto rounded-lg shadow-2xl bg-white p-2"
+      class="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-2xl"
     />
+
+    <!-- CAPTION DI DALAM MODAL -->
+    <p class="text-white text-xs md:text-sm font-medium mt-3 text-center bg-black/50 px-4 py-2 rounded-full border border-white/10 max-w-2xl">
+      {arsitekturSampahData.gambarUtama.caption}
+    </p>
   </div>
 </div>
 

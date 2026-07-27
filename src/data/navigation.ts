@@ -13,8 +13,11 @@ export const navigation: NavItem[] = [
     children: [
       { label: "Tentang Program", href: "#tentang", enabled: true },
       { label: "Potensi Biogas", href: "#potensi", enabled: true },
+      { label: "Desain Fasilitas EBT", href: "#desain-ebt", enabled: true },
+      { label: "Monitoring Biogas", href: "#monitoring-biogas", enabled: true }, 
       { label: "Audit Energi", href: "#audit", enabled: true },
       { label: "Prototipe PLTSa", href: "#pltsa", enabled: true },
+      { label: "Arsitektur Pengolahan Sampah", href: "#sampah", enabled: true },
     ]
   },
   { 

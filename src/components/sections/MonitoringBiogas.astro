@@ -11,7 +11,8 @@ const fotoDokumentasi = {
 };
 ---
 
-<section id="monitoring" class="bg-white py-16 md:py-20 border-t border-neutral-100">
+<!-- ID DISESUAIKAN PERSIS SAMA DENGAN NAVBAR (#monitoring-biogas) -->
+<section id="monitoring-biogas" class="bg-white py-16 md:py-20 border-t border-neutral-100">
   <div class="container-site max-w-6xl mx-auto px-4">
     <!-- HEADER SEKSI -->
     <SectionHeading
@@ -21,20 +22,36 @@ const fotoDokumentasi = {
     />
 
     <!-- WADAH UTAMA 2 KOLOM (KIRI: FOTO+CAPTION CARD, KANAN: PENJELASAN+CTA) -->
-    <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 shadow-sm" data-reveal>
+    <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 mt-10 shadow-sm" data-reveal>
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
-        <!-- KOLOM KIRI: CARD GAMBAR & CAPTION (PRESISI SESUAI REFERENSI) -->
+        <!-- KOLOM KIRI: CARD GAMBAR & CAPTION -->
         <div class="lg:col-span-5 flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-200/80 bg-white p-2 shadow-sm">
-          <!-- AREA GAMBAR DENGAN BACKGROUND SOFT -->
-          <div class="w-full flex-1 flex items-center justify-center overflow-hidden rounded-lg bg-neutral-100/80 p-2">
+          <!-- AREA GAMBAR DENGAN FLOATING BUTTON PERBESAR -->
+          <div class="w-full flex-1 flex items-center justify-center overflow-hidden rounded-lg bg-neutral-100/80 p-2 relative group">
             <img
+              id="monitoringImgTrigger"
               src={fotoDokumentasi.src}
               alt={fotoDokumentasi.alt}
               loading="lazy"
-              class="w-full h-auto max-h-[350px] object-cover mx-auto rounded-md"
+              class="w-full h-auto max-h-[350px] object-cover mx-auto rounded-md cursor-pointer transition-transform duration-500 ease-out hover:scale-105"
             />
+
+            <!-- FLOATING BUTTON PERBESAR (POJOK KANAN BAWAH GAMBAR) -->
+            <div class="absolute bottom-3 right-3 z-20">
+              <button
+                type="button"
+                id="openMonitoringModalBtn"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 bg-white/95 backdrop-blur-xs border border-neutral-300 px-3 py-1.5 rounded-full shadow-md transition-all duration-300 cursor-pointer hover:bg-emerald-600 hover:text-white hover:border-emerald-600"
+              >
+                <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                </svg>
+                <span>Perbesar</span>
+              </button>
+            </div>
           </div>
+
           <!-- KOTAK CAPTION PUTIH TERPISAH DI BAWAH GAMBAR -->
           <div class="p-3 bg-white rounded-lg mt-2 border border-neutral-100 text-center">
             <p class="text-xs md:text-sm text-neutral-600 font-medium leading-relaxed">
@@ -47,7 +64,7 @@ const fotoDokumentasi = {
         <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
           <!-- PARAGRAF NARASI -->
           <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
-            <h3 class="text-lg font-bold text-primary-900">
+            <h3 class="text-lg font-bold text-emerald-950">
               Detail Monitoring & Pendampingan
             </h3>
             <p>
@@ -61,7 +78,7 @@ const fotoDokumentasi = {
           <!-- BOTTOM CTA LINK SHAREPOINT -->
           <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-600 font-medium">
-              <svg class="w-5 h-5 text-primary-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-emerald-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
               </svg>
               <span>Ingin melihat rekapitulasi data pendampingan lengkap?</span>
@@ -71,7 +88,7 @@ const fotoDokumentasi = {
               href={sharepointUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-sm font-semibold text-primary-800 hover:text-primary-950 bg-primary-100/80 hover:bg-primary-200/80 px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer shrink-0"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-900 bg-emerald-100/80 hover:bg-emerald-200/80 px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer shrink-0 shadow-2xs"
             >
               <span>Buka Data Pendampingan (Excel)</span>
               <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
@@ -86,3 +103,72 @@ const fotoDokumentasi = {
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX MODAL (TANPA BINGKAI PUTIH) -->
+<div
+  id="monitoringModal"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
+>
+  <!-- TOMBOL SILANG CLOSE -->
+  <button
+    type="button"
+    id="closeMonitoringModal"
+    class="fixed top-4 right-4 md:top-6 md:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+    aria-label="Tutup Modal"
+  >
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- WADAH UTAMA MODAL -->
+  <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">
+    <!-- GAMBAR MODAL TANPA BINGKAI PUTIH -->
+    <img
+      src={fotoDokumentasi.src}
+      alt={fotoDokumentasi.alt}
+      class="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-2xl"
+    />
+
+    <!-- CAPTION TERSEDIA DI DALAM MODAL -->
+    <p class="text-white text-xs md:text-sm font-medium mt-3 text-center bg-black/50 px-4 py-2 rounded-full border border-white/10 max-w-2xl">
+      {fotoDokumentasi.caption}
+    </p>
+  </div>
+</div>
+
+<!-- SCRIPT MODAL MONITORING -->
+<script>
+  const modal = document.getElementById("monitoringModal");
+  const openBtn = document.getElementById("openMonitoringModalBtn");
+  const triggerImg = document.getElementById("monitoringImgTrigger");
+  const closeBtn = document.getElementById("closeMonitoringModal");
+
+  function openModal() {
+    if (modal) {
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+  }
+
+  openBtn?.addEventListener("click", openModal);
+  triggerImg?.addEventListener("click", openModal);
+  closeBtn?.addEventListener("click", closeModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+</script>

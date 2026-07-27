@@ -40,6 +40,7 @@ import {
                     class="w-full h-full object-contain mx-auto rounded-md cursor-pointer trigger-poc-modal transition-transform duration-500 ease-out hover:scale-105"
                     data-img-src={img.src}
                     data-img-alt={img.alt}
+                    data-index={idx}
                   />
                 </div>
               ))}
@@ -59,14 +60,14 @@ import {
               </div>
             </div>
 
-            <!-- KOTAK CAPTION DINAMIS DI BAWAH SLIDER -->
+            <!-- KOTAK CAPTION DINAMIS DI BAWAH SLIDER UTAMA -->
             <div class="p-2.5 bg-white rounded-lg mt-2 border border-neutral-100 text-center w-full z-10 shadow-2xs">
               <p id="pocCaptionText" class="text-xs text-neutral-600 font-medium leading-relaxed">
                 {galeriGambarPoc[0].caption}
               </p>
             </div>
 
-            <!-- TOMBOL PANAH PREV & NEXT -->
+            <!-- TOMBOL PANAH PREV & NEXT SLIDER UTAMA -->
             <button 
               type="button" 
               id="pocPrevBtn"
@@ -140,11 +141,12 @@ import {
   </div>
 </section>
 
-<!-- LIGHTBOX MODAL -->
+<!-- LIGHTBOX MODAL DENGAN PANAH NAVIGASI KIRI-KANAN & CAPTION DINAMIS -->
 <div
   id="pocModal"
-  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
 >
+  <!-- TOMBOL SILANG CLOSE -->
   <button
     type="button"
     id="closePocModal"
@@ -156,17 +158,45 @@ import {
     </svg>
   </button>
 
-  <div class="relative w-full h-full max-w-6xl max-h-[92vh] flex items-center justify-center overflow-auto p-2">
+  <!-- WADAH UTAMA MODAL SLIDER -->
+  <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">
+    
+    <!-- GAMBAR MODAL TANPA FRAMING PUTIH -->
     <img
       id="pocModalImg"
       src=""
       alt=""
-      class="max-w-full max-h-full object-contain mx-auto rounded-lg shadow-2xl bg-white p-2"
+      class="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-2xl"
     />
+
+    <!-- CAPTION TERSEDIA DI DALAM MODAL -->
+    <p id="pocModalCaption" class="text-white text-xs md:text-sm font-medium mt-3 text-center bg-black/50 px-4 py-2 rounded-full border border-white/10 max-w-2xl">
+    </p>
+
+    <!-- TOMBOL PREV MODAL (NAVIGASI KIRI) -->
+    <button
+      type="button"
+      id="pocModalPrevBtn"
+      class="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/20 hover:bg-emerald-600 text-white shadow-xl flex items-center justify-center transition-all cursor-pointer border border-white/20 backdrop-blur-sm text-xl"
+      aria-label="Gambar Sebelumnya"
+    >
+      ❮
+    </button>
+
+    <!-- TOMBOL NEXT MODAL (NAVIGASI KANAN) -->
+    <button
+      type="button"
+      id="pocModalNextBtn"
+      class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/20 hover:bg-emerald-600 text-white shadow-xl flex items-center justify-center transition-all cursor-pointer border border-white/20 backdrop-blur-sm text-xl"
+      aria-label="Gambar Selanjutnya"
+    >
+      ❯
+    </button>
+
   </div>
 </div>
 
-<!-- SCRIPT AUTOSLIDE CAROUSEL, CAPTION UPDATE, & MODAL -->
+<!-- SCRIPT AUTOSLIDE CAROUSEL, CAPTION UPDATE, & MODAL SLIDER -->
 <script>
   let currentSlide = 0;
   const slides = document.querySelectorAll(".poc-slide");
@@ -175,13 +205,32 @@ import {
   const totalSlides = slides.length;
   let autoSlideTimer: number;
 
+  // Elemen Lightbox Modal
+  const modal = document.getElementById("pocModal");
+  const modalImg = document.getElementById("pocModalImg") as HTMLImageElement;
+  const modalCaption = document.getElementById("pocModalCaption");
+  const openModalBtn = document.getElementById("openPocModalBtn");
+  const closeBtn = document.getElementById("closePocModal");
+  const modalPrevBtn = document.getElementById("pocModalPrevBtn");
+  const modalNextBtn = document.getElementById("pocModalNextBtn");
+
+  function updateModalData(index: number) {
+    const slideImg = slides[index]?.querySelector("img") as HTMLImageElement;
+    if (slideImg && modalImg) {
+      modalImg.src = slideImg.src;
+      modalImg.alt = slideImg.alt;
+      if (modalCaption) {
+        modalCaption.textContent = slideImg.alt || "Dokumen Foto Kegiatan POC";
+      }
+    }
+  }
+
   function showSlide(index: number) {
     slides.forEach((slide, i) => {
       if (i === index) {
         slide.classList.remove("opacity-0", "z-0", "absolute");
         slide.classList.add("opacity-100", "z-10", "relative");
         
-        // Update teks caption dinamis
         const activeImg = slide.querySelector("img") as HTMLImageElement;
         if (activeImg && captionEl) {
           captionEl.textContent = activeImg.alt || "Dokumen Program POC";
@@ -203,6 +252,11 @@ import {
     });
 
     currentSlide = index;
+
+    // Jika modal terbuka, ikut sinkronkan gambar & caption di dalam modal
+    if (modal && !modal.classList.contains("hidden")) {
+      updateModalData(currentSlide);
+    }
   }
 
   function nextSlide() {
@@ -216,14 +270,14 @@ import {
   }
 
   function startAutoSlide() {
-    autoSlideTimer = window.setInterval(nextSlide, 4000); // Autoslide tiap 4 detik
+    autoSlideTimer = window.setInterval(nextSlide, 4000);
   }
 
   function stopAutoSlide() {
     clearInterval(autoSlideTimer);
   }
 
-  // Event Listeners Slider
+  // Event Listeners Slider Utama
   document.getElementById("pocNextBtn")?.addEventListener("click", () => {
     stopAutoSlide();
     nextSlide();
@@ -245,16 +299,10 @@ import {
     });
   });
 
-  // Modal Lightbox
-  const modal = document.getElementById("pocModal");
-  const modalImg = document.getElementById("pocModalImg") as HTMLImageElement;
-  const openModalBtn = document.getElementById("openPocModalBtn");
-  const closeBtn = document.getElementById("closePocModal");
-
-  function openModal(src: string, alt: string) {
-    if (modalImg && modal) {
-      modalImg.src = src;
-      modalImg.alt = alt;
+  // Modal Lightbox & Slider Navigasi
+  function openModal(index: number) {
+    if (modal) {
+      showSlide(index);
       modal.classList.remove("hidden");
       document.body.style.overflow = "hidden";
     }
@@ -270,13 +318,28 @@ import {
   document.querySelectorAll(".trigger-poc-modal").forEach((img) => {
     img.addEventListener("click", (e) => {
       const target = e.currentTarget as HTMLImageElement;
-      openModal(target.src, target.alt);
+      const idx = parseInt(target.getAttribute("data-index") || "0");
+      openModal(idx);
     });
   });
 
   openModalBtn?.addEventListener("click", () => {
-    const activeSlideImg = slides[currentSlide]?.querySelector("img") as HTMLImageElement;
-    if (activeSlideImg) openModal(activeSlideImg.src, activeSlideImg.alt);
+    openModal(currentSlide);
+  });
+
+  // Tombol Panah Prev / Next di Modal
+  modalPrevBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    stopAutoSlide();
+    prevSlide();
+    startAutoSlide();
+  });
+
+  modalNextBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    stopAutoSlide();
+    nextSlide();
+    startAutoSlide();
   });
 
   closeBtn?.addEventListener("click", closeModal);
@@ -284,8 +347,21 @@ import {
     if (e.target === modal) closeModal();
   });
 
+  // Navigasi Keyboard Panah Kiri (`←`) / Kanan (`→`) saat Modal Terbuka
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal?.classList.contains("hidden")) closeModal();
+    if (modal && !modal.classList.contains("hidden")) {
+      if (e.key === "ArrowLeft") {
+        stopAutoSlide();
+        prevSlide();
+        startAutoSlide();
+      } else if (e.key === "ArrowRight") {
+        stopAutoSlide();
+        nextSlide();
+        startAutoSlide();
+      } else if (e.key === "Escape") {
+        closeModal();
+      }
+    }
   });
 
   // Start autoslide pas load
