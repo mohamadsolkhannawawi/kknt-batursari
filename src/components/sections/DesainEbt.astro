@@ -1,0 +1,295 @@
+---
+import SectionHeading from "../ui/SectionHeading.astro";
+import { desainEbtData } from "../../data/desainEbt";
+---
+
+<section id="desain-ebt" class="bg-white py-16 md:py-20 border-t border-neutral-100">
+  <div class="container-site max-w-6xl mx-auto px-4 space-y-10">
+    
+    <!-- HEADER SEKSI -->
+    <SectionHeading
+      eyebrow="Perancangan Fasilitas EBT"
+      title={desainEbtData.judul}
+      subtitle={desainEbtData.subjudul}
+    />
+
+    <!-- CONTAINER UTAMA -->
+    <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 shadow-sm space-y-6" data-reveal>
+      
+      <!-- GRID CAROUSEL & NARASI -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- KOLOM KIRI: CAROUSEL GAMBAR SLIDER (AUTOSLIDE) -->
+        <div class="lg:col-span-5 flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-200/80 bg-white p-2 shadow-sm group">
+          <div class="w-full flex-1 flex flex-col items-center justify-center overflow-hidden rounded-lg bg-neutral-100/80 p-2 relative min-h-[350px]">
+            
+            <!-- WADAH SLIDE GAMBAR -->
+            <div id="ebtSliderContainer" class="w-full h-full flex items-center justify-center relative">
+              {desainEbtData.galeriGambar.map((img, idx) => (
+                <div 
+                  class={`ebt-slide w-full h-full flex flex-col items-center justify-center transition-opacity duration-500 ${idx === 0 ? 'opacity-100 relative z-10' : 'opacity-0 absolute inset-0 z-0'}`}
+                  data-index={idx}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    class="w-full h-auto max-h-[320px] object-contain mx-auto rounded-md cursor-pointer trigger-ebt-modal"
+                    data-img-src={img.src}
+                    data-img-alt={img.alt}
+                  />
+                  <div class="p-2 bg-white/90 backdrop-blur-xs rounded-lg mt-2 border border-neutral-100 text-center w-full">
+                    <p class="text-xs text-neutral-600 font-medium leading-relaxed">
+                      {img.caption}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <!-- TOMBOL PANAH PREV & NEXT -->
+            <button 
+              type="button" 
+              id="ebtPrevBtn"
+              class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/80 hover:bg-emerald-600 hover:text-white text-neutral-800 shadow-md flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Previous Slide"
+            >
+              ❮
+            </button>
+            <button 
+              type="button" 
+              id="ebtNextBtn"
+              class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/80 hover:bg-emerald-600 hover:text-white text-neutral-800 shadow-md flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Next Slide"
+            >
+              ❯
+            </button>
+
+            <!-- FLOATING BUTTON PERBESAR -->
+            <div class="absolute top-4 right-4 z-20">
+              <button
+                type="button"
+                id="openEbtModalBtn"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 bg-white/90 backdrop-blur-xs border border-neutral-300 px-3 py-1.5 rounded-full shadow-md transition-all duration-300 cursor-pointer hover:bg-emerald-600 hover:text-white hover:border-emerald-600"
+              >
+                <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                </svg>
+                <span>Perbesar</span>
+              </button>
+            </div>
+
+            <!-- DOT INDICATOR -->
+            <div class="flex items-center justify-center gap-1.5 mt-2 z-20">
+              {desainEbtData.galeriGambar.map((_, idx) => (
+                <button 
+                  type="button"
+                  class={`ebt-dot w-2 h-2 rounded-full transition-all cursor-pointer ${idx === 0 ? 'bg-emerald-600 w-5' : 'bg-neutral-300'}`}
+                  data-slide-to={idx}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        <!-- KOLOM KANAN: NARASI & FITUR -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+            <h3 class="text-lg font-bold text-emerald-950">
+              Rancangan Arsitektur Spasial & Keteknikan
+            </h3>
+            {desainEbtData.deskripsi.map((paragraf) => (
+              <p>{paragraf}</p>
+            ))}
+          </div>
+
+          <!-- GRID FITUR DESAIN -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            {desainEbtData.fiturUtama.map((fitur) => (
+              <div class="p-3.5 bg-white rounded-xl border border-neutral-200/80 shadow-2xs space-y-0.5">
+                <h4 class="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                  {fitur.judul}
+                </h4>
+                <p class="text-xs text-neutral-600 leading-relaxed pl-3.5">
+                  {fitur.deskripsi}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <!-- LINK REPORTASE -->
+          <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-600 font-medium">
+              <svg class="w-5 h-5 text-emerald-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+              </svg>
+              <span>Ingin membaca pembahasan lengkap program ini?</span>
+            </div>
+
+            <a
+              href={desainEbtData.linkReportase}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs md:text-sm font-semibold text-emerald-900 bg-emerald-100/80 hover:bg-emerald-200/80 px-4 py-2.5 rounded-xl transition-all duration-200 cursor-pointer shrink-0"
+            >
+              <span>Baca Artikel Reportase Lengkap</span>
+              <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX MODAL -->
+<div
+  id="ebtModal"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300"
+>
+  <button
+    type="button"
+    id="closeEbtModal"
+    class="fixed top-4 right-4 md:top-6 md:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+    aria-label="Tutup Modal"
+  >
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <div class="relative w-full h-full max-w-6xl max-h-[92vh] flex items-center justify-center overflow-auto p-2">
+    <img
+      id="ebtModalImg"
+      src=""
+      alt=""
+      class="max-w-full max-h-full object-contain mx-auto rounded-lg shadow-2xl bg-white p-2"
+    />
+  </div>
+</div>
+
+<!-- SCRIPT AUTOSLIDE CAROUSEL & MODAL -->
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".ebt-slide");
+  const dots = document.querySelectorAll(".ebt-dot");
+  const totalSlides = slides.length;
+  let autoSlideTimer: number;
+
+  function showSlide(index: number) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.remove("opacity-0", "z-0", "absolute");
+        slide.classList.add("opacity-100", "z-10", "relative");
+      } else {
+        slide.classList.remove("opacity-100", "z-10", "relative");
+        slide.classList.add("opacity-0", "z-0", "absolute");
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.add("bg-emerald-600", "w-5");
+        dot.classList.remove("bg-neutral-300");
+      } else {
+        dot.classList.remove("bg-emerald-600", "w-5");
+        dot.classList.add("bg-neutral-300");
+      }
+    });
+
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    const next = (currentSlide + 1) % totalSlides;
+    showSlide(next);
+  }
+
+  function prevSlide() {
+    const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(prev);
+  }
+
+  function startAutoSlide() {
+    autoSlideTimer = window.setInterval(nextSlide, 4000); // Autoslide tiap 4 detik
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideTimer);
+  }
+
+  // Event Listeners Slider
+  document.getElementById("ebtNextBtn")?.addEventListener("click", () => {
+    stopAutoSlide();
+    nextSlide();
+    startAutoSlide();
+  });
+
+  document.getElementById("ebtPrevBtn")?.addEventListener("click", () => {
+    stopAutoSlide();
+    prevSlide();
+    startAutoSlide();
+  });
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", (e) => {
+      const idx = parseInt((e.currentTarget as HTMLElement).getAttribute("data-slide-to") || "0");
+      stopAutoSlide();
+      showSlide(idx);
+      startAutoSlide();
+    });
+  });
+
+  // Modal Lightbox
+  const modal = document.getElementById("ebtModal");
+  const modalImg = document.getElementById("ebtModalImg") as HTMLImageElement;
+  const openModalBtn = document.getElementById("openEbtModalBtn");
+  const closeBtn = document.getElementById("closeEbtModal");
+
+  function openModal(src: string, alt: string) {
+    if (modalImg && modal) {
+      modalImg.src = src;
+      modalImg.alt = alt;
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+  }
+
+  document.querySelectorAll(".trigger-ebt-modal").forEach((img) => {
+    img.addEventListener("click", (e) => {
+      const target = e.currentTarget as HTMLImageElement;
+      openModal(target.src, target.alt);
+    });
+  });
+
+  openModalBtn?.addEventListener("click", () => {
+    const activeSlideImg = slides[currentSlide]?.querySelector("img") as HTMLImageElement;
+    if (activeSlideImg) openModal(activeSlideImg.src, activeSlideImg.alt);
+  });
+
+  closeBtn?.addEventListener("click", closeModal);
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal?.classList.contains("hidden")) closeModal();
+  });
+
+  // Start autoslide pas load
+  startAutoSlide();
+</script>
