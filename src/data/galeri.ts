@@ -13,9 +13,9 @@ export const galeriList: FotoGaleri[] = [
   {
     id: "galeri-1",
     src: "/images/Penerjunan.jpg",
-    alt: "Penerjunan Tim KKN-T 141 Undip di Balai Desa Batursari",
+    alt: "Penerjunan Tim KKN-T 141 Kelompok 2 Undip di Balai Desa Batursari",
     caption:
-      "Kegiatan penerjunan resmi Tim KKN-Tematik ESDM KKNT-141 Universitas Diponegoro bersama perangkat desa di Balai Desa Batursari.",
+      "Kegiatan penerjunan resmi Tim KKN-Tematik ESDM KKNT-141 Kelompok 2 Universitas Diponegoro bersama perangkat desa di Balai Desa Batursari.",
   },
   {
     id: "galeri-2",
@@ -47,7 +47,7 @@ export const galeriList: FotoGaleri[] = [
     src: "/images/SosialisasiSMP3.jpg",
     alt: "Sosialisasi Transisi Hijau di SMP Negeri 3 Mranggen",
     caption:
-      "Edukasi dan sosialisasi transisi hijau oleh Tim KKNT-141 Undip guna mencetak generasi muda yang peduli terhadap kelestarian lingkungan di SMP Negeri 3 Mranggen.",
+      "Edukasi dan sosialisasi transisi hijau oleh Tim KKNT-141 Kelompok 2 Undip guna mencetak generasi muda yang peduli terhadap kelestarian lingkungan di SMP Negeri 3 Mranggen.",
     linkNews: {
       url: "https://jatengvox.com/cetak-generasi-peduli-lingkungan-kknt-141-undip-hadirkan-sosialisasi-transisi-hijau-di-smp-negeri-3-mranggen/",
       label: "JatengVox",
