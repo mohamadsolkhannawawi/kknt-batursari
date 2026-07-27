@@ -7,10 +7,11 @@ import TentangProgram from "../components/sections/TentangProgram.astro";
 import PotensiBiogas from "../components/sections/PotensiBiogas.astro";
 import DesainEbt from "../components/sections/DesainEbt.astro";
 import MonitoringBiogas from "../components/sections/MonitoringBiogas.astro";
+import MonografBiogas from "../components/sections/MonografBiogas.astro"; // <-- Monograf setelah Monitoring
 import AuditEnergi from "../components/sections/AuditEnergi.astro";
-import SkemaBiogas from "../components/sections/SkemaBiogas.astro";
 import PrototipePlts from "../components/sections/PrototipePlts.astro";
 import ArsitekturSampah from "../components/sections/ArsitekturSampah.astro";
+import SkemaBiogas from "../components/sections/SkemaBiogas.astro"; // <-- Skema POC taruh sini (Edukasi)
 import DosenPembimbing from "../components/sections/DosenPembimbing.astro";
 import TimPengembang from "../components/sections/TimPengembang.astro";
 import Galeri from "../components/sections/Galeri.astro";
@@ -27,15 +28,24 @@ import PengembangWebsite from "../components/sections/PengembangWebsite.astro";
 
   <TentangProgram />
   
-  <!-- Sub-Program Biogas Ndaleman & Desain EBT -->
+  <!-- === BLOK UTAMA PROGRAM BIOGAS === -->
   <PotensiBiogas />
   <DesainEbt />
   <MonitoringBiogas />
-  <SkemaBiogas />
+  
+  <!-- Publikasi Akademis Biogas -->
+  <MonografBiogas />
 
+  <!-- === BLOK PROGRAM EBT LAIN & SAMPAH === -->
   <AuditEnergi />
   <PrototipePlts />
   <ArsitekturSampah />
+  
+  <!-- === BLOK EDUKASI & PRODUK SAMPINGAN === -->
+  <!-- Komponen isi POC ditaruh di sini -->
+  <SkemaBiogas /> 
+
+  <!-- === BLOK INFORMASI TIM, DPL & KONTAK === -->
   <DosenPembimbing />
   <TimPengembang />
   <Galeri />
