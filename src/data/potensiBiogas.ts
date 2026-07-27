@@ -1,14 +1,14 @@
 export const petaPotensi = {
-  src: "https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  alt: "Peta Potensi & Persebaran Biogas Desa Batursari",
+  src: "/images/petabiogas.jpg", 
+  alt: "Peta Potensi Energi Baru Terbarukan (Biogas) Desa Batursari",
 };
 
 export const deskripsiPotensi =
-  "Pemetaan wilayah potensi energi terbarukan berbasis kotoran ternak serta perancangan desain instalasi biogas skala rumah tangga oleh Tim KKN-T ESDM Undip di Desa Batursari.";
+  "Pemetaan wilayah potensi energi terbarukan berbasis kotoran ternak serta rekapitulasi tingkat potensi biogas oleh Tim KKN-T ESDM Undip di Desa Batursari.";
 
 export const penjelasanPeta = [
-  "Berdasarkan survei geologi dan analisis sebaran hewan ternak di Desa Batursari, wilayah ini memiliki ketersediaan limbah kotoran yang sangat potensial untuk dikembangkan menjadi sumber energi biogas berkelanjutan. Hasil kajian menunjukkan bahwa titik lokasi kandang komunal memiliki aksesibilitas serta kontur tanah yang stabil untuk penempatan unit digester.",
-  "Melalui program ini, dirancang pula skema instalasi dan desain teknis digester skala rumah tangga yang aman, efisien, dan mudah dirawat oleh warga local. Integrasi antara pemetaan wilayah potensi dan desain instalasi ini diharapkan dapat menjadi panduan pengembangan EBT mandiri bagi Desa Batursari.",
+  "Berdasarkan hasil survei dan pemetaan spasial di Desa Batursari, wilayah desa terbagi menjadi tiga klasifikasi potensi biogas berdasarkan ketersediaan biomassa rumput, kemudahan akses, dan luas lahan: Potensi Tinggi (35.18% / 2.238.371 m²), Potensi Sedang (18.38% / 1.169.686 m²), dan Potensi Rendah (46.43% / 2.954.174 m²).",
+  "Hasil pemetaan ini juga mengidentifikasi lokasi Titik Biogas Aktif yang berada di wilayah dusun Tlogo/Dongko. Data rekapitulasi potensi spasial ini diharapkan dapat menjadi panduan dasar bagi pemerintah desa dan masyarakat dalam pengembangan Energi Baru Terbarukan (EBT) yang mandiri dan berkelanjutan.",
 ];
 
-export const linkReportase = "#"; // TODO: Tempelkan link artikel reportase jika sudah rilis
+export const linkReportase = "https://link-artikel-reportase-kamu.com";
