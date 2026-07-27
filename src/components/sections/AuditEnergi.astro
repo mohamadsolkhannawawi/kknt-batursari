@@ -1,10 +1,15 @@
 ---
 import SectionHeading from "../ui/SectionHeading.astro";
-import {
-  lokasiAudit,
-  hasilAuditList,
-  rekomendasiUmum,
-} from "../../data/auditEnergi";
+
+// Path gambar dokumentasi audit energi (sesuaikan nama file di folder public/images/)
+const fotoAudit = {
+  src: "/images/audit-energi.jpg",
+  alt: "Dokumentasi Kegiatan Audit Energi di SMP Negeri 3 Mranggen",
+  caption: "Kegiatan pengukuran kelayakan pencahayaan dan beban listrik di SMP Negeri 3 Mranggen."
+};
+
+// Link artikel reportase Syahmi & Bagas
+const linkReportaseAudit = "https://link-reportase-audit-energi-kamu.com";
 ---
 
 <section id="audit" class="bg-neutral-50 py-16 md:py-20 border-t border-neutral-200/80">
@@ -14,74 +19,64 @@ import {
     <SectionHeading
       eyebrow="Program Konservasi Energi"
       title="Audit Energi di SMP Negeri 3 Mranggen"
-      subtitle={lokasiAudit.deskripsi}
+      subtitle="Kegiatan audit dan konservasi energi yang berfokus pada efisiensi penggunaan beban listrik dan kelayakan tingkat pencahayaan di fasilitas sekolah SMP Negeri 3 Mranggen, Desa Batursari."
     />
 
-    <!-- TABEL HASIL AUDIT ENERGI -->
-    <div class="bg-white rounded-2xl border border-neutral-200/80 shadow-sm overflow-hidden mb-10" data-reveal>
-      <div class="p-6 border-b border-neutral-100 bg-white">
-        <h3 class="text-lg font-bold text-primary-900">
-          Tabel Ringkasan Hasil Audit & Potensi Efisiensi
-        </h3>
-        <p class="text-xs text-neutral-500 mt-1">
-          Pemeriksaan beban kelistrikan dan kondisi eksisting pencahayaan di area SMP Negeri 3 Mranggen.
-        </p>
+    <!-- GAMBAR DOKUMENTASI (ATAS) -->
+    <div class="overflow-hidden rounded-2xl border border-neutral-200/80 bg-white shadow-sm mb-8" data-reveal>
+      <div class="w-full bg-neutral-100 max-h-[500px] overflow-hidden flex items-center justify-center">
+        <img
+          src={fotoAudit.src}
+          alt={fotoAudit.alt}
+          loading="lazy"
+          class="w-full h-auto object-cover max-h-[500px]"
+        />
       </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full text-left text-sm text-neutral-700">
-          <thead class="bg-neutral-100/80 text-xs uppercase tracking-wider text-neutral-600 border-b border-neutral-200/80">
-            <tr>
-              <th scope="col" class="py-3.5 px-5 font-bold">Area Pemeriksaan</th>
-              <th scope="col" class="py-3.5 px-5 font-bold">Peralatan Utama</th>
-              <th scope="col" class="py-3.5 px-5 font-bold">Kondisi / Status</th>
-              <th scope="col" class="py-3.5 px-5 font-bold">Potensi Penghematan</th>
-              <th scope="col" class="py-3.5 px-5 font-bold">Rekomendasi Efisiensi</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-neutral-100">
-            {hasilAuditList.map((item) => (
-              <tr class="hover:bg-neutral-50/80 transition-colors">
-                <td class="py-4 px-5 font-semibold text-primary-900 whitespace-nowrap">
-                  {item.areaPemeriksaan}
-                </td>
-                <td class="py-4 px-5 text-neutral-600">
-                  {item.peralatanUtama}
-                </td>
-                <td class="py-4 px-5 text-neutral-700 font-medium">
-                  {item.kondisiLampu}
-                </td>
-                <td class="py-4 px-5 font-semibold text-emerald-700 whitespace-nowrap">
-                  {item.potensiPenghematan}
-                </td>
-                <td class="py-4 px-5 text-neutral-600 leading-relaxed max-w-xs">
-                  {item.rekomendasi}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div class="p-3.5 bg-white border-t border-neutral-100 text-center">
+        <p class="text-xs md:text-sm text-neutral-600 font-medium">
+          📸 {fotoAudit.caption}
+        </p>
       </div>
     </div>
 
-    <!-- REKOMENDASI HEMAT ENERGI -->
-    <div class="bg-primary-50/70 rounded-2xl border border-primary-200/60 p-6 md:p-8" data-reveal>
-      <h3 class="text-lg font-bold text-primary-900 mb-4 flex items-center gap-2">
-        <svg viewBox="0 0 24 24" class="w-5 h-5 text-primary-700" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-        <span>Langkah Rekomendasi Konservasi Energi Sekolah</span>
-      </h3>
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-        {rekomendasiUmum.map((poin) => (
-          <li class="flex items-start gap-2.5 text-sm leading-relaxed text-neutral-700">
-            <svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0 text-emerald-600 mt-1" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
-            </svg>
-            <span>{poin}</span>
-          </li>
-        ))}
-      </ul>
+    <!-- RANGKUMAN KESIMPULAN AUDIT & CTA REPORTASE (BAWAH) -->
+    <div class="bg-white rounded-2xl border border-neutral-200/80 p-6 md:p-8 space-y-6 shadow-sm" data-reveal>
+      
+      <!-- PARAGRAF KESIMPULAN -->
+      <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+        <h3 class="text-lg font-bold text-primary-900">
+          Ringkasan Hasil Audit & Potensi Efisiensi
+        </h3>
+        <p>
+          Berdasarkan hasil pemeriksaan beban kelistrikan dan kondisi eksisting pencahayaan di area SMP Negeri 3 Mranggen, tim audit energi mengidentifikasi beberapa potensi efisiensi pada peralatan utama seperti penerangan, kipas angin, dan AC, khususnya di area ruang kelas serta laboratorium.
+        </p>
+        <p>
+          Hasil analisis menunjukkan adanya potensi penghematan konsumsi listrik sebesar <strong class="text-emerald-700 font-semibold">20% hingga 25%</strong> melalui langkah optimalisasi, seperti penggantian ke lampu LED hemat energi, pemanfaatan pencahayaan alami di siang hari, serta penerapan SOP penggunaan perangkat elektronik sekolah.
+        </p>
+      </div>
+
+      <!-- CTA LINK KE REPORTASE SYAHMI & BAGAS -->
+      <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-600 font-medium">
+          <svg class="w-5 h-5 text-primary-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+          </svg>
+          <span>Ingin membaca hasil kajian dan pembahasan lengkap audit energi ini?</span>
+        </div>
+
+        <a
+          href={linkReportaseAudit}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-primary-800 hover:text-primary-950 bg-primary-100/80 hover:bg-primary-200/80 px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer shrink-0"
+        >
+          <span>Baca Artikel Reportase Lengkap</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </a>
+      </div>
+
     </div>
 
   </div>
