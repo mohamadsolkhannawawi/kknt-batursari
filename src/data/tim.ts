@@ -102,6 +102,17 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: true,
     foto: "/images/Solkhan.jpg",
   },
+    {
+    id: "nadia",
+    nama: "Nadia Syifa Khairunnisa",
+    nim: "24060123120023",
+    prodi: "Informatika S1",
+    fakultas: "Sains dan Matematika, UNDIP",
+    multiGroup: "multi-1",
+    output: "Manajemen Konten & Integrasi Tampilan Website",
+    isPengembangWebsite: true,
+    foto: "/images/Nadia.png",
+  },
   {
     id: "ardan",
     nama: "Muhammad Ardan Fadli",
@@ -112,17 +123,6 @@ export const timList: AnggotaTim[] = [
     output: "Infrastruktur Teknis",
     isPengembangWebsite: true,
     foto: "/images/Ardan.jpg",
-  },
-  {
-    id: "nadia",
-    nama: "Nadia Syifa Khairunnisa",
-    nim: "24060123120023",
-    prodi: "Informatika S1",
-    fakultas: "Sains dan Matematika, UNDIP",
-    multiGroup: "multi-1",
-    output: "Manajemen Konten & Integrasi Tampilan Website",
-    isPengembangWebsite: true,
-    foto: "/images/Nadia.png",
   },
   
   // --- Tim Multi 2 — Sosialisasi & Kelembagaan ---
