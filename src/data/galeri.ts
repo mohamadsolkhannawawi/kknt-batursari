@@ -55,28 +55,37 @@ export const galeriList: FotoGaleri[] = [
   },
   {
     id: "galeri-6",
-    src: "/images/SurveiBiogas.jpg",
-    alt: "Survei Geologi dan Pemetaan Potensi Biogas Kandang Ternak",
-    caption:
-      "Kunjungan lapangan dan survei geologi di kandang komunal warga untuk analisis kesesuaian lahan serta rancangan instalasi digester biogas.",
-    linkNews: {
-      url: "#", // TODO: Diisi link reportase Biogas (Iqbal dkk)
-      label: "JatengVox",
-    },
-  },
-    {
-    id: "galeri-7",
     src: "/images/UMKMRoti.jpg",
     alt: "Kunjungan dan Membantu Pengemasan Produk UMKM Roti Desa Batursari",
     caption:
       "Kunjungan silaturahmi sekaligus ikut membantu proses pengemasan roti di salah satu UMKM lokal Desa Batursari yang memproduksi bahan baku roti bakar.",
   },
   {
-    id: "galeri-8",
+    id: "galeri-7",
     src: "/images/NgajarMasjidDaleman.JPG", 
     alt: "Bimbingan Belajar Anak TK dan SD di Masjid Daleman Desa Batursari",
     caption:
       "Kegiatan bimbingan belajar dasar serta pendampingan edukatif bagi anak-anak usia TK dan SD yang dilaksanakan pada hari Jumat di Masjid Itikaf Darul Mutaqin , Desa Batursari.",
   },
-
+  {
+    id: "galeri-8",
+    src: "/images/HaulMakam.jpg", 
+    alt: "Partisipasi Tim KKN-T 141 Undip dalam Acara Haul Desa Batursari",
+    caption:
+      "Keikutsertaan dan partisipasi aktif Tim KKN-T 141 Undip Kelompok 2 dalam kegiatan tradisi Haul serta silaturahmi bersama warga masyarakat di areal Pemakaman Desa Batursari.",
+  },
+  {
+    id: "galeri-9",
+    src: "/images/MengajarSMP3.JPG", 
+    alt: "Pendampingan Pembelajaran Mata Pelajaran di SMP Negeri 3 Mranggen",
+    caption:
+      "Pelaksanaan kegiatan mengajar dan pendampingan mata pelajaran oleh Mahasiswa KKN-T 141 Undip Kelompok 2sesuai disiplin ilmu dan rumpun program studi masing-masing kepada siswa-siswi SMP Negeri 3 Mranggen.",
+  },
+  {
+    id: "galeri-10",
+    src: "/images/LOMBA.jpg", 
+    alt: "Diskusi Persiapan Perlombaan 17 Agustus bersama Bapak Haris dan Karang Taruna",
+    caption:
+      "Sesi diskusi santai dan koordinasi perencanaan perayaan HUT RI 17 Agustus bersama Bapak Haris serta pemuda Karang Taruna Desa Batursari.",
+  },
 ];
