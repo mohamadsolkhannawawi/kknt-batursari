@@ -31,19 +31,22 @@ export const galeriList: FotoGaleri[] = [
     caption:
       "Meningkatkan keakraban dan kebersamaan melalui kegiatan senam sehat bersama ibu-ibu RT setempat guna menjaga kebugaran jasmani warga Desa Batursari.",
   },
-  {
+    {
     id: "galeri-4",
+    src: "/images/PKK.jpg",
+    alt: "Keikutsertaan Tim KKN-T Undip dalam Pertemuan Rutin Ibu-Ibu PKK Desa Batursari",
+    caption:
+      "Partisipasi aktif dan silaturahmi mahasiswa KKN-T 141 Undip Kelompok 2 dalam kegiatan pertemuan rutin ibu-ibu PKK Kelurahan Batursari.",
+  },
+  {
+    id: "galeri-5",
     src: "/images/POC.jpg",
     alt: "Proses pembuatan dan produksi Pupuk Organik Cair (POC) Desa Batursari",
     caption:
       "Proses pengolahan dan pencampuran bahan baku dalam pembuatan Pupuk Organik Cair (POC) secara mandiri guna mengoptimalkan potensi limbah organik di Desa Batursari.",
-    linkNews: {
-      url: "#", // TODO: Diisi link reportase Multidisiplin 1 (Esther dkk)
-      label: "JatengVox",
-    },
   },
   {
-    id: "galeri-5",
+    id: "galeri-6",
     src: "/images/SosialisasiSMP3.jpg",
     alt: "Sosialisasi Transisi Hijau di SMP Negeri 3 Mranggen",
     caption:
@@ -53,39 +56,53 @@ export const galeriList: FotoGaleri[] = [
       label: "JatengVox",
     },
   },
+   {
+    id: "galeri-7",
+    src: "/images/ArisanBapak.jpg", 
+    alt: "Menghadiri Acara Arisan Rutin Warga Bapak-Bapak di Desa Batursari",
+    caption:
+      "Menjalin keakraban dan diskusi santai bersama warga bapak-bapak setempat dalam pertemuan arisan rutin RT/RW Desa Batursari.",
+  },
   {
-    id: "galeri-6",
+    id: "galeri-8",
+    src: "/images/ArisanIbu.jpg",
+    alt: "Pertemuan Arisan Rutin Ibu-Ibu dan Pembahasan Perencanaan Lomba 17 Agustus",
+    caption:
+      "Keikutsertaan Tim KKN-T 141 Kelompok 2 Undip dalam pertemuan arisan rutin warga sekaligus menyimak pembahasan persiapan rangkaian kegiatan perlombaan HUT RI 17 Agustus bersama ibu-ibu Desa Batursari.",
+  },
+  {
+    id: "galeri-9",
     src: "/images/UMKMRoti.jpg",
     alt: "Kunjungan dan Membantu Pengemasan Produk UMKM Roti Desa Batursari",
     caption:
       "Kunjungan silaturahmi sekaligus ikut membantu proses pengemasan roti di salah satu UMKM lokal Desa Batursari yang memproduksi bahan baku roti bakar.",
   },
   {
-    id: "galeri-7",
-    src: "/images/NgajarMasjidDaleman.JPG", 
-    alt: "Bimbingan Belajar Anak TK dan SD di Masjid Daleman Desa Batursari",
-    caption:
-      "Kegiatan bimbingan belajar dasar serta pendampingan edukatif bagi anak-anak usia TK dan SD yang dilaksanakan pada hari Jumat di Masjid Itikaf Darul Mutaqin , Desa Batursari.",
-  },
-  {
-    id: "galeri-8",
+    id: "galeri-10",
     src: "/images/HaulMakam.jpg", 
     alt: "Partisipasi Tim KKN-T 141 Undip dalam Acara Haul Desa Batursari",
     caption:
       "Keikutsertaan dan partisipasi aktif Tim KKN-T 141 Undip Kelompok 2 dalam kegiatan tradisi Haul serta silaturahmi bersama warga masyarakat di areal Pemakaman Desa Batursari.",
   },
   {
-    id: "galeri-9",
-    src: "/images/MengajarSMP3.JPG", 
-    alt: "Pendampingan Pembelajaran Mata Pelajaran di SMP Negeri 3 Mranggen",
+    id: "galeri-11",
+    src: "/images/NgajarMasjidDaleman.JPG", 
+    alt: "Bimbingan Belajar Anak TK dan SD di Masjid Daleman Desa Batursari",
     caption:
-      "Pelaksanaan kegiatan mengajar dan pendampingan mata pelajaran oleh Mahasiswa KKN-T 141 Undip Kelompok 2 sesuai disiplin ilmu dan rumpun program studi masing-masing kepada siswa-siswi SMP Negeri 3 Mranggen.",
+      "Kegiatan bimbingan belajar dasar serta pendampingan edukatif bagi anak-anak usia TK dan SD yang dilaksanakan pada hari Jumat di Masjid Itikaf Darul Mutaqin, Desa Batursari.",
   },
   {
-    id: "galeri-10",
+    id: "galeri-12",
     src: "/images/LOMBA.jpg", 
     alt: "Diskusi Persiapan Perlombaan 17 Agustus bersama Bapak Haris dan Karang Taruna",
     caption:
       "Sesi diskusi santai dan koordinasi perencanaan perayaan HUT RI 17 Agustus bersama Bapak Haris serta pemuda Karang Taruna Desa Batursari.",
+  },
+  {
+    id: "galeri-13",
+    src: "/images/MengajarSMP3.JPG", 
+    alt: "Pendampingan Pembelajaran Mata Pelajaran di SMP Negeri 3 Mranggen",
+    caption:
+      "Pelaksanaan kegiatan mengajar dan pendampingan mata pelajaran oleh Mahasiswa KKN-T 141 Undip Kelompok 2 sesuai disiplin ilmu dan rumpun program studi masing-masing kepada siswa-siswi SMP Negeri 3 Mranggen.",
   },
 ];

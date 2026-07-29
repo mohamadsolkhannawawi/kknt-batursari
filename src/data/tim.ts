@@ -10,7 +10,7 @@ export interface AnggotaTim {
   output: string; // output/peran yang dikerjakan / Jobdesk
   isPengembangWebsite: boolean;
   foto?: string;
-  fotoClass?: string; // <-- Tambahan properti untuk custom skala/posisi foto biar seragam
+  fotoClass?: string; // Custom skala/posisi foto
 }
 
 export const timList: AnggotaTim[] = [
@@ -106,7 +106,7 @@ export const timList: AnggotaTim[] = [
     prodi: "Informatika S1",
     fakultas: "Sains dan Matematika, UNDIP",
     multiGroup: "multi-1",
-    output: "Pengembangan Website",
+    output: "Pengembangan Website Peluang dan Potensi EBT Desa Batursari",
     isPengembangWebsite: true,
     foto: "/images/Solkhan.jpg",
     fotoClass: "object-center",
@@ -118,7 +118,7 @@ export const timList: AnggotaTim[] = [
     prodi: "Informatika S1",
     fakultas: "Sains dan Matematika, UNDIP",
     multiGroup: "multi-1",
-    output: "Manajemen Konten & Integrasi Tampilan Website",
+    output: "Manajemen Konten & Integrasi Tampilan Website EBT",
     isPengembangWebsite: true,
     foto: "/images/Nadia.JPG",
     fotoClass: "object-center",
@@ -130,13 +130,13 @@ export const timList: AnggotaTim[] = [
     prodi: "Teknik Komputer S1",
     fakultas: "Teknik, UNDIP",
     multiGroup: "multi-1",
-    output: "Infrastruktur Teknis",
+    output: "Infrastruktur Teknis Server & Hosting Website EBT",
     isPengembangWebsite: true,
     foto: "/images/Ardan.jpg",
     fotoClass: "object-center",
   },
   
-  // --- Tim Multi 2 — Sosialisasi & Kelembagaan ---
+  // --- Tim Multi 2 — Sosialisasi & Kelembagaan (Sesuai Reportase Jatengvox) ---
   {
     id: "esther",
     nama: "Esther Natalia Andhadewi",
@@ -156,7 +156,7 @@ export const timList: AnggotaTim[] = [
     prodi: "Agribisnis S1",
     fakultas: "Peternakan dan Pertanian",
     multiGroup: "multi-2",
-    output: "Penyuluhan dalam penyusunan sistem monitoring dan evaluasi tim hemat energi melalui logbook",
+    output: "Sosialisasi Energi Baru Terbarukan (EBT) dalam Perspektif Ekonomi",
     isPengembangWebsite: false,
     foto: "/images/Humay.jpg",
     fotoClass: "object-center",
@@ -168,7 +168,7 @@ export const timList: AnggotaTim[] = [
     prodi: "Kesehatan Masyarakat S1",
     fakultas: "Kesehatan Masyarakat",
     multiGroup: "multi-2",
-    output: "Pelaksanaan sosialisasi kesehatan lingkungan terintegrasi aksi 'Inspeksi Kelas Sehat' dan audit energi",
+    output: "Sosialisasi Kesehatan Lingkungan terintegrasi aksi 'Inspeksi Kelas Sehat' dan audit energi",
     isPengembangWebsite: false,
     foto: "/images/Maya.jpg",
     fotoClass: "scale-160 translate-y-3 object-center", 
@@ -183,7 +183,7 @@ export const timList: AnggotaTim[] = [
     output: "Penyusunan Surat Keputusan (SK) Pembentukan Tim Hemat Energi & pedoman tata tertib sekolah",
     isPengembangWebsite: false,
     foto: "/images/Manda.jpg",
-    fotoClass: "scale-100 object-center", // Manda tetap standar
+    fotoClass: "scale-100 object-center",
   },
   {
     id: "zia",
@@ -192,7 +192,7 @@ export const timList: AnggotaTim[] = [
     prodi: "Biologi S1",
     fakultas: "Sains dan Matematika",
     multiGroup: "multi-2",
-    output: "Sosialisasi mengenai pentingnya EBT dan dampaknya bagi kelestarian lingkungan",
+    output: "Sosialisasi Energi Baru Terbarukan (EBT) dalam Perspektif Lingkungan & Kelestarian Ekosistem",
     isPengembangWebsite: false,
     foto: "/images/Zia.jpg",
     fotoClass: "object-center",
