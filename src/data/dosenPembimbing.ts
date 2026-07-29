@@ -24,7 +24,7 @@ export const dosenPembimbingList: DosenPembimbing[] = [
     id: "dpl-2",
     nama: "Muhammad Luqman Hakim",
     gelar: "S.Si., M.Si.",
-    nidn: "196701231991032001", 
+    nidn: "199401112024061002", 
     prodi: "Biologi",
     fakultas: "Fakultas Sains dan Matematika",
     peran: "Dosen Pembimbing Lapangan",

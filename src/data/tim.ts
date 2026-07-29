@@ -10,6 +10,7 @@ export interface AnggotaTim {
   output: string; // output/peran yang dikerjakan / Jobdesk
   isPengembangWebsite: boolean;
   foto?: string;
+  fotoClass?: string; // <-- Tambahan properti untuk custom skala/posisi foto biar seragam
 }
 
 export const timList: AnggotaTim[] = [
@@ -23,7 +24,8 @@ export const timList: AnggotaTim[] = [
     multiGroup: "multi-1",
     output: "Pelaksanaan audit energi sederhana sebagai upaya efisiensi penggunaan energi listrik",
     isPengembangWebsite: false,
-    foto: "/images/Syahmi.jpeg",
+    foto: "/images/Syahmi.JPG",
+    fotoClass: "object-center",
   },
   {
     id: "bagas",
@@ -35,6 +37,7 @@ export const timList: AnggotaTim[] = [
     output: "Pelaksanaan audit energi sederhana sebagai upaya efisiensi penggunaan energi listrik",
     isPengembangWebsite: false,
     foto: "/images/Bagas.png",
+    fotoClass: "object-center",
   },
   {
     id: "dhafa",
@@ -46,6 +49,7 @@ export const timList: AnggotaTim[] = [
     output: "Pemetaan rekomendasi potensi biogas dan pengembangan energi biogas dari limbah peternakan",
     isPengembangWebsite: false,
     foto: "/images/Dafa.jpeg",
+    fotoClass: "object-center",
   },
   {
     id: "iqbal",
@@ -56,7 +60,8 @@ export const timList: AnggotaTim[] = [
     multiGroup: "multi-1",
     output: "Pemetaan rekomendasi potensi biogas dan pengembangan energi biogas dari limbah peternakan",
     isPengembangWebsite: false,
-    foto: "/images/Iqbal.png",
+    foto: "/images/Iqbal.JPG",
+    fotoClass: "object-center",
   },
   {
     id: "jihan",
@@ -67,7 +72,8 @@ export const timList: AnggotaTim[] = [
     multiGroup: "multi-1",
     output: "Survei lapangan potensi biogas dan pengembangan energi biogas dari limbah peternakan",
     isPengembangWebsite: false,
-    foto: "/images/Jihan.png",
+    foto: "/images/Jihan.JPG",
+    fotoClass: "object-center",
   },
   {
     id: "dita",
@@ -79,6 +85,7 @@ export const timList: AnggotaTim[] = [
     output: "Survei lapangan potensi biogas dan pengembangan energi biogas dari limbah peternakan",
     isPengembangWebsite: false,
     foto: "/images/Dita.jpg",
+    fotoClass: "object-center",
   },
   {
     id: "andin",
@@ -90,6 +97,7 @@ export const timList: AnggotaTim[] = [
     output: "Survei lokasi, analisis kebutuhan, dan pembuatan desain 2D dan 3D instalasi EBT",
     isPengembangWebsite: false,
     foto: "/images/Andin.jpg",
+    fotoClass: "object-center",
   },
   {
     id: "solkhan",
@@ -101,8 +109,9 @@ export const timList: AnggotaTim[] = [
     output: "Pengembangan Website",
     isPengembangWebsite: true,
     foto: "/images/Solkhan.jpg",
+    fotoClass: "object-center",
   },
-    {
+  {
     id: "nadia",
     nama: "Nadia Syifa Khairunnisa",
     nim: "24060123120023",
@@ -111,7 +120,8 @@ export const timList: AnggotaTim[] = [
     multiGroup: "multi-1",
     output: "Manajemen Konten & Integrasi Tampilan Website",
     isPengembangWebsite: true,
-    foto: "/images/Nadia.png",
+    foto: "/images/Nadia.JPG",
+    fotoClass: "object-center",
   },
   {
     id: "ardan",
@@ -123,6 +133,7 @@ export const timList: AnggotaTim[] = [
     output: "Infrastruktur Teknis",
     isPengembangWebsite: true,
     foto: "/images/Ardan.jpg",
+    fotoClass: "object-center",
   },
   
   // --- Tim Multi 2 — Sosialisasi & Kelembagaan ---
@@ -136,6 +147,7 @@ export const timList: AnggotaTim[] = [
     output: "Workshop Komunikasi Persuasif dan Branding 'Tim Hemat Energi'",
     isPengembangWebsite: false,
     foto: "/images/Ester.jpg",
+    fotoClass: "object-center",
   },
   {
     id: "humayra",
@@ -146,7 +158,8 @@ export const timList: AnggotaTim[] = [
     multiGroup: "multi-2",
     output: "Penyuluhan dalam penyusunan sistem monitoring dan evaluasi tim hemat energi melalui logbook",
     isPengembangWebsite: false,
-    foto: "/images/Humay.png",
+    foto: "/images/Humay.jpg",
+    fotoClass: "object-center",
   },
   {
     id: "maya",
@@ -158,6 +171,7 @@ export const timList: AnggotaTim[] = [
     output: "Pelaksanaan sosialisasi kesehatan lingkungan terintegrasi aksi 'Inspeksi Kelas Sehat' dan audit energi",
     isPengembangWebsite: false,
     foto: "/images/Maya.jpg",
+    fotoClass: "scale-160 translate-y-3 object-center", 
   },
   {
     id: "manda",
@@ -169,6 +183,7 @@ export const timList: AnggotaTim[] = [
     output: "Penyusunan Surat Keputusan (SK) Pembentukan Tim Hemat Energi & pedoman tata tertib sekolah",
     isPengembangWebsite: false,
     foto: "/images/Manda.jpg",
+    fotoClass: "scale-100 object-center", // Manda tetap standar
   },
   {
     id: "zia",
@@ -180,5 +195,6 @@ export const timList: AnggotaTim[] = [
     output: "Sosialisasi mengenai pentingnya EBT dan dampaknya bagi kelestarian lingkungan",
     isPengembangWebsite: false,
     foto: "/images/Zia.jpg",
+    fotoClass: "object-center",
   },
 ];

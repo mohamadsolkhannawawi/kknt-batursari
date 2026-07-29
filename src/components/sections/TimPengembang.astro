@@ -38,12 +38,12 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
               <div class="absolute inset-0 h-full w-full rounded-2xl border border-neutral-200/80 bg-white p-6 flex flex-col items-center justify-center text-center [backface-visibility:hidden]">
                 
                 <!-- FOTO ANGGOTA -->
-                <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-emerald-500/20 shadow-xs bg-neutral-100 flex items-center justify-center shrink-0 mb-4">
+                <div class="w-24 h-24 aspect-square rounded-full overflow-hidden border-2 border-emerald-500/20 shadow-xs bg-neutral-100 flex items-center justify-center shrink-0 mb-4 relative">
                   <img
                     src={anggota.foto}
                     alt={anggota.nama}
                     loading="lazy"
-                    class="w-full h-full object-cover"
+                    class={`w-full h-full object-cover transition-transform duration-300 ${anggota.fotoClass || 'object-center'}`}
                   />
                 </div>
 
@@ -59,7 +59,7 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
 
               </div>
 
-              <!-- === SISI BELAKANG (DESKRIPSI TUGAS MASING-MASING ANGGOTA - REVISED COLOR) === -->
+              <!-- === SISI BELAKANG === -->
               <div class="absolute inset-0 h-full w-full rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800 p-6 flex flex-col justify-between text-center text-white [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-lg">
                 
                 <div class="my-auto space-y-3 w-full">
@@ -111,13 +111,13 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
               <!-- === SISI DEPAN (CLEAN PROFIL DASAR) === -->
               <div class="absolute inset-0 h-full w-full rounded-2xl border border-neutral-200/80 bg-white p-6 flex flex-col items-center justify-center text-center [backface-visibility:hidden]">
                 
-                <!-- FOTO ANGGOTA -->
-                <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-emerald-500/20 shadow-xs bg-neutral-100 flex items-center justify-center shrink-0 mb-4">
+                <!-- FOTO ANGGOTA (1:1 PROPORSIIONAL) -->
+                <div class="w-24 h-24 aspect-square rounded-full overflow-hidden border-2 border-emerald-500/20 shadow-xs bg-neutral-100 flex items-center justify-center shrink-0 mb-4">
                   <img
                     src={anggota.foto}
                     alt={anggota.nama}
                     loading="lazy"
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover object-center"
                   />
                 </div>
 
@@ -133,7 +133,7 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
 
               </div>
 
-              <!-- === SISI BELAKANG (DESKRIPSI TUGAS MASING-MASING ANGGOTA - REVISED COLOR) === -->
+              <!-- === SISI BELAKANG === -->
               <div class="absolute inset-0 h-full w-full rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800 p-6 flex flex-col justify-between text-center text-white [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-lg">
                 
                 <div class="my-auto space-y-3 w-full">

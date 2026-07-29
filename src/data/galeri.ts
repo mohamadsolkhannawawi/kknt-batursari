@@ -79,7 +79,7 @@ export const galeriList: FotoGaleri[] = [
     src: "/images/MengajarSMP3.JPG", 
     alt: "Pendampingan Pembelajaran Mata Pelajaran di SMP Negeri 3 Mranggen",
     caption:
-      "Pelaksanaan kegiatan mengajar dan pendampingan mata pelajaran oleh Mahasiswa KKN-T 141 Undip Kelompok 2sesuai disiplin ilmu dan rumpun program studi masing-masing kepada siswa-siswi SMP Negeri 3 Mranggen.",
+      "Pelaksanaan kegiatan mengajar dan pendampingan mata pelajaran oleh Mahasiswa KKN-T 141 Undip Kelompok 2 sesuai disiplin ilmu dan rumpun program studi masing-masing kepada siswa-siswi SMP Negeri 3 Mranggen.",
   },
   {
     id: "galeri-10",
