@@ -23,7 +23,7 @@ import {
       id="mapContainer"
       data-reveal
     >
-      <!-- WADAH GAMBAR DENGAN OVERFLOW HIDDEN BIAR ZOOM TIDAK OFF-BOUNDS -->
+      <!-- WADAH GAMBAR DENGAN OVERFLOW HIDDEN -->
       <div class="overflow-hidden rounded-xl bg-white shadow-inner">
         <img
           src={petaPotensi.src}
@@ -36,7 +36,7 @@ import {
         />
       </div>
 
-      <!-- TOMBOL PERBESAR FLOATING: AWALNYA PUTIH/ABU, PAS HOVER JADI HIJAU -->
+      <!-- FLOATING BUTTON PERBESAR -->
       <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-10">
         <button
           type="button"
@@ -53,8 +53,8 @@ import {
 
     <!-- NARASI PENJELASAN PETA & TOMBOL REPORTASE -->
     <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 space-y-4" data-reveal>
-      <h3 class="text-lg font-bold text-primary-900">
-        Ringkasan Hasil Pemetaan Potensi Biogas
+      <h3 class="text-lg font-bold text-emerald-950">
+        Ringkasan Hasil Pemetaan Spasial SIG
       </h3>
       
       {penjelasanPeta.map((paragraf) => (
@@ -66,21 +66,21 @@ import {
       <!-- CTA LINK REPORTASE -->
       <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-600 font-medium">
-          <svg class="w-5 h-5 text-primary-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-emerald-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
           </svg>
-          <span>Ingin membaca pembahasan lengkap program ini?</span>
+          <span>Ingin membaca pembahasan pemetaan lengkap program ini?</span>
         </div>
 
         <a
           href={linkReportase}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm font-semibold text-primary-800 hover:text-primary-950 bg-primary-100/80 hover:bg-primary-200/80 px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer shrink-0"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-900 bg-emerald-100/80 hover:bg-emerald-200/80 px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer shrink-0 shadow-2xs"
         >
           <span>Baca Artikel Reportase Lengkap</span>
           <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
           </svg>
         </a>
       </div>
@@ -91,7 +91,7 @@ import {
 <!-- LIGHTBOX MODAL -->
 <div
   id="mapModal"
-  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
 >
   <button
     type="button"

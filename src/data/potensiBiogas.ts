@@ -1,14 +1,15 @@
 export const petaPotensi = {
   src: "/images/petabiogas.jpg", 
-  alt: "Peta Potensi Energi Baru Terbarukan (Biogas) Desa Batursari",
+  alt: "Peta Potensi Energi Baru Terbarukan (Biogas) Desa Batursari Skala 1:20.000",
 };
 
 export const deskripsiPotensi =
-  "Pemetaan wilayah potensi energi terbarukan berbasis kotoran ternak serta rekapitulasi tingkat potensi biogas oleh Tim KKN-T ESDM Undip di Desa Batursari.";
+  "Pemetaan tingkat potensi pengembangan biogas berbasis Sistem Informasi Geografis (SIG) berdasarkan ketersediaan biomassa, aksesibilitas jalan, dan luas lahan di Desa Batursari.";
 
 export const penjelasanPeta = [
-  "Berdasarkan hasil survei dan pemetaan spasial di Desa Batursari, wilayah desa terbagi menjadi tiga klasifikasi potensi biogas berdasarkan ketersediaan biomassa rumput, kemudahan akses, dan luas lahan: Potensi Tinggi (35.18% / 2.238.371 m²), Potensi Sedang (18.38% / 1.169.686 m²), dan Potensi Rendah (46.43% / 2.954.174 m²).",
-  "Hasil pemetaan ini juga mengidentifikasi lokasi Titik Biogas Aktif yang berada di wilayah dusun Tlogo/Dongko. Data rekapitulasi potensi spasial ini diharapkan dapat menjadi panduan dasar bagi pemerintah desa dan masyarakat dalam pengembangan Energi Baru Terbarukan (EBT) yang mandiri dan berkelanjutan.",
+  "Berdasarkan analisis spasial metode overlay dan skoring terhadap data RBI dan DEMNAS, wilayah Desa Batursari terklasifikasi menjadi tiga kelas potensi biogas: Kelas Potensi Tinggi seluas 223,84 Ha (35,18%), Kelas Potensi Sedang seluas 116,97 Ha (18,38%), dan Kelas Potensi Rendah seluas 295,42 Ha (46,43%).",
+  "Kelas potensi tinggi didominasi lahan terbuka di dusun pinggiran seperti Karangmalang, Dongko, dan sebagian Tlogo, sedangkan kelas potensi rendah terkonsentrasi pada kawasan permukiman padat di bagian tengah desa.",
+  "Hasil pemetaan ini dilengkapi koordinat 1 Titik Biogas Aktif yang beroperasi di zona potensi sedang (perbatasan Dusun Kopen & Tlogo) sebagai dasar acuan rekomendasi pengembangan lokasi instalasi baru bagi Pemerintah Desa Batursari."
 ];
 
 export const linkReportase = "https://link-artikel-reportase-kamu.com";
