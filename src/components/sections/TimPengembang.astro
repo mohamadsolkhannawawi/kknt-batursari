@@ -2,9 +2,9 @@
 import SectionHeading from "../ui/SectionHeading.astro";
 import { timList } from "../../data/tim";
 
-// Menampilkan semua anggota Multi 1 & Multi 2
-const multi1 = timList.filter((a) => a.multiGroup === "multi-1");
-const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
+// Menampilkan semua anggota Multi Disiplin 1 & Multi Disiplin 2
+const multi1 = timList.filter((a) => a.multiGroup === "multidisiplin-1");
+const multi2 = timList.filter((a) => a.multiGroup === "multidisiplin-2");
 ---
 
 <section id="tim" class="bg-white py-16 md:py-20 border-t border-neutral-100">
@@ -12,13 +12,13 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
     <SectionHeading
       eyebrow="TIM KKN-T DESA BATURSARI"
       title="Tim Penyusun Program"
-      subtitle="Website ini adalah hasil kerja kolektif seluruh 15 mahasiswa KKN-T 141 kelompok 2 Desa Batursari yang sudah dikelompokkan sesuai peran Multi 1 & Multi 2."
+      subtitle="Website ini adalah hasil kerja kolektif seluruh 15 mahasiswa KKN-T 141 kelompok 2 Desa Batursari yang sudah dikelompokkan sesuai peran Multi Disiplin 1 & Multi Disiplin 2."
     />
 
     <!-- SUB-SECTION: TIM MULTI 1 -->
     <div class="mt-10 mb-16">
       <h3 class="text-lg font-bold text-emerald-950 mb-1" data-reveal>
-        Tim Multi 1 — Audit Energi & Pemetaan EBT
+        Tim Multi Disiplin 1 — Audit Energi & Pemetaan EBT
       </h3>
       <p class="text-sm text-neutral-500 mb-6" data-reveal>
         {multi1.length} anggota
@@ -92,7 +92,7 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
     <!-- SUB-SECTION: TIM MULTI 2 -->
     <div class="mb-10">
       <h3 class="text-lg font-bold text-emerald-950 mb-1" data-reveal>
-        Tim Multi 2 — Sosialisasi & Kelembagaan
+        Tim Multi Disiplin 2 — Sosialisasi & Kelembagaan
       </h3>
       <p class="text-sm text-neutral-500 mb-6" data-reveal>
         {multi2.length} anggota
