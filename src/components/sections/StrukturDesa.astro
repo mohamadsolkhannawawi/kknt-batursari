@@ -24,7 +24,7 @@ const isEnabled = navigation.some(
         class="mx-auto"
       />
 
-      <!-- KARTU IDENTITAS MONOGRAFI DESA (HIJAU MUDA MODERN & CLEAN) -->
+      <!-- KARTU IDENTITAS MONOGRAFI DESA -->
       <div class="max-w-5xl mx-auto bg-gradient-to-br from-emerald-100/90 via-emerald-50 to-teal-50 text-emerald-950 p-6 md:p-8 rounded-2xl border border-emerald-300/80 shadow-sm space-y-5 backdrop-blur-sm">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-emerald-200/90 pb-5">
           <div>
@@ -144,13 +144,11 @@ const isEnabled = navigation.some(
           </h4>
 
           <div class="space-y-4 text-sm md:text-base text-neutral-800">
-            <!-- Informasi Dusun & RT/RW -->
             <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200">
               <strong class="block text-neutral-900 text-base md:text-lg font-bold mb-1.5">Informasi Kedusunan:</strong>
               <p class="leading-relaxed text-sm md:text-base text-neutral-700">{profilBatursariData.informasiDusun.catatan}</p>
             </div>
 
-            <!-- Batas Wilayah Desa -->
             <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200">
               <strong class="block text-neutral-900 text-base md:text-lg font-bold mb-2">Batas Wilayah Desa:</strong>
               <div class="grid grid-cols-2 gap-2 text-sm md:text-base text-neutral-700">
@@ -161,7 +159,6 @@ const isEnabled = navigation.some(
               </div>
             </div>
 
-            <!-- Sarana Ibadah -->
             <div class="grid grid-cols-3 gap-3 text-center pt-1">
               <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200">
                 <span class="block font-extrabold text-2xl md:text-3xl text-emerald-800">{profilBatursariData.saranaIbadah.masjid}</span>
@@ -177,7 +174,6 @@ const isEnabled = navigation.some(
               </div>
             </div>
 
-            <!-- Fasilitas Kesehatan -->
             <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200 flex justify-between items-center text-sm md:text-base font-semibold">
               <span class="text-neutral-800">Fasilitas Kesehatan (Puskesdes & Posyandu)</span>
               <span class="font-bold text-neutral-900 text-base md:text-lg">{profilBatursariData.saranaKesehatan.ukbmPosyandu + profilBatursariData.saranaKesehatan.puskesdes} Titik</span>
@@ -231,21 +227,39 @@ const isEnabled = navigation.some(
 
     </div>
 
-    <!-- POP-UP LIGHTBOX MODAL UNTUK GAMBAR BAGAN -->
+    <!-- POP-UP LIGHTBOX MODAL UNTUK GAMBAR BAGAN (LENGKAP DENGAN TOMBOL UNDUH) -->
     <dialog 
       id="structure-modal" 
-      class="p-0 rounded-2xl backdrop:bg-black/80 max-w-5xl w-[92vw] overflow-hidden bg-transparent border-0 outline-none m-auto"
+      class="p-0 rounded-2xl backdrop:bg-black/80 max-w-5xl w-[92vw] overflow-hidden bg-transparent border-0 outline-none m-auto select-none"
     >
       <div class="relative bg-white p-3 md:p-5 rounded-2xl shadow-2xl flex flex-col items-center">
-        <button 
-          id="close-structure-modal"
-          type="button"
-          class="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/70 text-white font-bold transition hover:bg-neutral-900 hover:scale-110 text-lg"
-          aria-label="Tutup modal"
-        >
-          ✕
-        </button>
         
+        <!-- KELOMPOK TOMBOL AKSES POJOK KANAN ATAS (UNDUH & SILANG CLOSE) -->
+        <div class="absolute top-4 right-4 z-20 flex items-center gap-2.5">
+          <!-- 📥 TOMBOL UNDUH GAMBAR BAGAN -->
+          <a
+            href={structureImg.src}
+            download="Struktur-Organisasi-Pemerintah-Desa-Batursari.png"
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/70 text-white transition hover:bg-emerald-600 hover:scale-110 shadow-lg border border-white/20"
+            title="Unduh Bagan Struktur Organisasi"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+          </a>
+
+          <!-- ✖ TOMBOL SILANG CLOSE -->
+          <button 
+            id="close-structure-modal"
+            type="button"
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/70 text-white font-bold transition hover:bg-neutral-900 hover:scale-110 text-lg shadow-lg border border-white/20"
+            aria-label="Tutup modal"
+          >
+            ✕
+          </button>
+        </div>
+        
+        <!-- GAMBAR BAGAN STRUKTUR -->
         <Image
           src={structureImg}
           alt="Bagan Struktur Organisasi Pemerintah Desa Batursari (Diperbesar)"

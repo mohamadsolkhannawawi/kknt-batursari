@@ -1,18 +1,18 @@
 ---
 import SectionHeading from "../ui/SectionHeading.astro";
 
-// Path gambar dokumentasi audit energi (sesuaikan nama file di folder public/images/)
+// Path gambar dokumentasi audit energi
 const fotoAudit = {
-  src: "/images/audit-energi.jpg",
+  src: "/images/audit-energi.jpeg",
   alt: "Dokumentasi Kegiatan Audit Energi di SMP Negeri 3 Mranggen",
   caption: "Kegiatan pengukuran kelayakan pencahayaan dan beban listrik di SMP Negeri 3 Mranggen."
 };
 
-// Link artikel reportase Syahmi & Bagas
-const linkReportaseAudit = "https://link-reportase-audit-energi-kamu.com";
+// Link Google Drive Laporan PDF Audit Energi
+const linkReportaseAudit = "https://drive.google.com/drive/folders/1aSJzTb6D0Vq2m8QXX85dMdSB11LsWqKO";
 ---
 
-<section id="audit" class="bg-neutral-50 py-16 md:py-20 border-t border-neutral-200/80">
+<section id="audit" class="bg-neutral-50 py-16 md:py-20 border-t border-neutral-200">
   <div class="container-site max-w-6xl mx-auto px-4">
     
     <!-- HEADER SEKSI -->
@@ -22,57 +22,77 @@ const linkReportaseAudit = "https://link-reportase-audit-energi-kamu.com";
       subtitle="Kegiatan audit dan konservasi energi yang berfokus pada efisiensi penggunaan beban listrik dan kelayakan tingkat pencahayaan di fasilitas sekolah SMP Negeri 3 Mranggen, Desa Batursari."
     />
 
-    <!-- GAMBAR DOKUMENTASI (ATAS) -->
-    <div class="overflow-hidden rounded-2xl border border-neutral-200/80 bg-white shadow-sm mb-8" data-reveal>
-      <div class="w-full bg-neutral-100 max-h-[500px] overflow-hidden flex items-center justify-center">
+    <!-- GAMBAR DOKUMENTASI (ATAS) DENGAN FLOATING PERBESAR -->
+    <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm mb-8 relative group" data-reveal>
+      <div class="w-full bg-neutral-100 max-h-[500px] overflow-hidden flex items-center justify-center relative cursor-pointer" id="triggerAuditImg">
         <img
           src={fotoAudit.src}
           alt={fotoAudit.alt}
           loading="lazy"
-          class="w-full h-auto object-cover max-h-[500px]"
+          class="w-full h-auto object-cover max-h-[500px] transition-transform duration-500 ease-out group-hover:scale-105"
         />
+
+        <!-- FLOATING BUTTON PERBESAR -->
+        <div class="absolute bottom-4 right-4 z-10">
+          <button
+            type="button"
+            id="openAuditModalBtn"
+            class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 bg-white border border-neutral-300 px-3.5 py-1.5 rounded-full shadow-md transition-all duration-300 cursor-pointer hover:bg-emerald-600 hover:text-white hover:border-emerald-600"
+          >
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+            </svg>
+            <span>Perbesar</span>
+          </button>
+        </div>
       </div>
+
       <div class="p-3.5 bg-white border-t border-neutral-100 text-center">
-        <p class="text-xs md:text-sm text-neutral-600 font-medium">
+        <p class="text-xs md:text-sm text-neutral-600">
           {fotoAudit.caption}
         </p>
       </div>
     </div>
 
-    <!-- RANGKUMAN KESIMPULAN AUDIT & CTA REPORTASE (BAWAH) -->
-    <div class="bg-white rounded-2xl border border-neutral-200/80 p-6 md:p-8 space-y-6 shadow-sm" data-reveal>
+    <!-- RANGKUMAN KESIMPULAN AUDIT & CTA DRIVE PDF -->
+    <div class="bg-white rounded-2xl border border-neutral-200 p-6 md:p-8 space-y-6 shadow-sm" data-reveal>
       
-      <!-- PARAGRAF KESIMPULAN -->
+      <!-- PARAGRAF KESIMPULAN TEKS HITAM -->
       <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
-        <h3 class="text-lg font-bold text-primary-900">
-          Ringkasan Hasil Audit & Potensi Efisiensi
+        <h3 class="text-lg text-neutral-900 font-semibold">
+          Ringkasan Hasil Audit Energi Kelistrikan
         </h3>
         <p>
-          Berdasarkan hasil pemeriksaan beban kelistrikan dan kondisi eksisting pencahayaan di area SMP Negeri 3 Mranggen, tim audit energi mengidentifikasi beberapa potensi efisiensi pada peralatan utama seperti penerangan, kipas angin, dan AC, khususnya di area ruang kelas serta laboratorium.
+          Berdasarkan inventarisasi pada 46 ruangan di SMP Negeri 3 Mranggen, terdata total daya terpasang sebesar 41.302 Watt (188 item / 590 unit peralatan) dengan estimasi konsumsi energi awal (baseline) sebesar 184,46 kWh/hari (Rp166.015,35/hari).
         </p>
         <p>
-          Hasil analisis menunjukkan adanya potensi penghematan konsumsi listrik sebesar <strong class="text-emerald-700 font-semibold">20% hingga 25%</strong> melalui langkah optimalisasi, seperti penggantian ke lampu LED hemat energi, pemanfaatan pencahayaan alami di siang hari, serta penerapan SOP penggunaan perangkat elektronik sekolah.
+          Hasil pemeriksaan visual menunjukkan kondisi fisik dan fungsional instalasi listrik secara umum berada dalam kategori baik dan berlabel SNI (100%). Potensi pemborosan energi lebih dipengaruhi oleh pola kebiasaan operasional pengguna daripada aspek kerusakan fisik instalasi.
+        </p>
+        <p>
+          Melalui pelaksanaan program pencerdasan hemat energi yang terstruktur, konsumsi listrik berhasil ditekan secara bertahap menjadi 161,65 kWh/hari pada Audit Tahap II (efisiensi 12,37%) dan 144,28 kWh/hari pada Audit Tahap III (efisiensi 21,78%), setara dengan penghematan biaya operasional listrik hingga Rp36.161,55 per hari.
         </p>
       </div>
 
-      <!-- CTA LINK KE REPORTASE SYAHMI & BAGAS (IKON KORAN TETAP ADA) -->
-      <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-600 font-medium">
-          <svg class="w-5 h-5 text-primary-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- CTA LINK KE GOOGLE DRIVE PDF (IKON & TOMBOL HIJAU, TEKS TOMBOL TEBAL) -->
+      <div class="pt-4 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-700">
+          <!-- IKON DOKUMEN HIJAU EMERALD -->
+          <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
           </svg>
-          <span>Ingin membaca hasil kajian dan pembahasan lengkap audit energi ini?</span>
+          <span class="text-neutral-800">Ingin membaca berkas dokumen laporan audit energi lengkap?</span>
         </div>
 
+        <!-- TOMBOL HIJAU DENGAN TULISAN TEBAL -->
         <a
-          href={linkReportaseAudit}
+          href=https://drive.google.com/drive/folders/1aSJzTb6D0Vq2m8QXX85dMdSB11LsWqKO
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm font-semibold text-primary-800 hover:text-primary-950 bg-primary-100/80 hover:bg-primary-200/80 px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer shrink-0"
+          class="inline-flex items-center gap-2 text-sm text-neutral-900 bg-emerald-100/80 hover:bg-emerald-200/80 px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer shrink-0 border border-emerald-200/80 shadow-2xs"
         >
-          <span>Baca Artikel Reportase Lengkap</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          <span class="font-bold">Buka Laporan Audit Energi (Drive)</span>
+          <svg class="w-4 h-4 text-emerald-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
           </svg>
         </a>
       </div>
@@ -81,3 +101,87 @@ const linkReportaseAudit = "https://link-reportase-audit-energi-kamu.com";
 
   </div>
 </section>
+
+<!-- LIGHTBOX MODAL (DENGAN TOMBOL UNDUH) -->
+<div
+  id="auditModal"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
+>
+  <!-- KELOMPOK TOMBOL POJOK KANAN ATAS (UNDUH & SILANG CLOSE) -->
+  <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
+    <!-- 📥 TOMBOL UNDUH GAMBAR -->
+    <a
+      href={fotoAudit.src}
+      download="Dokumentasi-Audit-Energi-SMPN3-Mranggen.jpg"
+      class="p-3 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg flex items-center justify-center"
+      title="Unduh Gambar Dokumentasi"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    </a>
+
+    <!-- ✖ TOMBOL SILANG CLOSE -->
+    <button
+      type="button"
+      id="closeAuditModal"
+      class="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+      aria-label="Tutup Modal"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- WADAH UTAMA MODAL -->
+  <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">
+    <!-- GAMBAR MODAL TANPA BINGKAI PUTIH -->
+    <img
+      src={fotoAudit.src}
+      alt={fotoAudit.alt}
+      class="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-2xl"
+    />
+
+    <!-- CAPTION TERSEDIA DI DALAM MODAL -->
+    <p class="text-white text-xs md:text-sm font-medium mt-3 text-center bg-black/50 px-4 py-2 rounded-full border border-white/10 max-w-2xl">
+      {fotoAudit.caption}
+    </p>
+  </div>
+</div>
+
+<!-- SCRIPT MODAL AUDIT -->
+<script>
+  const modal = document.getElementById("auditModal");
+  const openBtn = document.getElementById("openAuditModalBtn");
+  const triggerImg = document.getElementById("triggerAuditImg");
+  const closeBtn = document.getElementById("closeAuditModal");
+
+  function openModal() {
+    if (modal) {
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+  }
+
+  openBtn?.addEventListener("click", openModal);
+  triggerImg?.addEventListener("click", openModal);
+  closeBtn?.addEventListener("click", closeModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+</script>

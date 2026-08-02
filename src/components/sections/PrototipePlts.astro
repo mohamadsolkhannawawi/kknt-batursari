@@ -4,12 +4,12 @@ import SectionHeading from "../ui/SectionHeading.astro";
 // Data Gambar untuk Auto-Slider PLTSa
 const fotoDokumentasi = [
   {
-    src: "/images/prototipe-pltsa-alat.jpg",
+    src: "/images/prototipe-pltsa-alat.jpeg",
     alt: "Prototipe Alat Pembangkit Listrik Tenaga Sampah (PLTSa)",
     caption: "Prototipe Alat Pembangkit Listrik Tenaga Sampah (PLTSa).",
   },
   {
-    src: "/images/prototipe-pltsa.jpg",
+    src: "/images/sosilaudit.jpg",
     alt: "Sosialisasi Prototipe PLTSa di SMP Negeri 3 Mranggen",
     caption: "Sosialisasi & pemaparan prototipe PLTSa bersama siswa/siswi SMPN 3 Mranggen.",
   },
@@ -30,8 +30,6 @@ const langkahKonversi = [
   { nomor: "6 & 7", judul: "Pengolahan Residu & Abu", deskripsi: "Abu sisa pembakaran (Ash) diolah bersama campuran semen/air untuk dimanfaatkan kembali sebagai material beton/landfill." },
   { nomor: "Stack", judul: "Pembersihan Gas Buang", deskripsi: "Gas buang disaring menggunakan Bag House & sistem filter emisi sebelum dilepas secara aman melalui cerobong (Stack)." },
 ];
-
-const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
 ---
 
 <section id="pltsa" class="bg-white py-16 md:py-20 border-t border-neutral-100">
@@ -52,7 +50,7 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
         <div class="lg:col-span-5 flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-200/80 bg-white p-3 shadow-sm relative group">
           
           <!-- CONTAINER CAROUSEL SLIDES -->
-          <div id="pltsaCarousel" class="relative w-full h-[280px] md:h-[320px] overflow-hidden rounded-lg bg-neutral-100">
+          <div id="pltsaCarousel" class="relative w-full h-[280px] md:h-[320px] overflow-hidden rounded-lg bg-neutral-100 cursor-pointer">
             {fotoDokumentasi.map((foto, index) => (
               <div
                 class={`pltsa-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
@@ -62,12 +60,27 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
                   src={foto.src}
                   alt={foto.alt}
                   loading="lazy"
-                  class="w-full h-full object-cover rounded-lg"
+                  class="w-full h-full object-cover rounded-lg trigger-pltsa-doc-modal transition-transform duration-500 hover:scale-105"
+                  data-index={index}
                 />
               </div>
             ))}
 
-            <!-- TOMBOL NAVIGASI PREV/NEXT (MUNCUL SAAT HOVER) -->
+            <!-- FLOATING BUTTON HANYA PERBESAR GAMBAR -->
+            <div class="absolute bottom-3 right-3 z-20">
+              <button
+                type="button"
+                id="openPltsaDocModal"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 bg-white/95 backdrop-blur-xs border border-neutral-300 px-3.5 py-1.5 rounded-full shadow-md transition-all duration-300 cursor-pointer hover:bg-emerald-600 hover:text-white hover:border-emerald-600"
+              >
+                <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                </svg>
+                <span>Perbesar</span>
+              </button>
+            </div>
+
+            <!-- TOMBOL NAVIGASI PREV/NEXT -->
             <button
               type="button"
               id="prevPltsaSlide"
@@ -107,7 +120,7 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
 
         </div>
 
-        <!-- KOLOM KANAN: PENJELASAN SOSIALISASI & LINK REPORTASE -->
+        <!-- KOLOM KANAN: PENJELASAN SOSIALISASI -->
         <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
           <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
             <h3 class="text-lg font-bold text-primary-900">
@@ -120,8 +133,6 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
               Program ini memberikan edukasi serta penjelasan mengenai mekanisme teknis bagaimana limbah sampah dapat dikonversi menjadi sumber energi listrik terbarukan, sekaligus memantik kepedulian lingkungan dan minat inovasi teknologi sejak dini.
             </p>
           </div>
-
-
         </div>
 
       </div>
@@ -138,7 +149,7 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
         </p>
       </div>
 
-      <!-- CONTAINER GAMBAR SKEMA DENGAN TOMBOL FLOATING IN-IMAGE -->
+      <!-- CONTAINER GAMBAR SKEMA DENGAN TOMBOL FLOATING -->
       <div class="rounded-xl overflow-hidden border border-neutral-200 bg-white p-2 md:p-4 shadow-xs relative">
         <img
           src={diagramPltsa.src}
@@ -184,21 +195,105 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
   </div>
 </section>
 
-<!-- LIGHTBOX MODAL UNTUK PERBESAR SKEMA PLTSa -->
+<!-- LIGHTBOX MODAL 1: DOKUMENTASI CAROUSEL (DENGAN TOMBOL UNDUH SINKRON) -->
+<div
+  id="pltsaDocModal"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
+>
+  <!-- TOMBOL AKSES MODAL (DOWNLOAD & CLOSE) -->
+  <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
+    <!-- 📥 TOMBOL DOWNLOAD SINKRON -->
+    <a
+      id="modalDocDownloadBtn"
+      href=""
+      download="Dokumentasi-PLTSa.jpg"
+      class="p-3 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg flex items-center justify-center"
+      title="Unduh Gambar Ini"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    </a>
+
+    <!-- ✖ TOMBOL SILANG CLOSE -->
+    <button
+      type="button"
+      id="closePltsaDocModal"
+      class="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+      aria-label="Tutup Gambar"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">
+    <!-- GAMBAR MODAL TANPA BINGKAI PUTIH -->
+    <img
+      id="pltsaDocModalImg"
+      src=""
+      alt=""
+      class="max-w-full max-h-[75vh] object-contain mx-auto rounded-lg shadow-2xl transition-all duration-300"
+    />
+    
+    <!-- CAPTION TERSEDIA DI DALAM MODAL -->
+    <p id="pltsaDocModalCaption" class="text-white text-xs md:text-sm font-medium mt-3 text-center bg-black/50 px-4 py-2 rounded-full border border-white/10 max-w-2xl">
+    </p>
+
+    <!-- TOMBOL PREV MODAL -->
+    <button
+      type="button"
+      id="pltsaDocModalPrev"
+      class="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/20 hover:bg-emerald-600 text-white shadow-xl flex items-center justify-center transition-all cursor-pointer border border-white/20 backdrop-blur-sm text-xl"
+      aria-label="Gambar Sebelumnya"
+    >
+      ❮
+    </button>
+
+    <!-- TOMBOL NEXT MODAL -->
+    <button
+      type="button"
+      id="pltsaDocModalNext"
+      class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/20 hover:bg-emerald-600 text-white shadow-xl flex items-center justify-center transition-all cursor-pointer border border-white/20 backdrop-blur-sm text-xl"
+      aria-label="Gambar Selanjutnya"
+    >
+      ❯
+    </button>
+  </div>
+</div>
+
+<!-- LIGHTBOX MODAL 2: PERBESAR SKEMA PLTSa (DENGAN TOMBOL UNDUH) -->
 <div
   id="pltsaModal"
-  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
 >
-  <button
-    type="button"
-    id="closePltsaModal"
-    class="fixed top-4 right-4 md:top-6 md:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
-    aria-label="Tutup Skema"
-  >
-    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  </button>
+  <!-- TOMBOL AKSES MODAL SKEMA (DOWNLOAD & CLOSE) -->
+  <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
+    <!-- 📥 TOMBOL DOWNLOAD DIAGRAM SKEMA -->
+    <a
+      href={diagramPltsa.src}
+      download="Skema-Alur-Kerja-PLTSa.jpg"
+      class="p-3 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg flex items-center justify-center"
+      title="Unduh Diagram Skema"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    </a>
+
+    <!-- ✖ TOMBOL SILANG CLOSE -->
+    <button
+      type="button"
+      id="closePltsaModal"
+      class="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+      aria-label="Tutup Skema"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
 
   <div class="relative w-full h-full max-w-6xl max-h-[92vh] flex items-center justify-center overflow-auto p-2">
     <img
@@ -209,9 +304,8 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
   </div>
 </div>
 
-<!-- SCRIPT SLIDER AUTOSLIDE & MODAL -->
+<!-- SCRIPT SLIDER AUTOSLIDE & MODAL TERINTEGRASI -->
 <script is:inline define:vars={{ fotoDokumentasi }}>
-  // === LOGIKA AUTO-SLIDE CAROUSEL ===
   let currentSlide = 0;
   const slides = document.querySelectorAll('.pltsa-slide');
   const dots = document.querySelectorAll('.pltsa-dot');
@@ -219,6 +313,29 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
   const prevBtn = document.getElementById('prevPltsaSlide');
   const nextBtn = document.getElementById('nextPltsaSlide');
   let autoSlideTimer;
+
+  // Modal Elements
+  const docModal = document.getElementById('pltsaDocModal');
+  const docModalImg = document.getElementById('pltsaDocModalImg');
+  const docModalCaption = document.getElementById('pltsaDocModalCaption');
+  const modalDocDownloadBtn = document.getElementById('modalDocDownloadBtn');
+  const openDocBtn = document.getElementById('openPltsaDocModal');
+  const closeDocBtn = document.getElementById('closePltsaDocModal');
+  const modalPrevBtn = document.getElementById('pltsaDocModalPrev');
+  const modalNextBtn = document.getElementById('pltsaDocModalNext');
+
+  function updateModalImage(index) {
+    if (docModalImg && fotoDokumentasi[index]) {
+      docModalImg.src = fotoDokumentasi[index].src;
+      docModalImg.alt = fotoDokumentasi[index].alt;
+      if (docModalCaption) {
+        docModalCaption.textContent = fotoDokumentasi[index].caption;
+      }
+      if (modalDocDownloadBtn) {
+        modalDocDownloadBtn.href = fotoDokumentasi[index].src;
+      }
+    }
+  }
 
   function goToSlide(index) {
     slides.forEach((slide, idx) => {
@@ -246,6 +363,10 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
     }
 
     currentSlide = index;
+
+    if (docModal && !docModal.classList.contains('hidden')) {
+      updateModalImage(currentSlide);
+    }
   }
 
   function startAutoSlide() {
@@ -253,20 +374,22 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
     autoSlideTimer = setInterval(() => {
       const nextIndex = (currentSlide + 1) % slides.length;
       goToSlide(nextIndex);
-    }, 3500); // Berganti otomatis setiap 3.5 detik
+    }, 3500);
   }
 
   function stopAutoSlide() {
     if (autoSlideTimer) clearInterval(autoSlideTimer);
   }
 
-  prevBtn?.addEventListener('click', () => {
+  prevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
     const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
     goToSlide(prevIndex);
     startAutoSlide();
   });
 
-  nextBtn?.addEventListener('click', () => {
+  nextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
     const nextIndex = (currentSlide + 1) % slides.length;
     goToSlide(nextIndex);
     startAutoSlide();
@@ -274,23 +397,65 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
 
   dots.forEach((dot) => {
     dot.addEventListener('click', (e) => {
+      e.stopPropagation();
       const idx = parseInt(e.target.getAttribute('data-dot-index') || '0', 10);
       goToSlide(idx);
       startAutoSlide();
     });
   });
 
-  // Mulai autoslide saat komponen dimuat
   if (slides.length > 0) {
     startAutoSlide();
   }
 
-  // Hentikan autoslide saat mouse diarahkan ke gambar
-  const carouselEl = document.getElementById('pltsaCarousel');
-  carouselEl?.addEventListener('mouseenter', stopAutoSlide);
-  carouselEl?.addEventListener('mouseleave', startAutoSlide);
+  // === LOGIKA LIGHTBOX MODAL 1 ===
+  function openDocModal(index) {
+    if (docModal) {
+      goToSlide(index);
+      docModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
 
-  // === LOGIKA LIGHTBOX MODAL ===
+  function closeDocModal() {
+    if (docModal) {
+      docModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.querySelectorAll('.trigger-pltsa-doc-modal').forEach((img) => {
+    img.addEventListener('click', (e) => {
+      const idx = parseInt(e.currentTarget.getAttribute('data-index') || '0', 10);
+      openDocModal(idx);
+    });
+  });
+
+  openDocBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openDocModal(currentSlide);
+  });
+
+  modalPrevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+    goToSlide(prevIndex);
+    startAutoSlide();
+  });
+
+  modalNextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const nextIndex = (currentSlide + 1) % slides.length;
+    goToSlide(nextIndex);
+    startAutoSlide();
+  });
+
+  closeDocBtn?.addEventListener('click', closeDocModal);
+  docModal?.addEventListener('click', (e) => {
+    if (e.target === docModal) closeDocModal();
+  });
+
+  // === LOGIKA LIGHTBOX MODAL 2: SKEMA PLTSa ===
   const openPltsaBtn = document.getElementById("openPltsaModal");
   const triggerPltsaImg = document.getElementById("triggerPltsaImg");
   const closePltsaBtn = document.getElementById("closePltsaModal");
@@ -315,6 +480,19 @@ const linkReportasePltsa = "https://link-reportase-pltsa-kamu.com";
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !pltsaModal?.classList.contains("hidden")) closeModal();
+    if (e.key === "Escape") {
+      if (!docModal?.classList.contains("hidden")) closeDocModal();
+      if (!pltsaModal?.classList.contains("hidden")) closeModal();
+    } else if (docModal && !docModal.classList.contains("hidden")) {
+      if (e.key === "ArrowLeft") {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        goToSlide(prevIndex);
+        startAutoSlide();
+      } else if (e.key === "ArrowRight") {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        goToSlide(nextIndex);
+        startAutoSlide();
+      }
+    }
   });
 </script>

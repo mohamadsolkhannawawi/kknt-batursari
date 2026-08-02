@@ -51,12 +51,12 @@ export const pocSummary = {
 // GALERI GAMBAR SLIDER (SLIDE 1: HASIL POC, SLIDE 2: SOSIALISASI SMPN 3 MRANGGEN)
 export const galeriGambarPoc: GambarPOC[] = [
   {
-    src: "/images/hasil-poc.jpeg", // Simpan gambar produk POC di folder public/images/
+    src: "/images/hasil-poc.jpeg",
     alt: "Hasil Produk Pupuk Organik Cair (POC)",
     caption: "Produk Pupuk Organik Cair (POC) Hasil Olahan Limbah Organik.",
   },
   {
-    src: "/images/sosialisasi-poc.JPG", 
+    src: "/images/sosialisasi-poc.JPG",
     alt: "Sosialisasi Pupuk Organik Cair di SMP Negeri 3 Mranggen",
     caption:
       "Sosialisasi pemanfaatan Pupuk Organik Cair (POC) dan penerapan prinsip 3R bersama siswa SMP Negeri 3 Mranggen.",
@@ -68,5 +68,4 @@ export const penjelasanKegiatanPoc = [
   "Melalui sosialisasi ini, para siswa diajak untuk lebih peduli terhadap lingkungan sekitar dengan menerapkan prinsip Recycle dalam mengolah sampah organik, sehingga dapat menumbuhkan kesadaran menjaga kebersihan dan kelestarian lingkungan sekolah sejak dini.",
 ];
 
-// Link artikel reportase (sesuaikan dengan link asli jika artikel sudah rilis)
 export const linkReportasePoc = "https://link-reportase-poc-kamu.com";

@@ -81,7 +81,7 @@ const fotoDokumentasi = {
               <svg class="w-5 h-5 text-emerald-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
               </svg>
-              <span>Ingin melihat rekapitulasi data pendampingan lengkap?</span>
+              <span>Ingin melihat rekapitulasi data monitoring lengkap?</span>
             </div>
 
             <a
@@ -90,7 +90,7 @@ const fotoDokumentasi = {
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-900 bg-emerald-100/80 hover:bg-emerald-200/80 px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer shrink-0 shadow-2xs"
             >
-              <span>Buka Data Pendampingan (Excel)</span>
+              <span>Buka Data Monitoring (Excel)</span>
               <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
               </svg>
@@ -104,22 +104,37 @@ const fotoDokumentasi = {
   </div>
 </section>
 
-<!-- LIGHTBOX MODAL (TANPA BINGKAI PUTIH) -->
+<!-- LIGHTBOX MODAL (DENGAN TOMBOL UNDUH, TANPA BINGKAI PUTIH) -->
 <div
   id="monitoringModal"
   class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
 >
-  <!-- TOMBOL SILANG CLOSE -->
-  <button
-    type="button"
-    id="closeMonitoringModal"
-    class="fixed top-4 right-4 md:top-6 md:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
-    aria-label="Tutup Modal"
-  >
-    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  </button>
+  <!-- KELOMPOK TOMBOL POJOK KANAN ATAS (UNDUH & SILANG CLOSE) -->
+  <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
+    <!-- 📥 TOMBOL UNDUH GAMBAR DOKUMENTASI MONITORING -->
+    <a
+      href={fotoDokumentasi.src}
+      download="Dokumentasi-Monitoring-Biogas-Batursari.jpg"
+      class="p-3 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg flex items-center justify-center"
+      title="Unduh Gambar Dokumentasi"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    </a>
+
+    <!-- ✖ TOMBOL SILANG CLOSE -->
+    <button
+      type="button"
+      id="closeMonitoringModal"
+      class="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+      aria-label="Tutup Modal"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
 
   <!-- WADAH UTAMA MODAL -->
   <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">

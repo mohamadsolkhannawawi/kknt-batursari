@@ -150,22 +150,38 @@ const linkVideoPoc = "https://youtu.be/U0FM2QnFOCQ";
   </div>
 </section>
 
-<!-- LIGHTBOX MODAL DENGAN PANAH NAVIGASI KIRI-KANAN & CAPTION DINAMIS -->
+<!-- LIGHTBOX MODAL DENGAN PANAH NAVIGASI, TOMBOL UNDUH, & CAPTION DINAMIS -->
 <div
   id="pocModal"
   class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
 >
-  <!-- TOMBOL SILANG CLOSE -->
-  <button
-    type="button"
-    id="closePocModal"
-    class="fixed top-4 right-4 md:top-6 md:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
-    aria-label="Tutup Modal"
-  >
-    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  </button>
+  <!-- KELOMPOK TOMBOL POJOK KANAN ATAS (UNDUH & CLOSE) -->
+  <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
+    <!-- 📥 TOMBOL UNDUH GAMBAR -->
+    <a
+      id="pocModalDownloadBtn"
+      href=""
+      download="Dokumentasi-POC.jpg"
+      class="p-3 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg flex items-center justify-center"
+      title="Unduh Gambar Ini"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    </a>
+
+    <!-- ✖ TOMBOL SILANG CLOSE -->
+    <button
+      type="button"
+      id="closePocModal"
+      class="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+      aria-label="Tutup Modal"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
 
   <!-- WADAH UTAMA MODAL SLIDER -->
   <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">
@@ -175,7 +191,7 @@ const linkVideoPoc = "https://youtu.be/U0FM2QnFOCQ";
       id="pocModalImg"
       src=""
       alt=""
-      class="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-2xl"
+      class="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-2xl transition-all duration-300"
     />
 
     <!-- CAPTION TERSEDIA DI DALAM MODAL -->
@@ -218,6 +234,7 @@ const linkVideoPoc = "https://youtu.be/U0FM2QnFOCQ";
   const modal = document.getElementById("pocModal");
   const modalImg = document.getElementById("pocModalImg") as HTMLImageElement;
   const modalCaption = document.getElementById("pocModalCaption");
+  const modalDownloadBtn = document.getElementById("pocModalDownloadBtn") as HTMLAnchorElement;
   const openModalBtn = document.getElementById("openPocModalBtn");
   const closeBtn = document.getElementById("closePocModal");
   const modalPrevBtn = document.getElementById("pocModalPrevBtn");
@@ -230,6 +247,9 @@ const linkVideoPoc = "https://youtu.be/U0FM2QnFOCQ";
       modalImg.alt = slideImg.alt;
       if (modalCaption) {
         modalCaption.textContent = slideImg.alt || "Dokumen Foto Kegiatan POC";
+      }
+      if (modalDownloadBtn) {
+        modalDownloadBtn.href = slideImg.src;
       }
     }
   }
@@ -262,7 +282,7 @@ const linkVideoPoc = "https://youtu.be/U0FM2QnFOCQ";
 
     currentSlide = index;
 
-    // Jika modal terbuka, ikut sinkronkan gambar & caption di dalam modal
+    // Jika modal terbuka, ikut sinkronkan gambar, caption, dan link download di dalam modal
     if (modal && !modal.classList.contains("hidden")) {
       updateModalData(currentSlide);
     }

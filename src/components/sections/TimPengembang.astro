@@ -28,11 +28,11 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
       <div class="flex flex-wrap justify-center gap-6">
         {multi1.map((anggota) => (
           <div 
-            class="group w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.15rem)] max-w-[270px] h-[360px] [perspective:1000px]"
+            class="group flipped-card w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.15rem)] max-w-[270px] h-[360px] [perspective:1000px] select-none"
             data-reveal
           >
-            <!-- CONTAINER CARD UTAMA (FLIP SAAT HOVER) -->
-            <div class="relative h-full w-full rounded-2xl shadow-xs transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] cursor-pointer">
+            <!-- CONTAINER CARD UTAMA (FLIP SAAT HOVER / KLIK MOBILE) -->
+            <div class="relative h-full w-full rounded-2xl shadow-xs transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-[.flipped]:[transform:rotateY(180deg)] cursor-pointer">
               
               <!-- === SISI DEPAN (CLEAN PROFIL DASAR) === -->
               <div class="absolute inset-0 h-full w-full rounded-2xl border border-neutral-200/80 bg-white p-6 flex flex-col items-center justify-center text-center [backface-visibility:hidden]">
@@ -102,16 +102,16 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
       <div class="flex flex-wrap justify-center gap-6">
         {multi2.map((anggota) => (
           <div 
-            class="group w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.15rem)] max-w-[270px] h-[360px] [perspective:1000px]"
+            class="group flipped-card w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.15rem)] max-w-[270px] h-[360px] [perspective:1000px] select-none"
             data-reveal
           >
-            <!-- CONTAINER CARD UTAMA (FLIP SAAT HOVER) -->
-            <div class="relative h-full w-full rounded-2xl shadow-xs transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] cursor-pointer">
+            <!-- CONTAINER CARD UTAMA (FLIP SAAT HOVER / KLIK MOBILE) -->
+            <div class="relative h-full w-full rounded-2xl shadow-xs transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-[.flipped]:[transform:rotateY(180deg)] cursor-pointer">
               
               <!-- === SISI DEPAN (CLEAN PROFIL DASAR) === -->
               <div class="absolute inset-0 h-full w-full rounded-2xl border border-neutral-200/80 bg-white p-6 flex flex-col items-center justify-center text-center [backface-visibility:hidden]">
                 
-                <!-- FOTO ANGGOTA (1:1 PROPORSIIONAL) -->
+                <!-- FOTO ANGGOTA -->
                 <div class="w-24 h-24 aspect-square rounded-full overflow-hidden border-2 border-emerald-500/20 shadow-xs bg-neutral-100 flex items-center justify-center shrink-0 mb-4">
                   <img
                     src={anggota.foto}
@@ -165,3 +165,12 @@ const multi2 = timList.filter((a) => a.multiGroup === "multi-2");
 
   </div>
 </section>
+
+<!-- SCRIPT TOGGLE FLIP ON CLICK / TAP -->
+<script>
+  document.querySelectorAll('.flipped-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+</script>
