@@ -6,17 +6,14 @@ import { ecatalogueData } from "../../data/ecatalogue";
 <section id="ecatalogue" class="bg-white py-16 md:py-20 border-t border-neutral-100">
   <div class="container-site max-w-5xl mx-auto px-4 space-y-10">
     
-    <!-- HEADER SEKSI -->
     <SectionHeading
       eyebrow="Digitalisasi UMKM"
       title={ecatalogueData.judul}
       subtitle={ecatalogueData.subjudul}
     />
 
-    <!-- CONTAINER UTAMA -->
     <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 shadow-sm space-y-8" data-reveal>
       
-      <!-- BAGIAN ATAS: GAMBAR UTAMA DI TENGAH -->
       <div class="w-full max-w-4xl mx-auto rounded-xl border border-neutral-200/80 bg-white p-3 shadow-sm group">
         <div class="w-full rounded-lg bg-neutral-100/80 p-3 relative overflow-hidden flex flex-col items-center">
           
@@ -28,7 +25,6 @@ import { ecatalogueData } from "../../data/ecatalogue";
               class="w-full h-auto max-h-[480px] object-contain mx-auto rounded-md transition-transform duration-500 ease-out group-hover:scale-105"
             />
 
-            <!-- FLOATING BUTTON PERBESAR -->
             <div class="absolute bottom-3 right-3 z-20">
               <button
                 type="button"
@@ -43,7 +39,6 @@ import { ecatalogueData } from "../../data/ecatalogue";
             </div>
           </div>
 
-          <!-- KOTAK CAPTION DI BAWAH GAMBAR -->
           <div class="p-2.5 bg-white rounded-lg mt-3 border border-neutral-100 text-center w-full z-10 shadow-2xs">
             <p class="text-xs md:text-sm text-neutral-600 font-medium leading-relaxed">
               {ecatalogueData.caption}
@@ -53,7 +48,6 @@ import { ecatalogueData } from "../../data/ecatalogue";
         </div>
       </div>
 
-      <!-- BAGIAN BAWAH: DESKRIPSI & TOMBOL LINK WEBSITE -->
       <div class="space-y-6 pt-2 border-t border-neutral-200/60 max-w-4xl mx-auto">
 
         <div class="space-y-3 text-sm md:text-base text-neutral-700 leading-relaxed">
@@ -62,22 +56,21 @@ import { ecatalogueData } from "../../data/ecatalogue";
           ))}
         </div>
 
-        <!-- BOTTOM CTA DIRECT LINK KE WEBSITE VERCEL -->
         <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
           <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-700">
             <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
             </svg>
-            <span>Ingin menjelajahi platform e-catalogue Roti Bakar 86 secara langsung?</span>
+            <span class="text-neutral-800">Ingin menjelajahi platform e-catalogue Roti Bakar 86 secara langsung?</span>
           </div>
 
           <a
             href={ecatalogueData.websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-sm text-neutral-900 bg-emerald-100/80 hover:bg-emerald-200/80 px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer shrink-0 border border-emerald-200/80 shadow-2xs"
+            class="inline-flex items-center gap-2 text-sm text-emerald-900 bg-emerald-100 hover:bg-emerald-200 px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer shrink-0 border border-emerald-300 shadow-2xs font-bold"
           >
-            <span class="font-bold">Buka Website Roti Bakar 86</span>
+            <span>Buka Website Roti Bakar 86</span>
             <svg class="w-4 h-4 text-emerald-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
             </svg>
@@ -91,7 +84,6 @@ import { ecatalogueData } from "../../data/ecatalogue";
   </div>
 </section>
 
-<!-- LIGHTBOX MODAL -->
 <div
   id="ecatalogueModal"
   class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
