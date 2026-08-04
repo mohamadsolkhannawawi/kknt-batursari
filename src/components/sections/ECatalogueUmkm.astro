@@ -1,0 +1,168 @@
+---
+import SectionHeading from "../ui/SectionHeading.astro";
+import { ecatalogueData } from "../../data/ecatalogue";
+---
+
+<section id="ecatalogue" class="bg-white py-16 md:py-20 border-t border-neutral-100">
+  <div class="container-site max-w-5xl mx-auto px-4 space-y-10">
+    
+    <!-- HEADER SEKSI -->
+    <SectionHeading
+      eyebrow="Digitalisasi UMKM"
+      title={ecatalogueData.judul}
+      subtitle={ecatalogueData.subjudul}
+    />
+
+    <!-- CONTAINER UTAMA -->
+    <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 shadow-sm space-y-8" data-reveal>
+      
+      <!-- BAGIAN ATAS: GAMBAR UTAMA DI TENGAH -->
+      <div class="w-full max-w-4xl mx-auto rounded-xl border border-neutral-200/80 bg-white p-3 shadow-sm group">
+        <div class="w-full rounded-lg bg-neutral-100/80 p-3 relative overflow-hidden flex flex-col items-center">
+          
+          <div class="w-full flex items-center justify-center relative max-h-[500px] overflow-hidden rounded-md cursor-pointer" id="triggerEcatalogueImg">
+            <img
+              src={ecatalogueData.gambar}
+              alt={ecatalogueData.judul}
+              loading="lazy"
+              class="w-full h-auto max-h-[480px] object-contain mx-auto rounded-md transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+
+            <!-- FLOATING BUTTON PERBESAR -->
+            <div class="absolute bottom-3 right-3 z-20">
+              <button
+                type="button"
+                id="openEcatalogueModalBtn"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 bg-white/95 backdrop-blur-xs border border-neutral-300 px-3.5 py-1.5 rounded-full shadow-md transition-all duration-300 cursor-pointer hover:bg-emerald-600 hover:text-white hover:border-emerald-600"
+              >
+                <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                </svg>
+                <span>Perbesar Desain</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- KOTAK CAPTION DI BAWAH GAMBAR -->
+          <div class="p-2.5 bg-white rounded-lg mt-3 border border-neutral-100 text-center w-full z-10 shadow-2xs">
+            <p class="text-xs md:text-sm text-neutral-600 font-medium leading-relaxed">
+              {ecatalogueData.caption}
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BAGIAN BAWAH: DESKRIPSI & TOMBOL LINK WEBSITE -->
+      <div class="space-y-6 pt-2 border-t border-neutral-200/60 max-w-4xl mx-auto">
+
+        <div class="space-y-3 text-sm md:text-base text-neutral-700 leading-relaxed">
+          {ecatalogueData.deskripsi.map((paragraf) => (
+            <p>{paragraf}</p>
+          ))}
+        </div>
+
+        <!-- BOTTOM CTA DIRECT LINK KE WEBSITE VERCEL -->
+        <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-700">
+            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+            <span>Ingin menjelajahi platform e-catalogue Roti Bakar 86 secara langsung?</span>
+          </div>
+
+          <a
+            href={ecatalogueData.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-sm text-neutral-900 bg-emerald-100/80 hover:bg-emerald-200/80 px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer shrink-0 border border-emerald-200/80 shadow-2xs"
+          >
+            <span class="font-bold">Buka Website Roti Bakar 86</span>
+            <svg class="w-4 h-4 text-emerald-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX MODAL -->
+<div
+  id="ecatalogueModal"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
+>
+  <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
+    <a
+      href={ecatalogueData.gambar}
+      download="E-Catalogue-RotiBakar86.jpg"
+      class="p-3 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg flex items-center justify-center"
+      title="Unduh Gambar Dokumentasi"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    </a>
+
+    <button
+      type="button"
+      id="closeEcatalogueModal"
+      class="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+      aria-label="Tutup Modal"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">
+    <img
+      src={ecatalogueData.gambar}
+      alt={ecatalogueData.judul}
+      class="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-2xl"
+    />
+    <p class="text-white text-xs md:text-sm font-medium mt-3 text-center bg-black/50 px-4 py-2 rounded-full border border-white/10 max-w-2xl">
+      {ecatalogueData.caption}
+    </p>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("ecatalogueModal");
+  const openBtn = document.getElementById("openEcatalogueModalBtn");
+  const triggerImg = document.getElementById("triggerEcatalogueImg");
+  const closeBtn = document.getElementById("closeEcatalogueModal");
+
+  function openModal() {
+    if (modal) {
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+  }
+
+  openBtn?.addEventListener("click", openModal);
+  triggerImg?.addEventListener("click", openModal);
+  closeBtn?.addEventListener("click", closeModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+</script>

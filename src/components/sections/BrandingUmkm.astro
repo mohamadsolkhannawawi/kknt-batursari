@@ -1,0 +1,168 @@
+---
+import SectionHeading from "../ui/SectionHeading.astro";
+import { brandingData } from "../../data/branding";
+---
+
+<section id="branding-umkm" class="bg-white py-16 md:py-20 border-t border-neutral-100">
+  <div class="container-site max-w-6xl mx-auto px-4 space-y-10">
+    
+    <!-- HEADER SEKSI -->
+    <SectionHeading
+      eyebrow="Branding & Digital Marketing"
+      title={brandingData.judul}
+      subtitle={brandingData.subjudul}
+    />
+
+    <!-- CONTAINER UTAMA (LAYOUT KIRI-KANAN / SAMPING) -->
+    <div class="bg-neutral-50/80 rounded-2xl border border-neutral-200/80 p-6 md:p-8 shadow-sm space-y-6" data-reveal>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- KOLOM KIRI: GAMBAR INSTAGRAM -->
+        <div class="lg:col-span-5 flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-200/80 bg-white p-2 shadow-sm group">
+          <div class="w-full flex-1 flex items-center justify-center overflow-hidden rounded-lg bg-neutral-100/80 p-2 relative cursor-pointer" id="triggerBrandingImg">
+            <img
+              src={brandingData.gambar}
+              alt={brandingData.judul}
+              loading="lazy"
+              class="w-full h-auto max-h-[380px] object-contain mx-auto rounded-md transition-transform duration-500 group-hover:scale-105"
+            />
+            
+            <!-- FLOATING BUTTON PERBESAR -->
+            <div class="absolute bottom-3 right-3 z-10">
+              <button
+                type="button"
+                id="openBrandingModalBtn"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 bg-white/95 backdrop-blur-xs border border-neutral-300 px-3 py-1.5 rounded-full shadow-md transition-all duration-300 cursor-pointer hover:bg-emerald-600 hover:text-white hover:border-emerald-600"
+              >
+                <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                </svg>
+                <span>Perbesar</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="p-3 bg-white rounded-lg mt-2 border border-neutral-100 text-center">
+            <p class="text-xs text-neutral-600 leading-relaxed font-medium">
+              {brandingData.caption}
+            </p>
+          </div>
+        </div>
+
+        <!-- KOLOM KANAN: DESKRIPSI & TOMBOL DIRECT LINK -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+          
+          <div class="space-y-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+            {brandingData.deskripsi.map((paragraf) => (
+              <p>{paragraf}</p>
+            ))}
+          </div>
+
+          <!-- BOTTOM CTA DIRECT LINK HANYA INSTAGRAM -->
+          <div class="pt-4 border-t border-neutral-200/60 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-xs md:text-sm text-neutral-700">
+              <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+              <span>Ingin melihat hasil media sosial Roti Bakar 86 secara langsung?</span>
+            </div>
+
+            <!-- LINK DIRECT INSTAGRAM -->
+            <a
+              href={brandingData.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-sm text-neutral-900 bg-emerald-100/80 hover:bg-emerald-200/80 px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer shrink-0 border border-emerald-200/80 shadow-2xs"
+            >
+              <svg class="w-4 h-4 text-emerald-800 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span class="font-bold">Kunjungi Instagram @bakeby86_</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX MODAL -->
+<div
+  id="brandingModal"
+  class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-300 select-none"
+>
+  <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
+    <a
+      href={brandingData.gambar}
+      download="Branding-RotiBakar86-Desa-Batursari.jpg"
+      class="p-3 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg flex items-center justify-center"
+      title="Unduh Gambar Dokumentasi"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+    </a>
+
+    <button
+      type="button"
+      id="closeBrandingModal"
+      class="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 focus:outline-none cursor-pointer border border-white/20 shadow-lg"
+      aria-label="Tutup Modal"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center p-2">
+    <img
+      src={brandingData.gambar}
+      alt={brandingData.judul}
+      class="max-w-full max-h-[80vh] object-contain mx-auto rounded-lg shadow-2xl"
+    />
+    <p class="text-white text-xs md:text-sm font-medium mt-3 text-center bg-black/50 px-4 py-2 rounded-full border border-white/10 max-w-2xl">
+      {brandingData.caption}
+    </p>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("brandingModal");
+  const openBtn = document.getElementById("openBrandingModalBtn");
+  const triggerImg = document.getElementById("triggerBrandingImg");
+  const closeBtn = document.getElementById("closeBrandingModal");
+
+  function openModal() {
+    if (modal) {
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+  }
+
+  openBtn?.addEventListener("click", openModal);
+  triggerImg?.addEventListener("click", openModal);
+  closeBtn?.addEventListener("click", closeModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+</script>

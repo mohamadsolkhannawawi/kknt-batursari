@@ -2,16 +2,31 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/Hero.astro";
 import LogoStrip from "../components/layout/LogoStrip.astro";
+
+// Profil, Pemetaan, & Struktur Desa Batursari
 import StrukturDesa from "../components/sections/StrukturDesa.astro";
+import PetaAdministrasi from "../components/sections/PetaAdministrasi.astro";
 import TentangProgram from "../components/sections/TentangProgram.astro";
+
+// Sub-Program Biogas Ndaleman & Desain EBT
 import PotensiBiogas from "../components/sections/PotensiBiogas.astro";
 import DesainEbt from "../components/sections/DesainEbt.astro";
 import MonitoringBiogas from "../components/sections/MonitoringBiogas.astro";
 import MonografBiogas from "../components/sections/MonografBiogas.astro";
+
+// Program Multidisiplin EBT & Lingkungan Sekolah
 import AuditEnergi from "../components/sections/AuditEnergi.astro";
 import SkemaBiogas from "../components/sections/SkemaBiogas.astro";
 import PrototipePlts from "../components/sections/PrototipePlts.astro";
 import ArsitekturSampah from "../components/sections/ArsitekturSampah.astro";
+import SkTimHematEnergi from "../components/sections/SkTimHematEnergi.astro";
+
+// Program Pemberdayaan Sosial & Digitalisasi UMKM
+import ECatalogueUmkm from "../components/sections/ECatalogueUmkm.astro";
+import BrandingUmkm from "../components/sections/BrandingUmkm.astro";
+import PemasaranStp from "../components/sections/PemasaranStp.astro";
+
+// Penutup: Dosen, Tim, Galeri, & Kontak
 import DosenPembimbing from "../components/sections/DosenPembimbing.astro";
 import TimPengembang from "../components/sections/TimPengembang.astro";
 import Galeri from "../components/sections/Galeri.astro";
@@ -23,23 +38,30 @@ import PengembangWebsite from "../components/sections/PengembangWebsite.astro";
   <Hero />
   <LogoStrip />
   
-  <!-- Profil & Struktur Desa Batursari -->
+  <!-- 1. PROFIL, TATA RUANG & PEMETAAN DESA -->
   <StrukturDesa />
-
+  <PetaAdministrasi />
   <TentangProgram />
   
-  <!-- Sub-Program Biogas Ndaleman & Desain EBT -->
+  <!-- 2. INOVASI BIOGAS & DESAIN EBT (DESA BATURSARI) -->
   <PotensiBiogas />
   <DesainEbt />
   <MonitoringBiogas />
-  
-  <!-- Publikasi Buku Monograf Biogas -->
   <MonografBiogas />
 
+  <!-- 3. PROGRAM MULTIDISIPLIN EBT & LINGKUNGAN SEKOLAH -->
   <AuditEnergi />
   <SkemaBiogas />
   <PrototipePlts />
   <ArsitekturSampah />
+  <SkTimHematEnergi />
+
+  <!-- 4. PEMBERDAYAAN SOSIAL & DIGITALISASI UMKM -->
+  <ECatalogueUmkm />
+  <BrandingUmkm />
+  <PemasaranStp />
+
+  <!-- 5. TIM PENGEMBANG, GALERI, & INFORMASI KELOMPOK -->
   <DosenPembimbing />
   <TimPengembang />
   <Galeri />
