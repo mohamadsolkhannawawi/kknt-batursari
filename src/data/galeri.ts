@@ -100,9 +100,30 @@ export const galeriList: FotoGaleri[] = [
   },
   {
     id: "galeri-13",
+    src: "/images/posyandu.jpeg",
+    alt: "Partisipasi Tim KKN-T Undip dalam Kegiatan Posyandu Dusun Daleman",
+    caption:
+      "Momen kebersamaan mahasiswa KKN-T 141 Kelompok 2 Undip saat berpartisipasi membantu kegiatan Posyandu di Dusun Daleman, Desa Batursari.",
+  },
+  {
+    id: "galeri-14",
     src: "/images/MengajarSMP3.JPG", 
     alt: "Pendampingan Pembelajaran Mata Pelajaran di SMP Negeri 3 Mranggen",
     caption:
       "Pelaksanaan kegiatan mengajar dan pendampingan mata pelajaran oleh Mahasiswa KKN-T 141 Undip Kelompok 2 sesuai disiplin ilmu dan rumpun program studi masing-masing kepada siswa-siswi SMP Negeri 3 Mranggen.",
+  },
+    {
+    id: "galeri-15",
+    src: "/images/fatayat.jpg",
+    alt: "Partisipasi Tim KKN-T  141 kelompok 2 Undip dalam Pengajian Rutin Triwulan Muslimat-Fatayat Nahdlatul Ulama",
+    caption:
+      "Potret kebersamaan mahasiswa KKN-T 141 Kelompok 2 Undip saat membantu dan ikut berpartisipasi dalam persiapan kegiatan pengajian rutin triwulan Muslimat-Fatayat Nahdlatul Ulama di Desa Batursari.",
+  },
+  {
+    id: "galeri-16",
+    src: "/images/AGUSTUSAN.jpeg",
+    alt: "Partisipasi Tim KKN-T  141 kelompok 2 Undip Membantu Perayaan Lomba 17 Agustus",
+    caption:
+      "Keseruan mahasiswa KKN-T 141 Undip Kelompok 2 saat turun langsung ikut serta membantu memandu dan meriahkan perlombaan dalam rangka perayaan HUT RI 17 Agustus bersama anak-anak dan warga Desa.",
   },
 ];
