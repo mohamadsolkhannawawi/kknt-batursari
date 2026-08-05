@@ -115,7 +115,7 @@ export const galeriList: FotoGaleri[] = [
     {
     id: "galeri-15",
     src: "/images/fatayat.jpg",
-    alt: "Partisipasi Tim KKN-T  141 kelompok 2 Undip dalam Pengajian Rutin Triwulan Muslimat-Fatayat Nahdlatul Ulama",
+  alt: "Partisipasi Tim KKN-T  141 kelompok 2 Undip dalam Pengajian Rutin Triwulan Muslimat-Fatayat Nahdlatul Ulama",
     caption:
       "Potret kebersamaan mahasiswa KKN-T 141 Kelompok 2 Undip saat membantu dan ikut berpartisipasi dalam persiapan kegiatan pengajian rutin triwulan Muslimat-Fatayat Nahdlatul Ulama di Desa Batursari.",
   },
