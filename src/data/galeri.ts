@@ -40,13 +40,20 @@ export const galeriList: FotoGaleri[] = [
   },
   {
     id: "galeri-5",
+    src: "/images/piketbaldes.jpeg",
+    alt: "Kegiatan piket harian di Balai Desa Batursari",
+    caption:
+      "Kegiatan piket harian di Balai Desa Batursari untuk mendukung pelayanan administrasi dan operasional kantor desa.",
+  },
+  {
+    id: "galeri-6",
     src: "/images/POC.jpg",
     alt: "Proses pembuatan dan produksi Pupuk Organik Cair (POC) Desa Batursari",
     caption:
       "Proses pengolahan dan pencampuran bahan baku dalam pembuatan Pupuk Organik Cair (POC) secara mandiri guna mengoptimalkan potensi limbah organik di Desa Batursari.",
   },
   {
-    id: "galeri-6",
+    id: "galeri-7",
     src: "/images/SosialisasiSMP3.jpg",
     alt: "Sosialisasi Transisi Hijau di SMP Negeri 3 Mranggen",
     caption:
@@ -57,73 +64,80 @@ export const galeriList: FotoGaleri[] = [
     },
   },
    {
-    id: "galeri-7",
+    id: "galeri-8",
     src: "/images/ArisanBapak.jpg", 
     alt: "Menghadiri Acara Arisan Rutin Warga Bapak-Bapak di Desa Batursari",
     caption:
       "Menjalin keakraban dan diskusi santai bersama warga bapak-bapak setempat dalam pertemuan arisan rutin RT/RW Desa Batursari.",
   },
   {
-    id: "galeri-8",
+    id: "galeri-9",
     src: "/images/ArisanIbu.jpg",
     alt: "Pertemuan Arisan Rutin Ibu-Ibu dan Pembahasan Perencanaan Lomba 17 Agustus",
     caption:
       "Keikutsertaan Tim KKN-T 141 Kelompok 2 Undip dalam pertemuan arisan rutin warga sekaligus menyimak pembahasan persiapan rangkaian kegiatan perlombaan HUT RI 17 Agustus bersama ibu-ibu Desa Batursari.",
   },
   {
-    id: "galeri-9",
+    id: "galeri-10",
     src: "/images/UMKMRoti.jpg",
     alt: "Kunjungan dan Membantu Pengemasan Produk UMKM Roti Desa Batursari",
     caption:
-      "Kunjungan silaturahmi sekaligus ikut membantu proses pengemasan roti di salah satu UMKM lokal Desa Batursari yang memproduksi bahan baku roti bakar.",
+      "Kunjungan silaturahmi sekaligus ikut membantu pengemasan roti di salah satu UMKM lokal Desa Batursari yang memproduksi bahan baku roti bakar.",
   },
   {
-    id: "galeri-10",
+    id: "galeri-11",
     src: "/images/HaulMakam.jpg", 
     alt: "Partisipasi Tim KKN-T 141 Undip dalam Acara Haul Desa Batursari",
     caption:
       "Keikutsertaan dan partisipasi aktif Tim KKN-T 141 Undip Kelompok 2 dalam kegiatan tradisi Haul serta silaturahmi bersama warga masyarakat di areal Pemakaman Desa Batursari.",
   },
   {
-    id: "galeri-11",
+    id: "galeri-12",
     src: "/images/NgajarMasjidDaleman.JPG", 
     alt: "Bimbingan Belajar Anak TK dan SD di Masjid Daleman Desa Batursari",
     caption:
       "Kegiatan bimbingan belajar dasar serta pendampingan edukatif bagi anak-anak usia TK dan SD yang dilaksanakan pada hari Jumat di Masjid Itikaf Darul Mutaqin, Desa Batursari.",
   },
   {
-    id: "galeri-12",
+    id: "galeri-13",
     src: "/images/LOMBA.jpg", 
     alt: "Diskusi Persiapan Perlombaan 17 Agustus bersama Bapak Haris dan Karang Taruna",
     caption:
       "Sesi diskusi santai dan koordinasi perencanaan perayaan HUT RI 17 Agustus bersama Bapak Haris serta pemuda Karang Taruna Desa Batursari.",
   },
   {
-    id: "galeri-13",
+    id: "galeri-14",
     src: "/images/posyandu.jpeg",
     alt: "Partisipasi Tim KKN-T Undip dalam Kegiatan Posyandu Dusun Daleman",
     caption:
       "Momen kebersamaan mahasiswa KKN-T 141 Kelompok 2 Undip saat berpartisipasi membantu kegiatan Posyandu di Dusun Daleman, Desa Batursari.",
   },
   {
-    id: "galeri-14",
+    id: "galeri-15",
     src: "/images/MengajarSMP3.JPG", 
     alt: "Pendampingan Pembelajaran Mata Pelajaran di SMP Negeri 3 Mranggen",
     caption:
       "Pelaksanaan kegiatan mengajar dan pendampingan mata pelajaran oleh Mahasiswa KKN-T 141 Undip Kelompok 2 sesuai disiplin ilmu dan rumpun program studi masing-masing kepada siswa-siswi SMP Negeri 3 Mranggen.",
   },
-    {
-    id: "galeri-15",
+  {
+    id: "galeri-16",
     src: "/images/fatayat.jpg",
-  alt: "Partisipasi Tim KKN-T  141 kelompok 2 Undip dalam Pengajian Rutin Triwulan Muslimat-Fatayat Nahdlatul Ulama",
+    alt: "Partisipasi Tim KKN-T  141 kelompok 2 Undip dalam Pengajian Rutin Triwulan Muslimat-Fatayat Nahdlatul Ulama",
     caption:
       "Potret kebersamaan mahasiswa KKN-T 141 Kelompok 2 Undip saat membantu dan ikut berpartisipasi dalam persiapan kegiatan pengajian rutin triwulan Muslimat-Fatayat Nahdlatul Ulama di Desa Batursari.",
   },
   {
-    id: "galeri-16",
+    id: "galeri-17",
     src: "/images/AGUSTUSAN.jpeg",
     alt: "Partisipasi Tim KKN-T  141 kelompok 2 Undip Membantu Perayaan Lomba 17 Agustus",
     caption:
       "Keseruan mahasiswa KKN-T 141 Undip Kelompok 2 saat turun langsung ikut serta membantu memandu dan meriahkan perlombaan dalam rangka perayaan HUT RI 17 Agustus bersama anak-anak dan warga Desa.",
+  },
+  {
+    id: "galeri-18",
+    src: "/images/bersihsma.jpeg",
+    alt: "Kegiatan bersih-bersih dan persiapan Workshop Internasional di SMP Negeri 3 Mranggen",
+    caption:
+      "Aksi gotong royong mahasiswa KKN-T 141 Universitas Diponegoro bersama pihak sekolah dalam membersihkan dan merapikan ruangan sebagai persiapan menyambut acara Workshop Pemberdayaan Masyarakat melalui Biorefinery Berbasis Biogas pada tanggal 10 Agustus.",
   },
 ];
