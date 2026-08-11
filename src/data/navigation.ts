@@ -43,9 +43,11 @@ export const navigation: NavItem[] = [
     label: "UMKM", 
     enabled: true,
     children: [
-      { label: "Branding UMKM", href: "#branding-umkm", enabled: true },
-      { label: "E-Catalogue UMKM", href: "#ecatalogue", enabled: true },
-      { label: "Pemasaran STP", href: "#pemasaran-stp", enabled: true },
+      { label: "Branding UMKM Roti Bakar 86", href: "#branding-umkm", enabled: true },
+      { label: "E-Catalogue UMKM Roti Bakar 86", href: "#ecatalogue", enabled: true }, // <-- Dikembalikan ke #ecatalogue (atau sesuaikan dengan id di komponennya)
+      { label: "E-Catalogue Al Haris Coffee", href: "#catalog-kopi", enabled: true },
+      { label: "Pemasaran STP Roti Bakar 86", href: "#pemasaran-stp", enabled: true },
+      { label: "Pendampingan NIB Al Haris Coffee", href: "#pendampingan-nib", enabled: true },
     ]
   },
   { 
@@ -61,7 +63,6 @@ export const navigation: NavItem[] = [
   }
 ];
 
-// CTA khusus di navbar kanan (PRD 5.1)
 export const navbarCta = {
   label: "Peta Potensi",
   href: "#potensi",
