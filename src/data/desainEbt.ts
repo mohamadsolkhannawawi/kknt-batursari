@@ -21,6 +21,7 @@ export const desainEbtData: DesainEbtData = {
   kategori: "Desain Fasilitas EBT (Multidisiplin 1)",
   judul: "Rancangan Arsitektur & Gambar Kerja Instalasi Biogas",
   subjudul: "Perancangan fasilitas instalasi Biogas Skala Rumah Tangga tipe fixed-dome terbenam tanah (underground) yang mencakup Denah, Potongan, dan Visualisasi 3D.",
+  websiteUrl: "https://portalika.com/dukung-sdgs-7-11-dan-12-mahasiswa-kknt-141-undip-petakan-potensi-dan-rancang-instalasi-biogas-di-desa-batursari/",
   deskripsi: [
     "Program ini berfokus pada analisis kebutuhan spasial serta penyusunan gambar kerja desain instalasi biogas tipe fixed-dome guna memberikan panduan standar spesifikasi operasional yang aman bagi masyarakat Desa Batursari.",
     "Rancangan mencakup Gambar Denah Kerja (Skala 1:20), Detail Potongan Melintang Reaktor & Gas Holder, hingga Visualisasi 3D Aksonometri Sistem Terintegrasi dari kandang ternak hingga titik kompor dapur."
@@ -60,5 +61,4 @@ export const desainEbtData: DesainEbtData = {
       deskripsi: "Desain terbenam tanah untuk menjaga kestabilan suhu mesofilik (30-38°C) sekaligus menghemat jejak lahan (footprint)." 
     }
   ],
-  linkReportase: "/docs/laporan-potensi-biogas.pdf"
 };

@@ -44,7 +44,7 @@ export const navigation: NavItem[] = [
     enabled: true,
     children: [
       { label: "Branding UMKM Roti Bakar 86", href: "#branding-umkm", enabled: true },
-      { label: "E-Catalogue UMKM Roti Bakar 86", href: "#ecatalogue", enabled: true }, // <-- Dikembalikan ke #ecatalogue (atau sesuaikan dengan id di komponennya)
+      { label: "E-Catalogue UMKM Roti Bakar 86", href: "#ecatalogue", enabled: true }, 
       { label: "E-Catalogue Al Haris Coffee", href: "#catalog-kopi", enabled: true },
       { label: "Pemasaran STP Roti Bakar 86", href: "#pemasaran-stp", enabled: true },
       { label: "Pendampingan NIB Al Haris Coffee", href: "#pendampingan-nib", enabled: true },

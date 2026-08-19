@@ -18,6 +18,7 @@ export const catalogKopiData: CatalogKopiData = {
   kategori: "Digitalisasi UMKM",
   judul: "Pengembangan E-Catalogue Online UMKM Al Haris Natural Coffee",
   subjudul: "Platform digital interaktif untuk memperluas jangkauan promosi, memperkuat branding produk, serta meningkatkan daya saing UMKM Al Haris Natural Coffee di Desa Batursari.",
+  websiteUrl: "https://alharis-natural-coffee.vercel.app/",
   deskripsi: [
     "Sektor Usaha Mikro, Kecil, dan Menengah (UMKM) seperti Al Haris Natural Coffee di Desa Batursari memiliki potensi produk kopi lokal berkualitas tinggi yang bernilai ekonomi besar. Namun, pelaku usaha masih menghadapi kendala dalam hal keterbatasan jangkauan pemasaran konvensional dan belum memiliki sarana promosi digital yang terstruktur secara optimal.",
     "Untuk menjawab permasalahan tersebut, dilakukan pendampingan digitalisasi usaha melalui perancangan platform e-catalogue berbasis website yang interaktif. Platform ini menyajikan informasi katalog produk secara sistematis mulai dari varian biji kopi (Arabika, Robusta, Excelsa, dan Liberica), informasi detail tingkat ketinggian kebun (single origin 600–1545 mdpl), panduan cara seduh, hingga atribut legalitas produk guna meningkatkan kepercayaan konsumen secara luas.",

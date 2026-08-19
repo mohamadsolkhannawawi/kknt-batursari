@@ -135,6 +135,18 @@ export const galeriList: FotoGaleri[] = [
   },
   {
     id: "galeri-18",
+    src: "/images/piketbiogas.jpg",
+    alt: "Monitoring dan peninjauan titik biogas aktif di peternakan warga Desa Batursari",
+    caption: "Kegiatan pemantauan, monitoring titik biogas aktif, serta peninjauan fasilitas peternakan warga sebagai bagian dari optimalisasi energi terbarukan di Desa Batursari.",
+  },
+  {
+    id: "galeri-19",
+    src: "/images/kerjabakti.JPG",
+    alt: "Kegiatan kerja bakti dan gotong royong bersama warga Desa Batursari",
+    caption: "Partisipasi aktif mahasiswa KKN-T 141 Kelompok 2 Undip dalam kegiatan kerja bakti bersama warga untuk membersihkan lingkungan sekitar.",
+  },
+  {
+    id: "galeri-20",
     src: "/images/bersihsma.jpeg",
     alt: "Kegiatan bersih-bersih dan persiapan Workshop Internasional di SMP Negeri 3 Mranggen",
     caption:
