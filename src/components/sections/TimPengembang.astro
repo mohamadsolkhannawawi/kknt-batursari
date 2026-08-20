@@ -31,11 +31,14 @@ function getInstagramUsername(url?: string): string {
         {multi1.length} anggota
       </p>
 
-      <!-- CONTAINER GRID KARTU FLIP MULTI 1 -->
-      <div class="flex flex-wrap justify-center gap-6">
+      <!-- CONTAINER GRID KARTU FLIP MULTI 1 (MOBILE: SLIDER, DESKTOP: GRID) -->
+      <div 
+        id="multi1-slider"
+        class="flex flex-row md:flex-wrap overflow-x-auto md:overflow-x-visible snap-x snap-mandatory gap-6 pb-6 justify-start md:justify-center w-full max-w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
         {multi1.map((anggota) => (
           <div 
-            class="group flipped-card w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.15rem)] max-w-[270px] h-[360px] [perspective:1000px] select-none"
+            class="group flipped-card snap-center shrink-0 w-[270px] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.15rem)] h-[360px] [perspective:1000px] select-none"
             data-reveal
           >
             <!-- CONTAINER CARD UTAMA (FLIP SAAT HOVER / KLIK MOBILE) -->
@@ -124,11 +127,14 @@ function getInstagramUsername(url?: string): string {
         {multi2.length} anggota
       </p>
 
-      <!-- CONTAINER GRID KARTU FLIP MULTI 2 -->
-      <div class="flex flex-wrap justify-center gap-6">
+      <!-- CONTAINER GRID KARTU FLIP MULTI 2 (MOBILE: SLIDER, DESKTOP: GRID) -->
+      <div 
+        id="multi2-slider"
+        class="flex flex-row md:flex-wrap overflow-x-auto md:overflow-x-visible snap-x snap-mandatory gap-6 pb-6 justify-start md:justify-center w-full max-w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
         {multi2.map((anggota) => (
           <div 
-            class="group flipped-card w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.15rem)] max-w-[270px] h-[360px] [perspective:1000px] select-none"
+            class="group flipped-card snap-center shrink-0 w-[270px] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.15rem)] h-[360px] [perspective:1000px] select-none"
             data-reveal
           >
             <!-- CONTAINER CARD UTAMA (FLIP SAAT HOVER / KLIK MOBILE) -->
@@ -211,11 +217,70 @@ function getInstagramUsername(url?: string): string {
   </div>
 </section>
 
-<!-- SCRIPT TOGGLE FLIP ON CLICK / TAP -->
+<!-- SCRIPT TOGGLE FLIP ON CLICK / TAP & AUTO-SLIDER MOBILE -->
 <script>
+  // 1. Toggle flip kartu tim
   document.querySelectorAll('.flipped-card').forEach((card) => {
     card.addEventListener('click', () => {
       card.classList.toggle('flipped');
     });
   });
+
+  // 2. Setup Auto-Slider untuk Mobile
+  const setupAutoSlider = (id: string) => {
+    const slider = document.getElementById(id);
+    if (!slider) return;
+
+    let intervalId: number | undefined;
+    let isUserInteracting = false;
+
+    const startAutoSlide = () => {
+      // Hanya aktifkan auto-slide pada layar mobile (lebar layar < 768px)
+      if (window.innerWidth >= 768) return;
+      
+      intervalId = window.setInterval(() => {
+        if (isUserInteracting) return;
+        
+        const cardWidth = 270 + 24; // Lebar kartu + gap (24px)
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        
+        if (slider.scrollLeft >= maxScroll - 5) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }, 3500);
+    };
+
+    const stopAutoSlide = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    };
+
+    // Deteksi sentuhan pengguna agar tidak bentrok dengan auto-slide
+    slider.addEventListener('touchstart', () => {
+      isUserInteracting = true;
+    });
+
+    slider.addEventListener('touchend', () => {
+      setTimeout(() => {
+        isUserInteracting = false;
+      }, 3000); // Tunggu 3 detik sebelum melanjutkan auto-slide
+    });
+
+    // Jalankan slider
+    startAutoSlide();
+
+    // Re-evaluasi ketika ukuran layar berubah (resize)
+    window.addEventListener('resize', () => {
+      stopAutoSlide();
+      startAutoSlide();
+    });
+  };
+
+  // Jalankan slider untuk kedua kelompok tim
+  setupAutoSlider('multi1-slider');
+  setupAutoSlider('multi2-slider');
 </script>
