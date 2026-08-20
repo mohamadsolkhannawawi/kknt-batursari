@@ -30,7 +30,7 @@ const isEnabled = navigation.some(
           <div>
             <span class="text-xs uppercase font-bold tracking-widest text-emerald-700 bg-emerald-200/60 px-2.5 py-1 rounded-md inline-block mb-1.5">Profil Monografi Resmi</span>
             <h3 class="text-2xl md:text-3xl font-extrabold text-emerald-950 mt-0.5">Desa {profilBatursariData.identitas.namaDesa}</h3>
-            <p class="text-sm md:text-base text-emerald-800 font-medium mt-1">
+            <p class="text-base text-emerald-800 font-medium mt-1">
               Kecamatan {profilBatursariData.identitas.kecamatan}, Kabupaten {profilBatursariData.identitas.kabupaten}, Provinsi {profilBatursariData.identitas.provinsi}
             </p>
           </div>
@@ -40,7 +40,7 @@ const isEnabled = navigation.some(
           </div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-1 text-sm md:text-base">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-1 text-base">
           <div>
             <span class="block text-xs text-emerald-700 font-medium">Kode Wilayah:</span>
             <strong class="text-emerald-950 text-base md:text-lg font-bold">{profilBatursariData.identitas.kodeWilayah}</strong>
@@ -64,19 +64,19 @@ const isEnabled = navigation.some(
       <div class="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-5xl mx-auto">
         <div class="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm text-center">
           <span class="block text-3xl md:text-4xl font-extrabold text-emerald-600">{profilBatursariData.ringkasan.luas}</span>
-          <span class="text-sm md:text-base font-bold text-neutral-700 mt-1.5 block">Luas Wilayah</span>
+          <span class="text-base font-bold text-neutral-700 mt-1.5 block">Luas Wilayah</span>
         </div>
         <div class="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm text-center">
           <span class="block text-3xl md:text-4xl font-extrabold text-emerald-600">{profilBatursariData.ringkasan.jumlahDusun} Dusun</span>
-          <span class="text-sm md:text-base font-bold text-neutral-700 mt-1.5 block">{profilBatursariData.ringkasan.jumlahRw} RW / {profilBatursariData.ringkasan.jumlahRt} RT</span>
+          <span class="text-base font-bold text-neutral-700 mt-1.5 block">{profilBatursariData.ringkasan.jumlahRw} RW / {profilBatursariData.ringkasan.jumlahRt} RT</span>
         </div>
         <div class="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm text-center">
           <span class="block text-3xl md:text-4xl font-extrabold text-emerald-600">{profilBatursariData.ringkasan.totalRumahIbadah}</span>
-          <span class="text-sm md:text-base font-bold text-neutral-700 mt-1.5 block">Rumah Ibadah</span>
+          <span class="text-base font-bold text-neutral-700 mt-1.5 block">Rumah Ibadah</span>
         </div>
         <div class="p-6 bg-white rounded-2xl border border-neutral-200 shadow-sm text-center">
           <span class="block text-3xl md:text-4xl font-extrabold text-emerald-600">{profilBatursariData.ringkasan.layananKesehatan}</span>
-          <span class="text-sm md:text-base font-bold text-neutral-700 mt-1.5 block">Fasilitas Kesehatan</span>
+          <span class="text-base font-bold text-neutral-700 mt-1.5 block">Fasilitas Kesehatan</span>
         </div>
       </div>
 
@@ -114,7 +114,7 @@ const isEnabled = navigation.some(
       <div class="max-w-5xl mx-auto space-y-6">
         <div class="text-center">
           <h3 class="text-2xl md:text-3xl font-bold text-neutral-800">Potensi Lokal & Cagar Budaya</h3>
-          <p class="text-sm md:text-base text-neutral-600 mt-1.5 font-medium">Situs bersejarah dan potensi pengembangan kawasan di Desa Batursari</p>
+          <p class="text-base text-neutral-600 mt-1.5 font-medium">Situs bersejarah dan potensi pengembangan kawasan di Desa Batursari</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
@@ -143,15 +143,15 @@ const isEnabled = navigation.some(
             <i class="fas fa-map-marked-alt text-emerald-600"></i> Wilayah & Fasilitas Publik
           </h4>
 
-          <div class="space-y-4 text-sm md:text-base text-neutral-800">
+          <div class="space-y-4 text-base text-neutral-800">
             <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200">
               <strong class="block text-neutral-900 text-base md:text-lg font-bold mb-1.5">Informasi Kedusunan:</strong>
-              <p class="leading-relaxed text-sm md:text-base text-neutral-700">{profilBatursariData.informasiDusun.catatan}</p>
+              <p class="leading-relaxed text-base text-neutral-700">{profilBatursariData.informasiDusun.catatan}</p>
             </div>
 
             <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200">
               <strong class="block text-neutral-900 text-base md:text-lg font-bold mb-2">Batas Wilayah Desa:</strong>
-              <div class="grid grid-cols-2 gap-2 text-sm md:text-base text-neutral-700">
+              <div class="grid grid-cols-2 gap-2 text-base text-neutral-700">
                 <div><span class="font-bold text-neutral-900">Utara:</span> {profilBatursariData.batasWilayah.utara}</div>
                 <div><span class="font-bold text-neutral-900">Selatan:</span> {profilBatursariData.batasWilayah.selatan}</div>
                 <div><span class="font-bold text-neutral-900">Barat:</span> {profilBatursariData.batasWilayah.barat}</div>
@@ -174,7 +174,7 @@ const isEnabled = navigation.some(
               </div>
             </div>
 
-            <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200 flex justify-between items-center text-sm md:text-base font-semibold">
+            <div class="p-4 bg-neutral-50 rounded-xl border border-neutral-200 flex justify-between items-center text-base font-semibold">
               <span class="text-neutral-800">Fasilitas Kesehatan (Puskesdes & Posyandu)</span>
               <span class="font-bold text-neutral-900 text-base md:text-lg">{profilBatursariData.saranaKesehatan.ukbmPosyandu + profilBatursariData.saranaKesehatan.puskesdes} Titik</span>
             </div>
@@ -186,7 +186,7 @@ const isEnabled = navigation.some(
           <div>
             <span class="text-xs font-bold uppercase tracking-wider text-emerald-800">Layanan Masyarakat</span>
             <h4 class="font-bold text-2xl md:text-3xl mt-1.5 text-emerald-950">Layanan Pengaduan Warga</h4>
-            <p class="text-sm md:text-base text-emerald-800/90 mt-2.5 leading-relaxed">
+            <p class="text-base text-emerald-800/90 mt-2.5 leading-relaxed">
               Pengaduan tingkat dusun/desa dapat disampaikan langsung ke kantor Balai Desa Batursari. Untuk keadaan darurat dan pengaduan resmi lainnya:
             </p>
           </div>
@@ -201,7 +201,7 @@ const isEnabled = navigation.some(
               </div>
               <div class="overflow-hidden">
                 <span class="block text-xs font-medium text-emerald-700">Call Center 1x24 Jam Kapolres</span>
-                <span class="font-bold text-sm md:text-base text-neutral-900 truncate block">{profilBatursariData.layananAduan.polresLabel}</span>
+                <span class="font-bold text-base text-neutral-900 truncate block">{profilBatursariData.layananAduan.polresLabel}</span>
               </div>
             </a>
 
@@ -216,7 +216,7 @@ const isEnabled = navigation.some(
               </div>
               <div>
                 <span class="block text-xs font-medium text-emerald-700">Aduan Tingkat Provinsi</span>
-                <span class="font-bold text-sm md:text-base text-neutral-900 flex items-center gap-1.5">
+                <span class="font-bold text-base text-neutral-900 flex items-center gap-1.5">
                   Website LaporGub Jawa Tengah <i class="fas fa-external-link-alt text-xs text-emerald-600"></i>
                 </span>
               </div>
