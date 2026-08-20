@@ -116,6 +116,45 @@ function getInstagramUsername(url?: string): string {
           </div>
         ))}
       </div>
+
+      <!-- Navigation controls for mobile slider -->
+      <div class="flex md:hidden items-center justify-between mt-4 px-2 select-none">
+        <button
+          type="button"
+          id="multi1-prev"
+          class="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 flex items-center justify-center transition shadow-xs"
+          aria-label="Previous slide"
+          onclick="event.stopPropagation()"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+
+        <div id="multi1-dots" class="flex gap-2 items-center justify-center">
+          {multi1.map((_, idx) => (
+            <button
+              type="button"
+              class={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-emerald-600 w-5' : 'bg-neutral-300'}`}
+              data-index={idx}
+              aria-label={`Go to slide ${idx + 1}`}
+              onclick="event.stopPropagation()"
+            ></button>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          id="multi1-next"
+          class="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 flex items-center justify-center transition shadow-xs"
+          aria-label="Next slide"
+          onclick="event.stopPropagation()"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- SUB-SECTION: TIM MULTI 2 -->
@@ -212,6 +251,45 @@ function getInstagramUsername(url?: string): string {
           </div>
         ))}
       </div>
+
+      <!-- Navigation controls for mobile slider -->
+      <div class="flex md:hidden items-center justify-between mt-4 px-2 select-none">
+        <button
+          type="button"
+          id="multi2-prev"
+          class="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 flex items-center justify-center transition shadow-xs"
+          aria-label="Previous slide"
+          onclick="event.stopPropagation()"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+
+        <div id="multi2-dots" class="flex gap-2 items-center justify-center">
+          {multi2.map((_, idx) => (
+            <button
+              type="button"
+              class={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-emerald-600 w-5' : 'bg-neutral-300'}`}
+              data-index={idx}
+              aria-label={`Go to slide ${idx + 1}`}
+              onclick="event.stopPropagation()"
+            ></button>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          id="multi2-next"
+          class="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 flex items-center justify-center transition shadow-xs"
+          aria-label="Next slide"
+          onclick="event.stopPropagation()"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
     </div>
 
   </div>
@@ -227,12 +305,64 @@ function getInstagramUsername(url?: string): string {
   });
 
   // 2. Setup Auto-Slider untuk Mobile
-  const setupAutoSlider = (id: string) => {
+  const setupAutoSlider = (id: string, prevId: string, nextId: string, dotsId: string) => {
     const slider = document.getElementById(id);
-    if (!slider) return;
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    const dotsContainer = document.getElementById(dotsId);
+    if (!slider || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    const dots = dotsContainer.querySelectorAll('button');
+    const cardWidth = 270 + 24; // Lebar kartu + gap (24px)
 
     let intervalId: number | undefined;
     let isUserInteracting = false;
+
+    // Fungsi update bullet indicator aktif
+    const updateDots = () => {
+      const activeIndex = Math.round(slider.scrollLeft / cardWidth);
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.className = 'w-5 h-2.5 rounded-full bg-emerald-600 transition-all duration-300';
+        } else {
+          dot.className = 'w-2.5 h-2.5 rounded-full bg-neutral-300 transition-all duration-300';
+        }
+      });
+    };
+
+    slider.addEventListener('scroll', updateDots);
+
+    // Tombol Navigasi Kiri
+    prevBtn.addEventListener('click', () => {
+      isUserInteracting = true;
+      if (slider.scrollLeft <= 5) {
+        slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      }
+      setTimeout(() => { isUserInteracting = false; }, 4000);
+    });
+
+    // Tombol Navigasi Kanan
+    nextBtn.addEventListener('click', () => {
+      isUserInteracting = true;
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      if (slider.scrollLeft >= maxScroll - 5) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+      setTimeout(() => { isUserInteracting = false; }, 4000);
+    });
+
+    // Klik pada Bullet Indicator
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        isUserInteracting = true;
+        slider.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
+        setTimeout(() => { isUserInteracting = false; }, 4000);
+      });
+    });
 
     const startAutoSlide = () => {
       // Hanya aktifkan auto-slide pada layar mobile (lebar layar < 768px)
@@ -241,9 +371,7 @@ function getInstagramUsername(url?: string): string {
       intervalId = window.setInterval(() => {
         if (isUserInteracting) return;
         
-        const cardWidth = 270 + 24; // Lebar kartu + gap (24px)
         const maxScroll = slider.scrollWidth - slider.clientWidth;
-        
         if (slider.scrollLeft >= maxScroll - 5) {
           slider.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
@@ -281,6 +409,6 @@ function getInstagramUsername(url?: string): string {
   };
 
   // Jalankan slider untuk kedua kelompok tim
-  setupAutoSlider('multi1-slider');
-  setupAutoSlider('multi2-slider');
+  setupAutoSlider('multi1-slider', 'multi1-prev', 'multi1-next', 'multi1-dots');
+  setupAutoSlider('multi2-slider', 'multi2-prev', 'multi2-next', 'multi2-dots');
 </script>
