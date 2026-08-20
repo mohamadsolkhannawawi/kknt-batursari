@@ -26,10 +26,13 @@
     scroll-behavior: smooth;
     font-family: var(--font-body);
     scroll-padding-top: 6.5rem;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   body {
     @apply bg-white text-neutral-900 overflow-x-hidden w-full;
+    max-width: 100%;
   }
 
   h1,
