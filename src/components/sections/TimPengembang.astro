@@ -75,6 +75,19 @@ const multi2 = timList.filter((a) => a.multiGroup === "multidisiplin-2");
                   <div class="p-3.5 bg-white/15 backdrop-blur-xs rounded-xl border border-white/20 text-xs text-white leading-relaxed max-h-[170px] overflow-y-auto text-center font-normal">
                     {anggota.output}
                   </div>
+
+                  {anggota.instagram && (
+                    <a
+                      href={anggota.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 text-white transition-all hover:scale-110 mt-2 mx-auto"
+                      title={`Instagram ${anggota.nama}`}
+                      onclick="event.stopPropagation()"
+                    >
+                      <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                  )}
                 </div>
 
                 <p class="text-[10px] text-emerald-100/80 italic pt-2 border-t border-emerald-500/40">
@@ -149,6 +162,19 @@ const multi2 = timList.filter((a) => a.multiGroup === "multidisiplin-2");
                   <div class="p-3.5 bg-white/15 backdrop-blur-xs rounded-xl border border-white/20 text-xs text-white leading-relaxed max-h-[170px] overflow-y-auto text-center font-normal">
                     {anggota.output}
                   </div>
+
+                  {anggota.instagram && (
+                    <a
+                      href={anggota.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 text-white transition-all hover:scale-110 mt-2 mx-auto"
+                      title={`Instagram ${anggota.nama}`}
+                      onclick="event.stopPropagation()"
+                    >
+                      <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                  )}
                 </div>
 
                 <p class="text-[10px] text-emerald-100/80 italic pt-2 border-t border-emerald-500/40">

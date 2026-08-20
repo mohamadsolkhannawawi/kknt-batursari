@@ -11,6 +11,7 @@ export interface AnggotaTim {
   isPengembangWebsite: boolean;
   foto?: string;
   fotoClass?: string;
+  instagram?: string;
 }
 
 export const timList: AnggotaTim[] = [
@@ -25,6 +26,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Syahmi.JPG",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/alqalbyss_?igsh=MWlyOXNxcGVsaTZqaw==",
   },
   {
     id: "bagas",
@@ -37,6 +39,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Bagas.png",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/_bagssaaa?igsh=Y2l6cmticjhjeWow&utm_source=qr",
   },
   {
     id: "dhafa",
@@ -49,6 +52,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Dafa.jpeg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/dhafarizkyh?igsh=MTg1eGVuZGRzZ2RsbQ%3D%3D&igsi=MTg1eGVuZGRzZ2RsbQ%3D%3D&utm_source=qr",
   },
   {
     id: "iqbal",
@@ -61,6 +65,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Iqbal.JPG",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/khasaniwww?igsh=MXVjdHR3b2V6b2JjMA==",
   },
   {
     id: "jihan",
@@ -73,6 +78,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Jihan.JPG",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/haqarnli?igsh=MXU1eXRtMHN4MDc1Zw==",
   },
   {
     id: "dita",
@@ -85,6 +91,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Dita.jpg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/afdtaa_?igsh=cnpxcXZ0eTVhYWlp&igsi=cnpxcXZ0eTVhYWlp",
   },
   {
     id: "solkhan",
@@ -97,8 +104,9 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: true,
     foto: "/images/Solkhan.jpg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/solkhann_?igsh=bmwwdHQ5ZWM0dWRo",
   },
-    {
+  {
     id: "nadia",
     nama: "Nadia Syifa Khairunnisa",
     nim: "24060123120023",
@@ -109,6 +117,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: true,
     foto: "/images/Nadia.JPG",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/naddsyf_?igsh=MWYyZjI4eWpueXBtNw==",
   },
   {
     id: "ardan",
@@ -121,6 +130,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: true,
     foto: "/images/Ardan.jpg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/rdanfdli?igsh=MTZkeGE0eXo3aWRtbA%3D%3D&utm_source=qr",
   },
   {
     id: "andin",
@@ -133,6 +143,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Andin.jpg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/andina.rhm?utm_source=qr&igsh=bms2cHVmcmg0cGpu",
   },
   {
     id: "maya",
@@ -145,6 +156,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Maya.jpg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/mayartanti?igsh=MWxobDQwYm40eTJkNg==",
   },
   {
     id: "zia",
@@ -153,10 +165,11 @@ export const timList: AnggotaTim[] = [
     prodi: "Biologi S1",
     fakultas: "Sains dan Matematika",
     multiGroup: "multidisiplin-1",
-    output: "Survei Potensi Limbah Ternak, Buku Monograf Biogas & Edukasi POC 3R",
+    output: "Survei Potensi Limbah Ternak, Buku Monograf Biorigas & Edukasi POC 3R",
     isPengembangWebsite: false,
     foto: "/images/Zia.jpg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/haiziiaa_?igsh=MTI3b2VtMXBnemh1Zw==",
   },
   {
     id: "esther",
@@ -169,6 +182,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Ester.jpg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/esthernaaat?igsh=MTl5YmloMWxxM2Q1ZA==",
   },
   {
     id: "humayra",
@@ -181,6 +195,7 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Humay.jpg",
     fotoClass: "object-center",
+    instagram: "https://www.instagram.com/humayysn?igsh=anBxbDVraGV3MHdm",
   },
   {
     id: "manda",
@@ -193,5 +208,6 @@ export const timList: AnggotaTim[] = [
     isPengembangWebsite: false,
     foto: "/images/Manda.jpg",
     fotoClass: "scale-100 object-center",
+    instagram: "https://www.instagram.com/kkn.amandanahdhiyatus",
   },
 ];
