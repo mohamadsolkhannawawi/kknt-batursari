@@ -28,23 +28,23 @@ import ebtImg from "../../assets/images/ebt-illustration.png";
       
       <!-- Teks & CTA -->
       <div class="flex-1 max-w-xl order-2 lg:order-1">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-950 leading-[1.2] tracking-tight">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-950 leading-[1.2] tracking-tight">
           {hero.headline}
         </h1>
-        <p class="mt-3 text-sm sm:text-base md:text-lg leading-relaxed text-neutral-700">
+        <p class="mt-3.5 text-base md:text-lg leading-relaxed text-neutral-700">
           {hero.subheadline}
         </p>
         
         <div class="mt-6 flex flex-row items-center gap-4 sm:gap-6">
           <a
             href={hero.ctaPrimary.href}
-            class="inline-flex items-center justify-center px-5 sm:px-8 py-3.5 text-xs sm:text-sm font-semibold text-white bg-neutral-900 rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-neutral-900/20 shrink-0"
+            class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-neutral-900 rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-neutral-900/20 shrink-0"
           >
             {hero.ctaPrimary.label}
           </a>
           <a
             href={hero.ctaSecondary.href}
-            class="inline-flex items-center justify-center px-4 sm:px-6 py-3.5 text-xs sm:text-sm font-semibold text-neutral-800 hover:text-primary-700 transition-colors underline underline-offset-4 decoration-neutral-300 hover:decoration-primary-700 shrink-0"
+            class="inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-neutral-800 hover:text-primary-700 transition-colors underline underline-offset-4 decoration-neutral-300 hover:decoration-primary-700 shrink-0"
           >
             {hero.ctaSecondary.label}
           </a>
@@ -53,7 +53,7 @@ import ebtImg from "../../assets/images/ebt-illustration.png";
 
       <!-- Visual kanan: Ilustrasi -->
       <div class="flex-1 w-full animate-fade-in-up order-1 lg:order-2">
-        <div class="relative w-full max-w-[220px] sm:max-w-xs md:max-w-md mx-auto lg:ml-auto lg:translate-x-8">
+        <div class="relative w-full max-w-[260px] sm:max-w-xs md:max-w-md mx-auto lg:ml-auto lg:translate-x-8">
           <!-- Gambar Mockup -->
           <Image
             src={ebtImg}
