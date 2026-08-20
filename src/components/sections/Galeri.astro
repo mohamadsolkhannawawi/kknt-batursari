@@ -60,11 +60,14 @@ const serializedGaleri = JSON.stringify(galeriList);
       <!-- Script tag untuk passing JSON aman ke Alpine -->
       <script type="application/json" x-ref="galeriData" set:html={serializedGaleri}></script>
 
-      <!-- Grid Galeri -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Grid Galeri (MOBILE: SLIDER, DESKTOP: GRID) -->
+      <div 
+        id="galeri-slider"
+        class="flex flex-row sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory gap-6 pb-6 w-full max-w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
         {galeriList.map((foto, index) => (
           <div
-            class="flex flex-col justify-between rounded-2xl overflow-hidden border border-neutral-200/80 bg-white group hover:shadow-lg transition-all duration-300"
+            class="flex flex-col justify-between rounded-2xl overflow-hidden border border-neutral-200/80 bg-white group hover:shadow-lg transition-all duration-300 snap-center shrink-0 w-[280px] sm:w-auto"
             data-reveal
           >
             <!-- Image Wrapper -->
@@ -129,6 +132,45 @@ const serializedGaleri = JSON.stringify(galeriList);
             </div>
           </div>
         ))}
+      </div>
+
+      <!-- Navigation controls for mobile slider -->
+      <div class="flex sm:hidden items-center justify-between mt-4 px-2 select-none">
+        <button
+          type="button"
+          id="galeri-prev"
+          class="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 flex items-center justify-center transition shadow-xs"
+          aria-label="Previous slide"
+          onclick="event.stopPropagation()"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+
+        <div id="galeri-dots" class="flex gap-2 items-center justify-center">
+          {galeriList.map((_, idx) => (
+            <button
+              type="button"
+              class={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-emerald-600 w-5' : 'bg-neutral-300'}`}
+              data-index={idx}
+              aria-label={`Go to slide ${idx + 1}`}
+              onclick="event.stopPropagation()"
+            ></button>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          id="galeri-next"
+          class="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 flex items-center justify-center transition shadow-xs"
+          aria-label="Next slide"
+          onclick="event.stopPropagation()"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
       </div>
 
       <!-- Modal Slider -->
@@ -255,3 +297,112 @@ const serializedGaleri = JSON.stringify(galeriList);
     </div>
   </div>
 </section>
+
+<!-- SCRIPT AUTO-SLIDER MOBILE UNTUK DOKUMENTASI KEGIATAN -->
+<script>
+  const setupAutoSlider = (id: string, prevId: string, nextId: string, dotsId: string) => {
+    const slider = document.getElementById(id);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    const dotsContainer = document.getElementById(dotsId);
+    if (!slider || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    const dots = dotsContainer.querySelectorAll('button');
+    const cardWidth = 280 + 24; // Lebar kartu + gap (24px)
+
+    let intervalId: number | undefined;
+    let isUserInteracting = false;
+
+    // Fungsi update bullet indicator aktif
+    const updateDots = () => {
+      const activeIndex = Math.round(slider.scrollLeft / cardWidth);
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.className = 'w-5 h-2.5 rounded-full bg-emerald-600 transition-all duration-300';
+        } else {
+          dot.className = 'w-2.5 h-2.5 rounded-full bg-neutral-300 transition-all duration-300';
+        }
+      });
+    };
+
+    slider.addEventListener('scroll', updateDots);
+
+    // Tombol Navigasi Kiri
+    prevBtn.addEventListener('click', () => {
+      isUserInteracting = true;
+      if (slider.scrollLeft <= 5) {
+        slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      }
+      setTimeout(() => { isUserInteracting = false; }, 4000);
+    });
+
+    // Tombol Navigasi Kanan
+    nextBtn.addEventListener('click', () => {
+      isUserInteracting = true;
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      if (slider.scrollLeft >= maxScroll - 5) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+      setTimeout(() => { isUserInteracting = false; }, 4000);
+    });
+
+    // Klik pada Bullet Indicator
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        isUserInteracting = true;
+        slider.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
+        setTimeout(() => { isUserInteracting = false; }, 4000);
+      });
+    });
+
+    const startAutoSlide = () => {
+      // Hanya aktifkan auto-slide pada layar mobile (lebar layar < 640px)
+      if (window.innerWidth >= 640) return;
+      
+      intervalId = window.setInterval(() => {
+        if (isUserInteracting) return;
+        
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        if (slider.scrollLeft >= maxScroll - 5) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }, 3500);
+    };
+
+    const stopAutoSlide = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    };
+
+    // Deteksi sentuhan pengguna agar tidak bentrok dengan auto-slide
+    slider.addEventListener('touchstart', () => {
+      isUserInteracting = true;
+    });
+
+    slider.addEventListener('touchend', () => {
+      setTimeout(() => {
+        isUserInteracting = false;
+      }, 3000); // Tunggu 3 detik sebelum melanjutkan auto-slide
+    });
+
+    // Jalankan slider
+    startAutoSlide();
+
+    // Re-evaluasi ketika ukuran layar berubah (resize)
+    window.addEventListener('resize', () => {
+      stopAutoSlide();
+      startAutoSlide();
+    });
+  };
+
+  // Jalankan slider untuk Galeri Dokumentasi Kegiatan
+  setupAutoSlider('galeri-slider', 'galeri-prev', 'galeri-next', 'galeri-dots');
+</script>
