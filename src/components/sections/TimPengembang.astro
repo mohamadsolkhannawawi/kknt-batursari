@@ -5,6 +5,13 @@ import { timList } from "../../data/tim";
 // Menampilkan semua anggota Multi Disiplin 1 & Multi Disiplin 2
 const multi1 = timList.filter((a) => a.multiGroup === "multidisiplin-1");
 const multi2 = timList.filter((a) => a.multiGroup === "multidisiplin-2");
+
+function getInstagramUsername(url?: string): string {
+  if (!url) return "";
+  const path = url.split("instagram.com/")[1];
+  if (!path) return "";
+  return path.split("?")[0].replace(/\/$/, "");
+}
 ---
 
 <section id="tim" class="bg-white py-16 md:py-20 border-t border-neutral-100">
@@ -77,16 +84,22 @@ const multi2 = timList.filter((a) => a.multiGroup === "multidisiplin-2");
                   </div>
 
                   {anggota.instagram && (
-                    <a
-                      href={anggota.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 text-white transition-all hover:scale-110 mt-2 mx-auto"
-                      title={`Instagram ${anggota.nama}`}
-                      onclick="event.stopPropagation()"
-                    >
-                      <i class="fab fa-instagram text-lg"></i>
-                    </a>
+                    <div class="mt-3 flex flex-col items-center">
+                      <span class="text-[10px] text-emerald-200/90 font-medium tracking-wider uppercase mb-1">Follow me!</span>
+                      <a
+                        href={anggota.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 text-white transition-all hover:scale-110 shadow-xs"
+                        title={`Instagram ${anggota.nama}`}
+                        onclick="event.stopPropagation()"
+                      >
+                        <i class="fab fa-instagram text-lg"></i>
+                      </a>
+                      <span class="text-[11px] text-white/90 font-semibold mt-1">
+                        @{getInstagramUsername(anggota.instagram)}
+                      </span>
+                    </div>
                   )}
                 </div>
 
@@ -164,16 +177,22 @@ const multi2 = timList.filter((a) => a.multiGroup === "multidisiplin-2");
                   </div>
 
                   {anggota.instagram && (
-                    <a
-                      href={anggota.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 text-white transition-all hover:scale-110 mt-2 mx-auto"
-                      title={`Instagram ${anggota.nama}`}
-                      onclick="event.stopPropagation()"
-                    >
-                      <i class="fab fa-instagram text-lg"></i>
-                    </a>
+                    <div class="mt-3 flex flex-col items-center">
+                      <span class="text-[10px] text-emerald-200/90 font-medium tracking-wider uppercase mb-1">Follow me!</span>
+                      <a
+                        href={anggota.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 text-white transition-all hover:scale-110 shadow-xs"
+                        title={`Instagram ${anggota.nama}`}
+                        onclick="event.stopPropagation()"
+                      >
+                        <i class="fab fa-instagram text-lg"></i>
+                      </a>
+                      <span class="text-[11px] text-white/90 font-semibold mt-1">
+                        @{getInstagramUsername(anggota.instagram)}
+                      </span>
+                    </div>
                   )}
                 </div>
 
