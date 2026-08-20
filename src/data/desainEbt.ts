@@ -14,7 +14,7 @@ export interface DesainEbtData {
     judul: string;
     deskripsi: string;
   }[];
-  linkReportase: string;
+  websiteUrl: string;
 }
 
 export const desainEbtData: DesainEbtData = {
