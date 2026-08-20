@@ -149,15 +149,27 @@ const serializedGaleri = JSON.stringify(galeriList);
         </button>
 
         <div id="galeri-dots" class="flex gap-2 items-center justify-center">
-          {galeriList.map((_, idx) => (
-            <button
-              type="button"
-              class={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-emerald-600 w-5' : 'bg-neutral-300'}`}
-              data-index={idx}
-              aria-label={`Go to slide ${idx + 1}`}
-              onclick="event.stopPropagation()"
-            ></button>
-          ))}
+          <button
+            type="button"
+            class="w-5 h-2.5 rounded-full bg-emerald-600 transition-all duration-300"
+            data-index="0"
+            aria-label="Go to start"
+            onclick="event.stopPropagation()"
+          ></button>
+          <button
+            type="button"
+            class="w-2.5 h-2.5 rounded-full bg-neutral-300 transition-all duration-300"
+            data-index="1"
+            aria-label="Go to middle"
+            onclick="event.stopPropagation()"
+          ></button>
+          <button
+            type="button"
+            class="w-2.5 h-2.5 rounded-full bg-neutral-300 transition-all duration-300"
+            data-index="2"
+            aria-label="Go to end"
+            onclick="event.stopPropagation()"
+          ></button>
         </div>
 
         <button
@@ -313,11 +325,20 @@ const serializedGaleri = JSON.stringify(galeriList);
     let intervalId: number | undefined;
     let isUserInteracting = false;
 
-    // Fungsi update bullet indicator aktif
+    // Fungsi update bullet indicator aktif (hanya 3 titik: awal, tengah, akhir)
     const updateDots = () => {
       const activeIndex = Math.round(slider.scrollLeft / cardWidth);
+      const totalItems = slider.querySelectorAll('.snap-center').length;
+      
+      let activeDotIndex = 1; // Default ke tengah
+      if (activeIndex <= 0) {
+        activeDotIndex = 0; // Paling kiri
+      } else if (activeIndex >= totalItems - 1) {
+        activeDotIndex = 2; // Paling kanan
+      }
+
       dots.forEach((dot, idx) => {
-        if (idx === activeIndex) {
+        if (idx === activeDotIndex) {
           dot.className = 'w-5 h-2.5 rounded-full bg-emerald-600 transition-all duration-300';
         } else {
           dot.className = 'w-2.5 h-2.5 rounded-full bg-neutral-300 transition-all duration-300';
@@ -350,11 +371,19 @@ const serializedGaleri = JSON.stringify(galeriList);
       setTimeout(() => { isUserInteracting = false; }, 4000);
     });
 
-    // Klik pada Bullet Indicator
+    // Klik pada Bullet Indicator (3 Titik)
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
         isUserInteracting = true;
-        slider.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
+        const totalItems = slider.querySelectorAll('.snap-center').length;
+        if (idx === 0) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else if (idx === 2) {
+          slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+        } else {
+          const middleIndex = Math.floor(totalItems / 2);
+          slider.scrollTo({ left: middleIndex * cardWidth, behavior: 'smooth' });
+        }
         setTimeout(() => { isUserInteracting = false; }, 4000);
       });
     });
